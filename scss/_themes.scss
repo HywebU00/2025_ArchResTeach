@@ -1,0 +1,227 @@
+// 內頁主題專區
+.theme-archive, //主題檔案
+.theme-lecture, // 主題講座
+.theme-eduSource // 教學資源
+{
+  @extend %primSecWidth;
+
+  position: relative;
+  margin-top: 40px; margin-bottom: 80px;
+
+  // 文字區
+  hgroup {
+    width: calc(100% - 84px);
+    max-width: 720px;
+    margin: 0 auto 48px;
+    h3{
+      font-size: 2em;text-align: center;
+      margin: 0 0 24px;
+    }
+    p{line-height: 1.8; font-size: 1.125em;}
+  }
+
+  // 輪播區
+  .flow{
+    margin: 0 32px 16px;
+    .flowItem{
+      p{
+        margin: 12px auto 0;
+        font-size: 1.125em; line-height: 1.5;
+        height: 2.9em; overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+    }
+
+    // 左右箭頭
+    .slick-arrow{
+      position: absolute;top: 50%;
+      &.slick-prev { left: 0; translate: -100% -50%;}
+      &.slick-next{ right: 0; translate: 100% -50%;}
+    }
+
+  }
+
+  // 暫停
+  .pausePlay{
+    top: auto; right: calc($marginDoc + 24px);
+    translate: 0 -110%;
+  }
+
+  // 更多
+  .more{
+    &>a{ 
+      margin: 5px auto;
+      &:hover, &:focus{
+        --tinge: #{$white};
+        --bgc: #{$primaryColor};
+        --outline-c1: #{$primaryColor};
+      }
+      &:focus {
+        --outline-c1: #{$white};
+        --outline-c2: #{$primaryColor};
+      }
+    }
+  }
+
+  @media screen and (min-width: $wwNormal){
+    margin-bottom: 160px;
+    margin-top: 60px;
+
+    hgroup{
+      h3{font-size: 2.5em; letter-spacing: 3px;}
+      p{ font-size: 1.25em;}
+    }
+
+    .pausePlay{
+      top: auto;
+      translate: 100% -110%;
+    }
+
+
+  }
+
+}
+// ---------------------------------------------------------------- //
+
+
+
+//主題檔案
+// ---------------------------------------------------------------- //
+.theme-archive{
+
+  .flow{
+    position: relative;
+
+    .flowItem{
+      margin: 12px 10px 24px;
+      &>a{
+        display: block;
+        height: 100%;
+        padding: 16px;
+        text-decoration: none;
+        background-color: $grayLight;
+        border-radius: $radius;
+        transition: .3s;
+
+        &:hover{
+          background-color: $black;
+          color: $white;
+        }
+        &:focus {
+          background-color: $black;
+          color: $white;
+          box-shadow:$white 0 0 0 1px, $primaryColor 0 0 0 5px;
+        }
+      }
+      img{
+        display: block;
+        width: 100%;
+        aspect-ratio: 3/2;
+        object-fit: contain;
+      }
+      // p{
+      //   margin: 12px auto 0;
+      //   height: 3.5em;
+      //   display: -webkit-box;
+      //   -webkit-box-orient: vertical;
+      //   -webkit-line-clamp: 2;
+      //   overflow: hidden;
+      // }
+
+    }
+
+  }
+}
+// ---------------------------------------------------------------- //
+
+
+// 主題講座, 教學資源
+// ---------------------------------------------------------------- //
+.theme-lecture,
+.theme-eduSource {
+  .flow{
+
+    .flowItem{
+      margin: 12px;
+      &>a{
+        display: block;
+        height: 100%;
+        padding: 12px 12px 24px;
+        text-decoration: none;
+        background-color: $white;
+        box-shadow:$shadow2 0 0 4px;
+        transition: .2s;
+
+        &:hover{
+          translate: 0 -8px;
+          box-shadow:$shadow1 0 6px 12px;
+        }
+        &:focus {
+          translate: 0 0;
+          box-shadow: $borderColorDark 0 0 0 3px;
+        }
+      }
+      img{
+        display: block;
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+      }
+      // p{
+      //   margin: 16px auto 0;
+      //   line-height: 1.5;
+      //   height: 3em;
+      //   display: -webkit-box;
+      //   -webkit-box-orient: vertical;
+      //   -webkit-line-clamp: 2;
+      //   overflow: hidden;
+      // }
+
+    }
+
+  }
+
+}
+// ---------------------------------------------------------------- //
+
+
+
+// 處理《瀏覽路徑》和《返回前頁》顯示和位置
+@media screen and (min-width: $wwNormal){
+  .breadcrumb:has( ~ .themeBanner){
+
+    position: absolute; z-index: 19; margin-top: 24px;
+    width: auto;
+    left: max($marginDoc, calc(50vw - $maximumWidth*.5));
+    text-shadow:  rgb(0 0 0 / 1) 0 1px 3px, rgb(0 0 0 / 1) 0 0 8px, rgb(0 0 0 / 1) 0 0 8px;
+    color: $white;
+    li{
+      color: $white;
+      &::before{
+        border-color: $grayLight;
+      }
+      a{
+        color: $white;
+        &:hover { border-bottom-color: $white;}
+        &:focus-visible {
+          box-shadow: $white 0 0 0 2px;
+        }
+
+      }
+    }
+    
+  }
+}
+.breadcrumb ~ .funcBar{
+  z-index: 19;
+  position: absolute; top: 4px; right: $marginDocMob;
+  
+  @media screen and (min-width: $wwNormal){
+    top: 12px;
+    right: max($marginDoc, calc(50vw - $maximumWidth*.5));
+  }
+
+}
+

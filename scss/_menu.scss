@@ -1,0 +1,222 @@
+// 主選單
+// ------------------------------------------------------ //
+.menu{
+  ul{list-style: none; margin: 0;padding: 0;}
+  li{
+    margin: 0;padding: 0;position: relative;
+    a{display: block; outline: none; text-decoration: none;}
+  }
+}
+
+
+// 寬版主選單
+// ------------------------------------------------------ //
+.siteHeader .menu{
+  --tinge: #fff;
+
+  display: none;
+
+  @media screen and (min-width: $wwNormal){
+    display: block;
+    margin: 0 auto 0 0;
+    // 第一層 ul
+    &>ul{
+      display: flex; flex-flow: row nowrap;
+      line-height: 1.2;
+      // height: 100%;
+
+      a{color: var(--tinge);}
+
+      // 第一層 li
+      &>li{
+        position: relative;
+        flex: 0 1 auto; 
+        // margin-left: 0; margin-right: 0;
+        transition: .2s;
+        &>a{
+          position: relative;
+          display: block;
+          padding:14px 20px; 
+          line-height: 1;
+          white-space: nowrap;
+          transition: .2s;
+          // outline: 1px solid #09f8;
+          // outline-offset: -1px;
+          // &::before {
+          //   content: ''; position: absolute;
+          //   left: 50%; right: 50%; bottom: 0;
+          //   height: 2px;
+          //   transition:all .18s, background-color 0s;
+          // }
+          &:focus, &:hover {
+            background-color: #000;
+            // &::before {
+            //   left: 0; right: 0;
+            //   background-color: var(--tinge);
+            // }
+          }
+          &:focus-visible {
+            box-shadow: $white 0 0 0 1px;
+          }
+        }
+
+        &.hasChild {
+          &>a{
+            padding-right: 36px;
+            &::after {
+              content: '';
+              position: absolute; right: 16px; top: 16px;
+              width: 8px;height: 8px;
+              rotate: 45deg;
+              border: 1px solid var(--tinge);
+              border-left: none; border-top: none;
+            }
+          }
+        }
+
+        &:has(li>a:hover), &:has(li>a:focus){
+          background-color: #000;
+
+        }
+
+        // 第二層及其之後
+        ul{
+          display: none; 
+          position: absolute; z-index: 99;
+          width: max-content; max-width: 22em; min-width: 9em;
+          font-size: 1rem; line-height: 1.5;
+          background-color: $white; color: $black;
+          box-shadow: rgb(0 0 0 / 0.3) 0 5px 20px;
+          li{
+            a{
+              padding: .8em .8em .7em;
+              color: $black;
+              transition: .15s; 
+              &:hover, &:focus{ 
+                background-color: $primaryColor; color: $white;
+              }
+            }
+
+            // 有次選單的 li
+            &.hasChild{
+              &>a{
+                position: relative; padding-right: 36px;
+                &::after{
+                  position: absolute; left: auto; right: 13px; top: 1.15em;
+                  content: ''; width: 8px; height: 8px; 
+                  border: 2px solid $primaryColor; border-left: none; border-bottom: none;
+                  transform: rotate(45deg);
+                  transition: .3s;
+                }
+                &:hover, &:focus{
+                  &::after{border-color: $white; }
+                }
+              }
+  
+              // 調轉箭頭方向
+              &.turn{
+                &>a::after{ transform: rotate(225deg); right: 9px; }
+              }
+    
+              // 第三層及其之後
+              ul { top: 0;left: 100%;}
+            }
+            &.here{
+              background-color: $primaryColor; 
+              &>a{
+                color: #fff;
+                &::after{border-color: $white;}
+                &:hover, &:focus{ 
+                  background-color: $primaryColor; color: #fff;
+                }
+              }
+            }
+          }
+        }
+
+
+        // 第二層 ul
+        // ----------------------------------------
+        &>ul {
+          top: auto;left: 0;
+          // z-index: 99;
+        }
+      }
+    }
+  
+
+    // 次選單高度超過視窗高度時, 控制選單上下的按鈕
+    button.downward, button.upward{
+      position: fixed; top: calc(100vh - 36px); left: 0; z-index: 99;
+      width: 32px; height: 32px; margin: 0; padding: 0;
+      transform: translateX(calc(-100% - 4px));
+      background-color: $primaryColor;box-shadow: $white 0 0 0 1px;
+      transition:box-shadow .2s, opacity .2s;
+      border: none;  cursor: pointer;
+      &:hover{
+        box-shadow: $primaryColor 0 0 0 2px;
+      }
+      &:focus {
+        box-shadow: $white 0 0 0 1px inset, $primaryColor 0 0 0 2px;
+      }
+      &::before{
+        content: ''; position: absolute; width: 8px; height: 8px; top: 50%; left: 50%;
+        border: 2px solid $white; border-left: none; border-top: none;
+      }
+  
+      &[disabled]{ 
+        opacity: .2; cursor: default;background-color:$black;
+        box-shadow: none;
+      }
+      
+      &.downward{
+        &::before{
+          transform: translate(-4px, -6px) rotate(45deg);
+        }
+      }
+  
+      &.upward{
+        top: calc(100vh - 72px); 
+        &::before{
+          transform: translate(-4px, -2px) rotate(225deg);
+        }
+      }
+    }
+
+
+    @media screen and (min-width: $wwMaximum){
+      &>ul{
+        &>li{ 
+          // a{padding-left: 12px; padding-right: 12px;}
+        }
+      }
+
+    }
+
+  }
+
+}
+.siteHeader.fixed .menu{
+  --tinge: #{$black};
+}
+// ------------------------------------------------------ //
+
+// 固定版頭 .menu
+// ------------------------------------------------------ //
+.webHeader.fixed .menu {
+  @media screen and (min-width: $wwNormal){
+    &>ul{
+      font-size: 1rem;
+      display: flex; flex-flow: row wrap;
+    }
+  }
+
+  @media screen and (min-width: $wwMaximum){
+    .menu{
+      margin-left: $marginDocMax;
+      margin-right: $marginDocMax;
+      &>ul>li>a{padding-left: 16px; padding-right: 16px;}
+    }
+  }
+}
+// ------------------------------------------------------ //

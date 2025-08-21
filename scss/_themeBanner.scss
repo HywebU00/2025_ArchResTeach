@@ -1,0 +1,61 @@
+// 首頁：轉型正義教育專區
+.themeBanner {
+  position: relative;
+  padding: 40px $marginDocMob;
+  min-height: 50vw; overflow: hidden;
+  background-color: #555; color: $white;
+  display: flex; flex-flow: column nowrap; 
+  justify-content: center;
+  align-items: flex-start;
+
+  h2, p, .more{
+    position: relative; z-index: 9;
+    flex: 0 0 auto;
+  }
+  
+  h2{
+    margin: 0 0 .5em; padding: 0;
+    line-height: 1.2; font-size: 2.2em;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+
+  p{ 
+    line-height: 1.8; font-size: 1.125em;
+    margin: 1em 0;
+  }
+
+  .more{
+    --tinge: #{$fontColorDark};
+    --bgc: #{$white};
+    --outline-c1: #{$white};
+    --outline-c2: transparent;
+
+    margin-top: 8px;
+
+    a{
+      &:hover, &:focus{
+        --tinge: #{$white};
+        --bgc: #{$primaryColor};
+      }
+      &:focus {
+        --outline-c2: #{$primaryColor};
+      }
+    }
+  }
+
+  .theme-image{
+    position: absolute; left: 0;top: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+
+  @media screen and (min-width: $wwNormal){
+    height: 38vw; min-height: 0; max-height: 640px; 
+    h2{ font-size: 3.75em; }
+  }
+
+  @media screen and (min-width: $wwMaximum){
+    padding-left: $marginDocMax;
+    padding-right: $marginDocMax;
+  }
+}

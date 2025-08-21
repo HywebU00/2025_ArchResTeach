@@ -1,0 +1,455 @@
+// 無障礙定位點
+// --------------------------------------------------------------- //
+.accesskey{
+  --tinge: #{$fontColorLight};
+
+  position: absolute; display: none;
+  @media screen and (min-width: $wwNormal){
+    display: block; left: 0; top: 0; z-index: 199;
+    line-height: 1; padding: 2px; margin: 2px;
+    text-decoration: none; color: var(--tinge);
+    &:hover{outline: 1px solid var(--tinge);}
+    &:focus{outline: 2px solid var(--tinge);}
+  }
+}
+.siteHeader {
+  .accesskey {
+    --tinge: #{$white};
+  }
+  &.fixed{
+    .accesskey {
+      --tinge: #{$fontColorLight};
+    }
+  }
+}
+.main .accesskey {
+  --tinge: #{$white};
+}
+.siteFooter .accesskey {
+  --tinge: #{$fontColorLight};
+}
+@media screen and (min-width: calc($wwMaximum + 2em)){
+  .siteHeader .accesskey,
+  .main .accesskey, 
+  .siteFooter .accesskey { left: calc(50% - $wwMaximum*.5 - 1em);}
+}
+// --------------------------------------------------------------- //
+
+
+
+//  跳至內容區
+// --------------------------------------------------------------- //
+.goCenter{ display: none;
+  @media screen and (min-width: $wwNormal){
+    opacity: 0; 
+    position: absolute; top: -2em; left: calc($marginDoc + 180px);
+    display: block; z-index: 105; overflow: hidden;
+    font-size: .9rem; border-radius: 0 0 4px 4px;
+    height: 1.6em; line-height: 1.6; padding: 0 .5em;
+    background: $black; color: $fontInvert;
+    text-decoration: none; outline: none;  cursor: pointer;
+    transition: top .3s, opacity .3s; 
+    &:focus{ top: 0; color: $fontInvert;opacity: 1;}
+  }
+  @media screen and (min-width: $wwMaximum){
+    left: calc($marginDocMax + 180px);
+  }
+  
+}
+// --------------------------------------------------------------- //
+
+// 回頁面最上方 
+// --------------------------------------------------------------- //
+button.goTop{
+  --tinge: #{$primaryColor};
+  --bg: #{$white};
+  --arrowSize : 16px;
+  --gotop-size: 64px;
+  --gotop-margin: 16px;
+
+  z-index: 90; 
+  position: fixed; bottom: -80px; right: var(--gotop-margin);
+  width: var(--gotop-size); height: var(--gotop-size);
+  text-indent: -15em;overflow: hidden;
+  padding:0;margin: 0;
+  border: none; border-radius: 50%; 
+  background-color: var(--bg);
+  box-shadow: rgb(0 0 0 / .4) 0 0 12px;
+  transition: all .2s, bottom .6s;
+  &::before{
+    content: ''; position: absolute;
+    box-sizing: border-box;
+    width: var(--arrowSize); height: var(--arrowSize);
+    left: calc( ( var(--gotop-size) - var(--arrowSize) )/2 + 1px ); top: calc( var(--gotop-size)/2 - var(--arrowSize)/4 );
+    border: 2px solid var(--tinge); 
+    border-bottom: none; border-right: none;
+    transform: rotate(45deg);
+  }
+
+  &:hover, &:focus {
+    --tinge: #{$white};
+    --bg: #{$primaryColor};
+    background-color: var(--bg);
+  }
+  &:focus {
+    box-shadow:#fff 0 0 0 1px, var(--bg) 0 0 0 4px;
+  }
+  &.show{ bottom: var(--gotop-margin);}
+
+  @media screen and (min-width: calc($maximumWidth + 128px + 64px)){
+    // 128px = var(--gotop-size)*2 , 64px = var(--gotop-margin)*4
+    right: calc(50% - $maximumWidth*.5 - var(--gotop-size) - var(--gotop-margin) );
+  }
+
+}
+// --------------------------------------------------------------- //
+
+
+// 行動版側欄開關 （漢堡）
+// --------------------------------------------------------------- //
+button.sidebarCtrl{
+  
+  --tinge : #{$white};
+  --bg: transparent;
+
+  position: absolute;right: 0;top: 0;
+  width: 60px; height: 60px; 
+  margin: 0; padding: 0; border-radius: 0;
+  border: none; box-shadow: none; outline: none;
+  text-indent: -20em; overflow: hidden; cursor: pointer;
+  background-color: var(--bg);
+  transition: .2s;
+  &::before, &::after{
+    content: ''; width: 24px; height: 1px;
+    position: absolute; top: 50%; left: calc(50% - 12px);
+    background: var(--tinge); 
+    transition: .2s;
+  }
+  &::before{
+    box-shadow: var(--tinge) 0 -7px 0, var(--tinge) 0 7px 0;
+  }
+  &::after {opacity: 0;}
+
+  &:hover, &:focus {
+    --bg: #{$black};
+  }
+  &:focus{ box-shadow: var(--bg) 0 0 0 3px inset, #fff 0 0 0 4px inset}
+
+
+  &.closeIt{
+    --bg: #{$black};
+    --tinge : #{$white};
+
+    &::before, &::after{
+      width: 26px;left: calc(50% - 13px);
+      // background-color: var(--tinge); 
+    }
+    &::before{ 
+      transform: rotate(45deg);
+      box-shadow: none;
+    }
+    &:after{
+      opacity: 1;
+      transform: rotate(-45deg);
+    }
+  }
+}
+// --------------------------------------------------------------- //
+
+
+
+// 放大鏡圖示
+// --------------------------------------------------------------- //
+%searchIcon {
+  --tinge : #{$black};
+  --bgc: #{$white};
+  
+  position: relative;
+  text-indent: -10em; overflow: hidden;
+  background-color: var(--bgc);
+  
+  &::before, &::after{
+    content: ''; position: absolute;
+  }
+  &::before{
+    left: calc(50% - 10px); top: calc(50% - 10px);
+    width: 18px; height: 18px; 
+    border: 1px solid var(--tinge); border-radius: 50%;
+  }
+  &::after{
+    width: 7px; height: 1px; 
+    top: calc(50% + 8px); left: calc(50% + 4px);
+    border-radius: 1px;
+    rotate: 45deg;
+    background-color: var(--tinge);
+  }
+}
+// --------------------------------------------------------------- //
+
+
+
+// 圓角連結
+// --------------------------------------------------------------- //
+%roundButton{
+  --tinge: #{$white};
+  --bgc: #{$primaryColor};
+  --frc: #{$white};
+
+  display: inline-block; margin: 4px;
+  a{
+    text-align: center; width: fit-content;
+    border-radius: 2em;
+    white-space: nowrap;
+    display: block; height: 2.4em; line-height: 2.5;
+    padding: 0 1.2em;
+    text-decoration: none;
+    box-shadow: var(--tinge) 0 0 0 1px;
+    background-color: var(--bgc);
+    color: var(--frc);
+    transition: .2s;
+    &:hover, &:focus{
+      --bgc: #{$white};
+      --frc: #000;
+    }
+    &:focus{
+      --tinge: #{$primaryColor};
+      box-shadow: var(--tinge) 0 0 0 1px, var(--bgc) 0 0 0 4px;
+    }
+  }
+
+}
+// --------------------------------------------------------------- //
+
+
+
+// more more more
+// --------------------------------------------------------------- //
+.more{
+  --tinge: #{$fontColorDark};
+  --bgc: transparent;
+  --outline-c1: #{$fontColorDark};
+  --outline-c2: transparent;
+
+  padding: 5px;
+  display: block;
+  a{
+    display: block;
+    width: fit-content;
+    height: 2.7em; line-height: 2.75;
+    padding: 0 1.5em; border-radius: 2em;
+    box-shadow: var(--outline-c1) 0 0 0 1px, var(--outline-c2) 0 0 0 4px;
+    background-color: var(--bgc);
+    color: var(--tinge);
+    text-decoration: none;
+    transition: .2s;
+
+    &:hover, &:focus{
+      --tinge: #{$white};
+      --bgc: #{$fontColorDark};
+    }
+    &:focus {
+      --outline-c1: #{$white};
+      --outline-c2: #{$fontColorDark};
+    }
+  }
+}
+// --------------------------------------------------------------- //
+
+
+
+// slick 套件用元件樣式
+// --------------------------------------------------------------- //
+.slick-slider {
+  position: relative;
+
+  button {
+    border: none;outline: none;box-shadow: none;
+    padding: 0; margin: 0;width: auto;
+  }
+
+  // 點點或數字
+  .slick-dots { 
+    --tinge: #e0dedb;
+    --dotSize: 12px;
+    --tingeActive: #{$primaryColor};
+    list-style: none; margin:0 auto;padding: 0;
+    font-size: 0; text-align: center;
+    li { 
+      display: inline-block; 
+      margin: 0 3px; padding: 2px;
+      button, span { 
+        width: var(--dotSize); height: var(--dotSize); border-radius: 50%;
+        overflow: hidden; box-shadow: none;
+        background: var(--tinge);
+        &:hover, &:focus{--tinge: #{$primaryColor};}
+      }
+
+      &.slick-active{
+        --tinge: #{$primaryColor};
+
+        button, span{ 
+          box-shadow:var(--tinge) 0 0 0 2px;
+          &:focus{ box-shadow:$white 0 0 0 1px, $primaryColor 0 0 0 3px;}
+        }
+      }
+
+    }
+  }
+
+  // 左右箭頭
+  button.slick-arrow {
+    --buttonSize: 44px;
+    --bgc:  #{$white};
+    --tinge: #{$black};
+ 
+    position: absolute; z-index: 9; 
+    text-indent: -20em; overflow: hidden;font-size: 0;
+    height: var(--buttonSize);width: var(--buttonSize); 
+    border-radius: 50%;
+    background-color: var(--bgc);
+    box-shadow: var(--tinge) 0 0 0 1px;
+    transition: .2s;
+
+    &::before {
+      content: ''; position: absolute;
+    }
+    &::before {
+      top: calc(50% - 6px);
+      width: 12px; height: 12px;
+      border: 1px solid var(--tinge);
+      rotate: 45deg;
+    }
+    &.slick-prev {
+      &::before{
+        border-right: none; border-top: none;
+        left: calc(50% - 3px);
+      }
+    }
+    &.slick-next {
+      &::before{
+        border-left: none; border-bottom: none;
+        right: calc(50% - 3px);
+      }
+    }
+
+    &:hover, &:focus{
+      --bgc: #{$primaryColor};
+      --tinge: #{$white};
+
+      box-shadow: var(--bgc) 0 0 0 2px;
+    }
+    &:focus{
+      box-shadow: var(--tinge) 0 0 0 1px, var(--bgc) 0 0 0 4px;
+    }
+  }
+}
+// --------------------------------------------------------------- //
+
+
+// 自訂的 slick arrows
+.slickArrows {
+  button {
+    --buttonSize: 44px;
+    --bgc:  #{$white};
+    --tinge: #{$black};
+ 
+    position: absolute; z-index: 9; 
+    text-indent: -20em; overflow: hidden;font-size: 0;
+    height: var(--buttonSize);width: var(--buttonSize); 
+    border-radius: 50%;
+    background-color: var(--bgc);
+    box-shadow: var(--tinge) 0 0 0 1px;
+    border: none;
+    transition: .2s;
+
+    &::before {
+      content: ''; position: absolute;
+    }
+    &::before {
+      top: calc(50% - 6px);
+      width: 12px; height: 12px;
+      border: 1px solid var(--tinge);
+      rotate: 45deg;
+    }
+    &.slick-prev {
+      &::before{
+        border-right: none; border-top: none;
+        left: calc(50% - 3px);
+      }
+    }
+    &.slick-next {
+      &::before{
+        border-left: none; border-bottom: none;
+        right: calc(50% - 3px);
+      }
+    }
+
+    &:hover, &:focus{
+      --bgc: #{$primaryColor};
+      --tinge: #{$white};
+
+      box-shadow: var(--bgc) 0 0 0 2px;
+    }
+    &:focus{
+      box-shadow: var(--tinge) 0 0 0 1px, var(--bgc) 0 0 0 4px;
+    }
+  }
+
+}
+
+
+
+// 控制輪播暫停、繼續 button
+// --------------------------------------------------------------- //
+button.pausePlay {
+  --size: 44px;
+  --tinge: #{$black};
+  --bgc: #{$white};
+  --borderColor: #{$black};
+  --borderWidth: 1px;
+
+  position: absolute;z-index: 19;
+  width: var(--size); height: var(--size); border-radius: 50%;
+  padding: 0; margin: 5;
+  border: none;outline: none;box-shadow: none;
+  background-color: var(--bgc);
+  box-shadow: var(--borderColor) 0 0 0 var(--borderWidth);
+  cursor: pointer;
+  transition: .2s;
+  &::before, &::after {content: ''; position: absolute;}
+  &::before {
+    top: calc(50% - 7px); left: calc(50% - 5px);
+    width: 2px; height: 14px;
+    background-color: var(--tinge);
+    box-shadow:  var(--tinge) 8px 0 0 0;
+  }
+  &::after {
+    display: none;
+    top: calc(50% - 8px); left: calc(50% - 3px);
+    width: 1px; height: 1px;
+    border-style: solid;
+    border-width: 8px 0 8px 10px;
+    border-color: transparent transparent transparent var(--tinge);
+  }
+
+  &:hover, &:focus{ 
+    --borderWidth: 3px;
+  }
+
+  &.paused{
+    --bgc: #{$primaryColor};
+    --tinge: #{$white};
+    --borderColor: #{$primaryColor};
+
+    &:focus {
+      box-shadow: var(--tinge) 0 0 0 1px, var(--bgc) 0 0 0 4px;
+    }
+
+    &::before{ display: none; }
+    &::after{ display: block; }
+  }
+
+
+}
+// --------------------------------------------------------------- //
+

@@ -1,0 +1,76 @@
+// 現在位置（麵包屑） //
+// ------------------------------------------------------ //
+.breadcrumb {
+  display: none;
+  @extend %primSecWidth;
+
+  @media screen and (min-width: $wwNormal){
+
+    display: block;margin:20px auto; padding: 4px 0 2px;
+    color: $fontColorLight;
+
+    ul, li{ list-style: none; margin: 0;padding: 0;}
+    ul{line-height: 1.1; overflow: hidden;}
+    li{
+      float: left; position: relative;color: $fontColor;
+      padding:2px;
+      margin-right: 8px;
+      &:nth-child(n+2){
+        padding-left: 20px;
+        &::before{ 
+          content: '';position: absolute; left: 0; top: calc(50% - 4px); 
+          width: 7px; height: 7px;
+          border: 1px solid $grayDark;
+          border-left: none; border-bottom: none;
+          transform: rotate(45deg);
+        }
+      }
+      // &:first-child{padding-left: 0;}
+      a{
+        display: block;
+        text-decoration: none; 
+        color: $fontColorLight;
+        border-bottom: 1px solid transparent;
+        &:hover, &:focus{  
+          border-bottom-color: $fontColorLight; 
+          color: $fontColorDark;
+        }
+        &:focus-visible {
+          box-shadow: $fontColorDark 0 0 0 2px;
+          border-bottom-color: transparent
+        }
+      }
+    }
+  }
+}
+// ------------------------------------------------------ //
+
+
+// 內頁標題 //
+// ------------------------------------------------------ //
+.pageHeader{
+  @extend %primSecWidth;
+  position: relative;
+  margin: 0 auto 16px; 
+  padding: 16px 0 0;
+  color: $fontColorDark; 
+  &::after {
+    content: ''; display: block; clear: both;
+  }
+  h2 {
+    padding: 0;margin: 0 0 8px;
+    font-size: 2.8em;line-height: 1.3;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: $fontColor;
+  }
+  .funcBar{ margin:4px;}
+  @media screen and (min-width: $wwNormal){
+    h2 {float: left;}
+    
+    .funcBar {
+      float: right;
+      margin-left: 32px;
+    }
+  }
+}
+// ------------------------------------------------------ //

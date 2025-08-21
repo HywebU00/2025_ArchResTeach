@@ -1,0 +1,238 @@
+// 進階搜尋
+.searchComplex{
+
+  // 搜尋條件 + 篩選主題或事件
+  .filter {
+    padding: 16px 0; margin: 0 auto;
+    width: $mobileWidth;
+    h4 {
+      margin:16px 0;padding: 0 0 8px;
+      font-size: 1.15em; font-weight: normal;
+      letter-spacing: 1px;
+      border-bottom: 1px solid $borderColor;
+    }
+    .keyword {
+      display: block;
+      margin: 0 0 16px;
+      font-weight: bold;
+      color: $fontColorDark; 
+    }
+    ul {
+      list-style: none;margin:0;padding: 0;
+    }
+
+    li {
+      margin: 4px 0;
+      &>button {
+        position: relative;
+        width: 100%; height: auto;
+        margin: 0; padding: .8em 16px .7em 40px;
+        text-align: left;line-height: 1.4;
+        border-radius: 1.5em;
+        background-color: transparent;
+        color: $fontColor;
+        &::before {
+          position: absolute;left: 11px;top: .7em;
+          width: 1.4em;height: 1.4em;line-height: 1.45;
+          text-align: center;
+          border-radius: 50%;
+        }
+
+        &:hover, &:focus{
+          background-color: $white;
+        }
+        &:focus-visible {
+          box-shadow: $borderColorDark 0 0 0 2px;
+        }
+
+        .count{
+          display: inline-block;
+          font-size: .92em;
+          height: 1.5em; line-height: 1.6;
+          min-width: 1.5em; text-align: center;
+          padding: 0 6px; margin: 0 0 0 4px;
+          border-radius: 1em;
+          background-color: $primaryColor;
+          color: $white;
+          // &::before {content: "（";}
+          // &::after {content: "）";}
+        }
+      }
+    }
+
+    .yourInput, .refine {
+      margin: 0 0 8px;
+      padding: 16px;
+      border-radius: $radius2;
+      background-color: $grayLight;
+      border-radius: $grayLight;
+
+    }
+
+    .yourInput {
+      li{
+        button {
+          &::before {
+            content: '−';
+            color: $white;
+            background-color: $primaryColor;
+          }
+
+        }
+      }
+    }
+
+    .refine{
+      li{
+        button {
+          &::before{
+            content: '+';
+            box-shadow: $fontColorLight 0 0 0 1px inset;
+          }
+
+        }
+      }
+
+    }
+  
+  }
+
+  // 搜尋結果
+  .result {
+    padding: 16px 0; margin: 24px auto 0; width: $mobileWidth;
+    &>p:first-child { display: inline-block;}
+    .keyword {
+      display: inline-block; margin-left: 8px;
+      font-size: 1.5em; font-weight: bold;
+    }
+    .thumbList{
+      margin-top: 8px;
+    }
+  }
+
+  @media screen and (min-width: $wwNormal){
+    display: flex; flex-flow: row wrap;
+    justify-content: center;
+
+    // &>*{
+    //   outline: 1px solid #09f1;
+    //   outline-offset: -1px;
+    // }
+
+    .archSearch {
+      flex: 0 0 100%;
+      margin: 0 0 24px;
+    }
+
+    .filter{
+      flex: 0 0 $normalWidth*.3;
+      width: auto;
+      max-width: $maximumWidth*.3;
+      margin-right: min($normalWidth*.04, $maximumWidth*.04);
+      margin-left: $marginDoc;
+    }
+
+    .result{
+      flex: 0 0 $normalWidth*.66;
+      width: auto;
+      max-width: $maximumWidth*.66;
+      margin-top: 0;margin-left: 0;
+      margin-right: $marginDoc;
+
+      .thumbList{
+        width: 100%; margin-top: 16px;
+      }
+    }
+  }
+
+  
+}
+
+
+
+
+
+// 進階搜尋
+.archSearch {
+  margin: 0;
+  padding: 64px 4% 40px;
+  text-align: center;
+  
+  background-color: $grayLight;
+
+  form, .hotKeywords {
+    max-width: 900px;
+  }
+
+  form{
+    position: relative;
+    margin: 0 auto 16px;padding: 4px;
+    height: 3.25em; width: 100%;
+    background-color: #fff;
+    border-radius: $radius;
+    text-align: left;
+  }
+  input, button {
+    margin: 0;
+    font-size: inherit;
+    border-radius: $radius*.5;
+    transition: .2s;
+  }
+  input[type="text"]{
+    height: calc(3.25em - 8px);
+    width: calc(100% - 3.5em);
+    padding: 0 .5em;
+    border: none; outline: none;
+    &:focus{
+      box-shadow: $primaryColor 0 0 0 2px;
+    }
+  }
+
+  button{
+    @extend %searchIcon;
+    
+    --tinge : #{$black};
+    --bgc: #{$white};
+    background-color: var(--bgc);
+    position: absolute; right: 4px; top: 4px;
+    width: calc(3.25em - 8px);
+    height: calc(3.25em - 8px);
+    border: none;
+    
+    &:hover{
+      --bgc: #{$grayLight};
+    }
+    &:focus {
+      --tinge : #{$white};
+      --bgc: #{$primaryColor};
+    }
+  }
+
+  .hotKeywords{
+    list-style: none; line-height: 1.1;
+    margin: 16px auto; padding: 0;
+    li{
+      display: inline-block;
+      margin: 6px;
+      a{
+        display: block;
+        padding:3px 0 1px;
+        color: $fontColor;
+        text-decoration: none;
+        border-bottom: 1px solid $grayDark;
+        margin-bottom: 1px;
+        &:hover{
+          border-bottom-color: $black;
+          border-bottom-width: 2px;
+          margin-bottom: 0;
+          color: $black;
+        }
+        &:focus-visible {
+          outline: 2px solid $black;
+          border-bottom-color: transparent;
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+}

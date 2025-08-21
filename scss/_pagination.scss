@@ -1,0 +1,115 @@
+// 分頁
+// ------------------------------------------------------ //
+.pagination {
+  @extend %primSecWidth; 
+  padding-bottom: 40px;
+  text-align: center;font-size: 1.1em; line-height: 1.5;
+  letter-spacing: 0;
+  form{ display: inline-block;}
+  input, select{font-size: inherit; height: 2.4em; line-height: 2.4;}
+  select{ background-position:right 8px top .95em;}
+  a{text-decoration: none;}
+  em{
+    color: $black;
+    display: inline-block; margin: 0 .4em; 
+    font-style: normal; font-weight: bold;
+  }
+
+  abbr{
+    display: inline-block; margin: 0 .4em; 
+    text-decoration: none;font-weight: bold; color: $black;
+  }
+
+  .items{ 
+    display: inline;
+    a{ 
+      display: inline-block; font-weight: bold; color: $black;
+      height: 1.5em; line-height: 1.6; margin:0 3px;padding: 0 6px;
+      border-radius: 4px;
+      transition: .2s;
+      &:hover{box-shadow: $primaryColor 0 0 0 1px;}
+      &:focus{box-shadow: $primaryColor 0 0 0 2px;}
+      &.active{ 
+        background-color: $primaryColor; color: $white;
+        &:focus{box-shadow:$white 0 0 0 1px, $primaryColor 0 0 0 3px;}
+      }
+    }
+  }
+
+  .page{ 
+    display: flex; flex-flow: row wrap; justify-content: center;
+    list-style: none; line-height: 1; letter-spacing: 0;
+    margin:16px auto; padding: 3px; font-weight: bold;
+    &>li{ 
+      flex: 0 0 auto; margin:5px 3px;
+      &:hover{ border-color: var(--tinge);}
+      a{ 
+        display: block; min-width: 2.4em;height: 2.4em; line-height: 2.4;
+        position: relative; bottom: 0; padding: 0 5px;
+        border-radius: 4px;
+        color: var(--em);
+        transition:box-shadow .2s, background .2s;
+        &:hover {box-shadow: $borderColor 0 0 0 1px;}
+        &:focus {box-shadow: $primaryColor 0 0 0 2px;}
+      }
+      
+      &.active{
+        a{
+          color: $fontInvert; background-color: $primaryColor;
+          &:hover { 
+            box-shadow:$white 0 0 0 0, $primaryColor 0 0 0 2px;
+          }
+          &:focus{ 
+            box-shadow:$white 0 0 0 1px, $primaryColor 0 0 0 3px;
+          }
+        }
+      }
+
+      // 箭頭
+      &.first, &.prev, &.next, &.last{
+        margin: 5px; text-indent: -20em;
+        a{ 
+          position: relative; overflow: hidden; padding: 0;
+          // box-shadow: $borderColor 0 0 0 1px;
+          &::before, &::after { 
+            content: ''; position: absolute;
+            border-style: solid; border-width: 2px; border-color: $black;
+          }
+          &::after{ // 直角
+            width:10px; height:10px; top: calc(50% - 5px);
+            border-top: none; border-right: none;
+            transform: rotate(45deg);
+          }
+          &:hover{
+            box-shadow: $borderColor 0 0 0 1px;
+          }
+          &:focus{
+            box-shadow: $primaryColor 0 0 0 2px;
+          }
+        }
+      }
+      &.first, &.last{
+        a{
+          &::before{ // 直線
+            top: calc(50% - 8px);
+            width: 0; height: 16px;
+            border-right:none;
+          }
+        }
+      }
+      &.next, &.last{
+        a::after{transform: rotate(225deg);}
+      }
+      &.first a::before {left: 16px; }
+      &.first a::after {left: 20px; }
+      &.prev a::after{left: 17px; }
+      &.next a::after{left: 14px;}
+      &.last a{
+        &::before{ left: 24px;}
+        &::after{ left: 12px;}
+      }
+    }
+  }
+
+}
+// ------------------------------------------------------ //

@@ -1,0 +1,56 @@
+// 歷史清單, table of contents
+// ---------------------------------------------------------------- //
+.toc{
+  z-index: 199;
+
+  position: fixed; left: 10px; right: 10px;
+  bottom: 0;
+
+  margin: 0;
+  background-color: $grayLight;
+  border-radius: $radius;
+
+  button{
+    width: 100%;
+    margin: 4px;
+    height: 3.2em;
+    border: none;
+    text-align: left;
+  }
+  ul{
+    display: none;
+    list-style: none; margin: 0;padding: 0;
+    line-height: 1.4;
+    li{
+      a { 
+        display: block; text-decoration: none;
+        padding: .7em 16px .65em;
+        &:hover{
+          background-color: $primaryColor;
+          color: $white;
+        }
+      }
+    }
+  }
+  &>ul>li{
+    &>a{ padding-left: 32px;}
+    &>ul>li{
+      &>a{ padding-left: 64px;}
+      &>ul>li{
+        &>a{ padding-left: 96px;}
+      }
+
+    }
+  }
+
+  @media screen and (min-width: $wwNormal){
+    ul{
+      display: block;
+    }
+  }
+
+
+
+
+}
+// ---------------------------------------------------------------- //

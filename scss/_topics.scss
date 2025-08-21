@@ -1,0 +1,122 @@
+
+// 首頁：主題檔案
+.topics{
+  padding: 50px 0;
+
+  h2{ font-size: 1.25em; text-align: center; margin: 0 auto 24px;}
+
+  .gridbox {
+    list-style: none; margin: 0 auto;padding: 0;
+    width: $mobileWidth;
+
+    &>li{
+      // 瀏覽更多主題
+      &:last-child {
+        p{ 
+          font-family: Georgia, 'Times New Roman', Times, serif;
+          font-size: 1.5em; line-height: 1.2;
+          margin:0 auto 20px;
+        }
+        .button {
+          --tinge: #{$white};
+          
+          float: none;
+          width: fit-content;
+          margin:24px auto 0;
+        }
+
+        padding-top: 40px; padding-bottom: 40px;
+        background-color: $primaryColor;
+        color: $white;
+        text-align: center;
+
+        .more{
+          --tinge: #{$white};
+          --bgc: transparent;
+          --outline-c1: #{$white};
+          --outline-c2: transparent;
+          a{
+            margin: 0 auto;
+            &:hover, &:focus{
+              --tinge: #{$fontColorDark};
+              --bgc: #{$white};
+            }
+            &:focus{
+              --outline-c1: #{$primaryColor};
+              --outline-c2: #{$white};
+            }
+          }
+        }
+      }
+    }
+    
+  }
+
+  @media screen and (min-width: $wwNormal){
+
+    .gridbox{
+      width: $normalWidth; max-width: 1288px;
+
+      display: grid;
+      grid-template:
+      "a a b"
+      "c d e";
+      gap: 32px;
+      &>li{
+        // margin: 0; padding: 24px;
+        // min-height: 26em;
+        // max-width: none;
+
+        // display: flex; flex-flow: column wrap;
+        // justify-content: flex-end;
+
+        // &:hover , &:has(.more>a:focus){
+        //   .background { filter: brightness(.65);}
+        // }
+
+        // article{
+        //   .title, p{
+        //     display: -webkit-box;
+        //     -webkit-box-orient: vertical;
+        //     overflow: hidden;
+        //   }
+        //   .title { -webkit-line-clamp: 2;}
+        //   p{-webkit-line-clamp: 3;}
+        // }
+
+        &:first-child {
+          grid-area: a;
+          article{
+            width: calc(50% + 8px);
+          }
+        }
+        &:nth-child(2){
+          grid-area: b;
+        }
+        &:nth-child(3){
+          grid-area: c;
+        }
+        &:nth-child(4){
+          grid-area: d;
+        }
+        &:last-child {
+          grid-area: e;
+          justify-content:center;
+        }
+
+
+        // &>a{
+        //   flex: 0 1 auto;
+        //   padding: 24px;
+        //   display: flex; flex-wrap: nowrap; flex-direction: column;
+        //   outline: 2px solid #09f8;
+        //   outline-offset: -1px;
+        //   article{
+        //     p{margin-bottom: auto;}
+        //   }
+        // }
+      }
+    }
+  }
+
+}
