@@ -1,0 +1,423 @@
+.archComplex{
+  @extend %primSecWidth;
+
+  .head:first-child {
+    font-size: 1.125em;font-weight: bold;
+    margin: 0 auto 12px;
+  }
+
+  .photoSlide, .meta,
+  .description, .keywords {
+    margin: 0 auto 32px;
+  }
+
+
+  @media screen and (min-width: $wwNormal){
+    display: flex; flex-flow: row wrap;
+    gap: 24px;
+    .photoSlide, .description {
+      margin: 0;
+      flex: 0 0 calc(55% - 12px);  
+      width: calc(55% - 12px);
+    }
+    .meta, .keywords {
+      margin: 0;
+      flex: 0 0 calc(45% - 12px);
+      width: calc(45% - 12px);
+    }
+  }
+
+}
+
+
+// 檔案圖輪播
+// ------------------------------------------------------ //
+.photoSlide{
+  position: relative;
+
+  .photoShow{
+    width: 100%;aspect-ratio: 4/3;overflow: hidden;
+    .flowItem{
+      background-color: $grayLight;
+      a{
+        position: relative;
+        display: block;height: 100%;
+        text-decoration: none;
+        transition: .2s;
+        &::before {
+          content: '';
+          opacity: 0;z-index: 0;
+          position: absolute; left: 0;top: 0;height: 100%; width: 100%;
+          box-shadow: $primaryColor 0 0 0 3px inset;
+          transition: .2s;
+        }
+        &:hover{
+          img{ scale: 108%;}
+        }
+        &:focus{
+          &::before {
+            opacity: 1; z-index: 9;
+          }
+          img{ scale: 100%;}
+        }
+      }
+      img{
+        display: block; margin: 0 auto;
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: contain;
+        transition: .2s;
+      }
+    }
+
+    .slick-dots{
+      z-index: 9; 
+      position: absolute;  bottom: 8px; right: 8px;
+      margin: 0; padding: 0 2em 0 06px;
+      font-size: 1.2em; height: 1.6em; line-height: 1.6;
+      background-color: rgb(0 0 0 / .7);
+      border-radius: 1em;
+      li{
+        display: none; margin: 0;padding: 0;
+        &.slick-active{ display: block;}
+        button{
+          padding: 0;margin: 0;text-align: right;
+          width: auto;min-width: 1.2em; height: 1em; line-height: 1; 
+          background-color: transparent; border-radius: 0;box-shadow: none;
+          color: $white;
+        }
+      }
+    }
+
+  }
+
+  // 小圖區
+  .photoNav{
+    margin: 16px 0 0;
+
+    .flowItem{
+      margin:8px 4px; box-shadow: $white 0 0 0 1px;
+      img{display: block; height: 120px;}
+      a{
+        display: block;
+        &:focus {
+          box-shadow:$white 0 0 0 1px, $borderColorDark 0 0 0 3px;
+        }
+      }
+
+      &.slick-current {
+        a{
+          box-shadow:$white 0 0 0 1px, $primaryColor 0 0 0 4px;
+          &:focus {
+            box-shadow:$white 0 0 0 2px, $black 0 0 0 6px;
+          }
+        }
+      }
+    }
+
+    .slick-arrow{
+      top: 50%;left: -8px;
+      translate: 0 -50%;
+      &.slick-next{ right: -8px; left: auto;}
+    }
+  }
+
+  .pausePlay {
+    position: absolute; right: calc($marginDocMob + 16px); top: 96px;
+  }
+
+
+  .total{
+    z-index: 9; 
+    position: absolute;right: 8px; bottom: 9px;
+    padding-right: 10px;
+    height: 1.5em; line-height: 1.5;
+    color: $white;
+    &::before{
+      content: '/ ';
+    }
+
+  }
+
+  @media screen and (min-width: $wwNormal){
+
+    .photoNav{
+      margin-top: 24px;
+    }
+
+  }
+
+}
+// ------------------------------------------------------ //
+
+
+// meta table
+// ------------------------------------------------------ //
+.meta {
+  margin: 0 auto;
+  padding: 24px 0;
+  box-shadow: $borderColor 0 0 0 1px, $shadow1 0 2px 10px;
+  border-radius: $radius2;
+
+  &>table {
+    margin: 0 auto;width: 100%;
+    line-height: 1.5;
+    border-collapse: collapse;
+    th, td{
+      padding:12px;
+      vertical-align: top;
+    }
+    th{
+      width: 30%;
+      text-align: right; padding-right: 20px;
+    }
+
+    td{
+      padding-left: 0;
+      .topicPath{
+        list-style: none; margin: 0; padding: 0;
+        &::after {
+          content: ''; display: block; clear: both;
+        }
+        &>li{
+          float: left;
+          padding: 0 ;margin: 0 0 7px;
+          &:last-child {
+            &::after {display: none;}
+          }
+          &::after {content: '❯'; margin-left: 6px; margin-right: 6px;}
+
+          &>a{ display: inline-block;}
+        }
+      }
+    }
+
+    tbody{
+      border-top: 1px solid $borderColor;
+      tr:first-child{
+        th, td{
+          padding-top: 20px;
+        }
+      }
+      tr:last-child {
+        th, td{
+          padding-bottom: 16px;
+        }
+        
+      }
+      &:first-of-type {border-top: none;}
+    }
+
+    a{
+      color: $assistant;
+      text-decoration: underline;
+      &:hover{
+        text-decoration: none;
+      }
+      &:focus {
+        outline: 2px solid $assistant;
+        text-decoration: none;
+      }
+    }
+  }
+
+  @media screen and (max-width: 560px){
+
+    &>table{
+      tbody{
+        tr {
+          display: block; margin: 8px 12px;
+          border-bottom: 1px dashed $borderColorLight;
+          &:last-child {border-bottom: none;}
+        }
+        th, td{ display: inline-block;}
+        tr:nth-child(n){
+          th, td{
+            padding: 8px 4px 10px;
+            text-align: left
+          }
+          th{
+            width: auto;
+            padding-bottom: 0;
+          }
+        }
+
+      }
+    }
+  }
+
+}
+// ------------------------------------------------------ //
+
+
+
+// 說明
+// ------------------------------------------------------ //
+.archComplex .description {
+  background-color: $grayPale;
+  border-radius: $radius2;
+  padding: 24px;
+  .head{margin-bottom: 16px;}
+  p{
+    line-height: 1.8;
+    margin: 0;
+    &+p{ margin-right: 1.2em;}
+  }
+
+}
+// ------------------------------------------------------ //
+
+
+
+// 關鍵詞
+// ------------------------------------------------------ //
+.archComplex .keywords{
+  padding:24px 16px;
+  ul{
+    list-style: none; margin: 0;padding: 0;
+    &::after {
+      content: ''; display: block; clear: both;
+    }
+  }
+  li{
+    float: left;margin: 4px;
+    a{display: block;
+      text-decoration: none;
+      background-color: $grayPale;
+      height: 2.2em; line-height: 2.2;
+      padding: 0 1.2em; border-radius: 2em;
+      transition: .2s;
+      &:hover {
+        background-color: $grayLight;
+        box-shadow: $grayLight 0 0 0 2px;
+      }
+      &:focus {
+        background-color: $black;
+        color: $white;
+        box-shadow: $black 0 0 0 2px;
+      }
+    }
+  }
+}
+
+// ------------------------------------------------------ //
+
+
+
+
+
+
+
+// 相關檔案(輪播)
+// ------------------------------------------------------ //
+.relatedFiles{
+  @extend %primSecWidth;
+  margin-top: 60px;
+  padding: 40px 0;
+  border-top: 1px solid $borderColor;
+  &:last-child {
+    margin-bottom: 80px;
+  }
+  .head {
+    text-align: center;
+    font-size: 1.4em; font-weight: bold;
+    margin-bottom: 12px;
+  }
+  .flow{
+    padding-left: 40px; padding-right: 40px;
+
+    .slick-arrow{
+      position: absolute; top: 50%;
+      translate: 0 -50%;
+      &.slick-prev {
+        left: 0;
+      }
+      &.slick-next {
+        right: 0;
+      }
+    }
+  }
+
+  .flowItem{
+    margin: 16px 12px; padding: 0;
+    &>a{
+      display: block;
+      height: 100%;
+      padding: 20px;
+      text-decoration: none;
+      background-color: $grayLight;
+      border-radius: $radius;
+      transition: .2s;
+
+      &:hover{
+        background-color: $white;
+        box-shadow:$borderColor 0 0 0 1px, $shadow1 0 4px 8px;
+      }
+      &:focus {
+        background-color: $white;
+        box-shadow:$borderColorDark 0 0 0 2px, $shadow1 0 4px 8px;
+      }
+    }
+    img{
+      display: block;
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: contain;
+    }
+
+    dl{
+      line-height: 1.4;
+      margin: 16px auto 0;
+      padding: 16px 0 0;
+      border-top: 1px solid $borderColor;
+      &>div{
+        margin: 12px 0;
+        display: flex; flex-flow: row nowrap;
+      }
+      dd, dt {
+        margin: 0; padding: 0;
+      }
+      dt{ 
+        margin-right: 12px;
+        color: $fontColorLight;
+        white-space: nowrap;
+      }
+      dd{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+  .slick-dots{
+    padding: 4px;
+  }
+
+  @media screen and (min-width: 600px){
+    .flowItem{
+      margin-left: 10px; margin-right: 10px;
+    }
+  }
+
+  @media screen and (min-width: $wwNormal){
+
+    .head{
+      text-align: left;
+      margin-left: 12px;
+    }
+    .flow{
+      padding-left: 0;padding-right: 0;
+      .slick-arrow{
+        &.slick-prev {
+          translate: -90% -50%;
+        }
+        &.slick-next {
+          translate: 90% -50%;
+        }
+      }
+    }
+  }
+
+}
+// ------------------------------------------------------ //

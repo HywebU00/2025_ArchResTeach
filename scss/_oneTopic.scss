@@ -78,14 +78,14 @@
   padding: 0 0 80px;
 
 
-  @media screen and (min-width: $wwMedium){
-    .relatedFiles{
-      padding-top: 32px;
-      .thumbList {
-        max-width: none;
-      }
-    }
-  }
+  // @media screen and (min-width: $wwMedium){
+  //   .relatedFiles{
+  //     padding-top: 32px;
+  //     .thumbList {
+  //       max-width: none;
+  //     }
+  //   }
+  // }
 
   @media screen and (min-width: $wwNormal){
     width: $normalWidth;
@@ -108,12 +108,12 @@
       margin-left: 3%;
     }
     
-    .relatedFiles {
-      h3{
-        text-align: left;
-        margin-bottom: 24px;
-      }
-    }
+    // .relatedFiles {
+    //   h3{
+    //     text-align: left;
+    //     margin-bottom: 24px;
+    //   }
+    // }
   }
 
 }

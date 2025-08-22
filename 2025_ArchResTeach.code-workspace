@@ -18,6 +18,6 @@
 		"liveSassCompile.settings.showOutputWindowOn": "Warning",
 		"liveSassCompile.settings.generateMap": true,
 		"liveSassCompile.settings.autoprefix": [],
-    "liveSassCompile.settings.useNewCompiler": false
+    "liveSassCompile.settings.useNewCompiler": true
 	}
 }

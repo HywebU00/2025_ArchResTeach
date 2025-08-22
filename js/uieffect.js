@@ -608,7 +608,93 @@ $(function(){
   });
   // --------------------------------------------------------------- //
 
-  
+    // 檔案詳細內容頁：圖檔輪播
+  // --------------------------------------------------------------- //
+  const _photoShow = $('.photoSlide').find('.photoShow');
+  const _photoNav =  _photoShow.siblings('.photoNav');
+  const phsLength = _photoShow.find('.flowItem').length;
+
+  _photoShow.slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    asNavFor: _photoNav,
+    autoplaySpeed: 5000,
+    speed: 800,
+    autoplay: true,
+    dots: true,
+    arrows: false,
+    fade: false,
+    infinite: true,
+    mobileFirst: true
+  });
+
+  // 小圖區
+  _photoNav.slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    asNavFor: _photoShow,
+    arrows: true,
+    dots: false,
+    fade: false,
+    infinite: true,
+    centerMode: true,
+    focusOnSelect: true,
+    variableWidth: true,
+    mobileFirst: true,
+    responsive: [
+      {
+        breakpoint: wwMedium,
+        settings: {
+          slidesToShow: 5,
+        }
+      }
+    ]
+  })
+
+  _photoShow.append('<div class="total">' + phsLength +'</div>');
+
+  // --------------------------------------------------------------- //
+
+
+  // 檔案詳細內容頁「相關檔案」
+  // --------------------------------------------------------------- //
+  const _relatedFiles = $('.relatedFiles').find('.flow');
+
+  _relatedFiles.slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplaySpeed: 4000,
+    speed: 800,
+    autoplay: false,
+    arrows: true,
+    dots: true,
+    fade: false,
+    infinite: true,
+    mobileFirst: true,
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 3
+        }
+      },
+      {
+        breakpoint: wwNormal,
+        settings: {
+          slidesToShow: 4
+        }
+      }
+    ]
+  });
+  // --------------------------------------------------------------- //
+
+
   // --------------------------------------------------------------- //
   // slick 【暫停／輪播】按鈕功能
   // --------------------------------------------------------------- //
