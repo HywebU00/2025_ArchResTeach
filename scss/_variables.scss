@@ -30,23 +30,6 @@ $bigRadius: 32px; // 圓角半徑
 
 
 
-// 首頁主要區塊寬度
-// ---------------------------------------------------------------- //
-%primSecWidth {
-  width: $mobileWidth; 
-  margin: 32px auto;
-  @media screen and (min-width: $wwNormal){
-    width: $normalWidth; 
-    margin: 40px auto;
-  }
-  @media screen and (min-width: $wwMaximum){
-    width: $maximumWidth;
-  }
-}
-// ---------------------------------------------------------------- //
-
-
-
 // 顏色變數
 // ---------------------------------------------------------------- //
 // $primaryColor:#D35344;
@@ -88,5 +71,29 @@ $grayDark: #888;
   background: linear-gradient(180deg, #f6e5cf 0%, #fcf7ea 100%)  right 0 top 0;
   box-shadow: 0 0 4px 0 rgba(15, 61, 95, 0.2);
 }
+// ---------------------------------------------------------------- //
 
+
+
+
+// 首頁主要區塊寬度
+// ---------------------------------------------------------------- //
+%primSecWidth {
+  width: $mobileWidth; 
+  margin: 32px auto;
+  @media screen and (min-width: $wwNormal){
+    width: $normalWidth; 
+    margin: 40px auto;
+  }
+  @media screen and (min-width: $wwMaximum){
+    width: $maximumWidth;
+  }
+}
+// ---------------------------------------------------------------- //
+
+// 首頁主要區塊 h2
+// ---------------------------------------------------------------- //
+%mp-h2 {
+  font-size: 1.25em; text-align: center; margin: 0 auto 16px;
+}
 // ---------------------------------------------------------------- //

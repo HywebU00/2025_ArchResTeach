@@ -3,10 +3,10 @@
 .topics{
   padding: 50px 0;
 
-  h2{ font-size: 1.25em; text-align: center; margin: 0 auto 24px;}
+  h2{ @extend %mp-h2}
 
-  .gridbox {
-    list-style: none; margin: 0 auto;padding: 0;
+  .topicList {
+    list-style: none; margin: 24px auto 0;padding: 0;
     width: $mobileWidth;
 
     &>li{
@@ -52,69 +52,49 @@
     
   }
 
+  @media screen and (min-width: $wwMedium){
+    .topicList {
+      display: flex; flex-flow: row wrap;
+      gap: 20px;
+      &>li{
+        max-width: none; margin: 0;
+        flex: 0 0 calc(50% - 10px);
+        &:first-child {
+          flex-basis: 100%;
+          article{
+            width: calc(50% + 8px);
+          }
+        }
+        &:last-child {
+          display: flex; flex-direction: column;
+          justify-content: center;
+        }
+      }
+    }
+
+  }
+
   @media screen and (min-width: $wwNormal){
 
-    .gridbox{
+    .topicList{
       width: $normalWidth; max-width: 1288px;
 
       display: grid;
       grid-template:
       "a a b"
       "c d e";
-      gap: 32px;
+      gap: 24px;
       &>li{
-        // margin: 0; padding: 24px;
-        // min-height: 26em;
-        // max-width: none;
-
-        // display: flex; flex-flow: column wrap;
-        // justify-content: flex-end;
-
-        // &:hover , &:has(.more>a:focus){
-        //   .background { filter: brightness(.65);}
-        // }
-
-        // article{
-        //   .title, p{
-        //     display: -webkit-box;
-        //     -webkit-box-orient: vertical;
-        //     overflow: hidden;
-        //   }
-        //   .title { -webkit-line-clamp: 2;}
-        //   p{-webkit-line-clamp: 3;}
-        // }
-
         &:first-child {
           grid-area: a;
           article{
             width: calc(50% + 8px);
           }
         }
-        &:nth-child(2){
-          grid-area: b;
-        }
-        &:nth-child(3){
-          grid-area: c;
-        }
-        &:nth-child(4){
-          grid-area: d;
-        }
-        &:last-child {
-          grid-area: e;
-          justify-content:center;
-        }
-
-
-        // &>a{
-        //   flex: 0 1 auto;
-        //   padding: 24px;
-        //   display: flex; flex-wrap: nowrap; flex-direction: column;
-        //   outline: 2px solid #09f8;
-        //   outline-offset: -1px;
-        //   article{
-        //     p{margin-bottom: auto;}
-        //   }
-        // }
+        &:nth-child(2){grid-area: b;}
+        &:nth-child(3){grid-area: c;}
+        &:nth-child(4){grid-area: d;}
+        &:last-child {grid-area: e;}
       }
     }
   }

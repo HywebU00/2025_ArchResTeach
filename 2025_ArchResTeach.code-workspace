@@ -18,6 +18,26 @@
 		"liveSassCompile.settings.showOutputWindowOn": "Warning",
 		"liveSassCompile.settings.generateMap": true,
 		"liveSassCompile.settings.autoprefix": [],
-    "liveSassCompile.settings.useNewCompiler": true
+		"liveSassCompile.settings.useNewCompiler": true,
+		"workbench.colorCustomizations": {
+			"activityBar.activeBackground": "#cd442f",
+			"activityBar.background": "#cd442f",
+			"activityBar.foreground": "#ffffff",
+			"activityBar.inactiveForeground": "#15202bbb",
+			"activityBarBadge.background": "#c4e617",
+			"activityBarBadge.foreground": "#15202b",
+			"commandCenter.border": "#e7e7e799",
+			"sash.hoverBorder": "#ff6433",
+			"statusBar.background": "#cd442f",
+			"statusBar.foreground": "#e7e7e7",
+			"statusBarItem.hoverBackground": "#ff6433",
+			"statusBarItem.remoteBackground": "#cd442f",
+			"statusBarItem.remoteForeground": "#e7e7e7",
+			"titleBar.activeBackground": "#cd442f",
+			"titleBar.activeForeground": "#e7e7e7",
+			"titleBar.inactiveBackground": "#cd442f99",
+			"titleBar.inactiveForeground": "#e7e7e799"
+		},
+		"peacock.color": "#cd442f"
 	}
 }

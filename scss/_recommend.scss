@@ -4,16 +4,15 @@
   position: relative;
   padding: 50px 0 100px; margin: 0 auto;
 
-  h2, h3{
-    text-align: center;margin: 12px auto 0;
-    line-height: 1.2;
-  }
-  h2{ font-size: 1.25em;}
+  h2{ @extend %mp-h2}
+
   h3 {
+    margin: 12px auto 8px;
+    text-align: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 1.75em; 
+    line-height: 1.2;
     color: $primaryColor;
-    margin-bottom: 8px;
   }
 
   .flow{

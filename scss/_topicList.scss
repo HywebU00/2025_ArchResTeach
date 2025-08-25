@@ -51,61 +51,10 @@
     }
 
 
-    // 瀏覽更多主題
-    // &:last-child {
-    //   p{ 
-    //     font-family: Georgia, 'Times New Roman', Times, serif;
-    //     font-size: 1.5em; line-height: 1.2;
-    //     margin:0 auto 20px;
-    //   }
-    //   .button {
-    //     --tinge: #{$white};
-        
-    //     float: none;
-    //     width: fit-content;
-    //     margin:24px auto 0;
-    //   }
-
-    //   padding-top: 40px; padding-bottom: 40px;
-    //   background-color: $primaryColor;
-    //   color: $white;
-    //   text-align: center;
-
-    //   .more{
-    //     --tinge: #{$white};
-    //     --bgc: transparent;
-    //     --outline-c1: #{$white};
-    //     --outline-c2: transparent;
-    //     a{
-    //       margin: 0 auto;
-    //       &:hover, &:focus{
-    //         --tinge: #{$fontColorDark};
-    //         --bgc: #{$white};
-    //       }
-    //       &:focus{
-    //         --outline-c1: #{$primaryColor};
-    //         --outline-c2: #{$white};
-    //       }
-    //     }
-    //   }
-
-    // }
   }
 
   @media screen and (min-width: $wwMedium){
-    width: 100%;
-    display: flex; flex-flow: row wrap;
-    gap: 20px;
     &>li {
-      flex:0 0 calc(50% - 10px);
-      margin: 0;
-      min-height: 25em;
-      max-width: none;
-  
-      display: flex;
-      flex-flow: column wrap;
-      justify-content: flex-end;
-  
       &:hover,
       &:has(.more>a:focus) {
         .background {
@@ -119,12 +68,8 @@
           -webkit-box-orient: vertical;
           overflow: hidden;
         }
-        .title {
-          -webkit-line-clamp: 2;
-        }
-        p {
-          -webkit-line-clamp: 3;
-        }
+        .title {-webkit-line-clamp: 2; line-clamp: 2;}
+        p {-webkit-line-clamp: 3; line-clamp: 3;}
       }
     
       &>a {
@@ -133,8 +78,6 @@
         display: flex;
         flex-wrap: nowrap;
         flex-direction: column;
-        outline: 2px solid #09f8;
-        outline-offset: -1px;
   
         article {
           p {
@@ -145,24 +88,29 @@
       }
     }
   }
+
+}
+
+
+// 內頁：主題節點頁
+.topicThumb .topicList{
+  @media screen and (min-width: $wwMedium){
+    width: 100%;
+    display: flex; flex-flow: row wrap; gap: 20px;
+    &>li {
+      flex:0 0 calc(50% - 10px);
+      margin: 0;
+      min-height: 25em;
+      max-width: none;
   
-  @media screen and (min-width: $wwNormal) {
-    // width: $normalWidth;
-    // max-width: 1288px;
-    &>li{
-      // flex:0 0 31%;
-      // margin: 21px;
-      article {
-
-      }
-
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: flex-end;
+  
     }
-
-
-
   }
 
-  @media screen and (min-width: $wwMaximum){
+  @media screen and (min-width: $wwNormal){
     gap: 18px;
     &>li{
       margin: 0;
@@ -173,5 +121,6 @@
         }
       }
     }
+
   }
 }
