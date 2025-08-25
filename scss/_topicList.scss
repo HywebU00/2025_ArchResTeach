@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 // 主題瀏覽
 // <ul class="topicList">
 .topicList {
@@ -90,6 +92,7 @@
   }
 
 }
+
 
 
 // 內頁：主題節點頁

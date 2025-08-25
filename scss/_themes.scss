@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 // 內頁主題專區
 .theme-archive, //主題檔案
 .theme-lecture, // 主題講座
@@ -31,6 +33,7 @@
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
+        line-clamp: 2;
       }
     }
 

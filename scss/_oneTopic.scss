@@ -1,4 +1,6 @@
-@import "_toc"; // 歷史清單, table of contents
+@use "variables" as *;
+
+@forward "toc"; // 歷史清單, table of contents
 
 
 // 標題與簡述

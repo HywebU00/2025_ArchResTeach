@@ -1,3 +1,6 @@
+@use "variables" as *;
+@use '_accessories' as *;
+
 // 首頁：檔案 時光流轉的故事
 .story-in-archive {
   padding: 40px 0 80px;
@@ -245,7 +248,6 @@
   }
   button{
     @extend %searchIcon;
-
     position: absolute; right: 4px; top: 4px;
     width: calc(3.25em - 8px);
     height: calc(3.25em - 8px);
@@ -289,7 +291,7 @@
 
 
   .button {
-    @extend %roundButton;
+    @extend %roundButton !optional;
 
     &:last-child{
       --tinge: #{$white};

@@ -1,3 +1,6 @@
+@use "variables" as *;
+@use 'accessories' as *;
+
 // 進階搜尋
 .searchComplex{
 
@@ -114,10 +117,6 @@
     display: flex; flex-flow: row wrap;
     justify-content: center;
 
-    // &>*{
-    //   outline: 1px solid #09f1;
-    //   outline-offset: -1px;
-    // }
 
     .archSearch {
       flex: 0 0 100%;
@@ -144,8 +143,6 @@
       }
     }
   }
-
-  
 }
 
 

@@ -1,24 +1,4 @@
-.formA {
-  @extend %primSecWidth;
-  
-  padding: 24px 12px;
-  box-shadow: $shadow1 0 0 15px;
-  background-color: $white;
-
-  table.layout{ 
-    tr{border-bottom: 1px solid $borderColor;}
-  }
-
-  h3{
-    border-bottom: 2px solid $borderColor;
-    padding-bottom: 5px; margin-bottom: 40px;
-  }
-
-  @media screen and (min-width: $wwNormal){
-    padding: 24px;
-    table.layout{ width: 96%;}
-  }
-}
+@use "variables" as *;
 
 
 // 表單排版表格 
@@ -127,10 +107,12 @@ table.formLayout {
     max-width: 1100px;
   }
 }
+// ------------------------------------------------------ //
 
 
 
 // 表單送出、清除等按鈕群
+// ------------------------------------------------------ //
 .btnDv {
   font-size: 1.2em;
   text-align: center; padding: 8px;
@@ -140,9 +122,11 @@ table.formLayout {
     border-radius: 2em;
   }
 }
+// ------------------------------------------------------ //
 
 
 // 必填符號 *
+// ------------------------------------------------------ //
 abbr.required{
   display: inline-block; 
   position: relative;
@@ -158,6 +142,7 @@ abbr.required{
     text-indent:0;
   }
 }
+// ------------------------------------------------------ //
 
 
 
@@ -268,7 +253,6 @@ abbr.required{
     float: right; height: 2.8em; line-height: 2.8;
     text-decoration: none;
     padding: 0 1em;
-    // color: $white; background-color: $btnBg;
   }
 
   & + .formA {margin-top: 8px;}

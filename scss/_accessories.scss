@@ -1,0 +1,64 @@
+// accessories 配件、小元件
+@use "variables" as *;
+
+
+// 放大鏡圖示
+// --------------------------------------------------------------- //
+%searchIcon {
+  --tinge : #{$black};
+  --bgc: #{$white};
+  
+  position: relative;
+  text-indent: -10em; overflow: hidden;
+  background-color: var(--bgc);
+  
+  &::before, &::after{
+    content: ''; position: absolute;
+  }
+  &::before{
+    left: calc(50% - 10px); top: calc(50% - 10px);
+    width: 18px; height: 18px; 
+    border: 1px solid var(--tinge); border-radius: 50%;
+  }
+  &::after{
+    width: 7px; height: 1px; 
+    top: calc(50% + 8px); left: calc(50% + 4px);
+    border-radius: 1px;
+    rotate: 45deg;
+    background-color: var(--tinge);
+  }
+}
+// --------------------------------------------------------------- //
+
+
+
+// 圓角連結
+// --------------------------------------------------------------- //
+%roundButton{
+  --tinge: #{$white};
+  --bgc: #{$primaryColor};
+  --frc: #{$white};
+
+  display: inline-block; margin: 4px;
+  a{
+    text-align: center; width: fit-content;
+    border-radius: 2em;
+    white-space: nowrap;
+    display: block; height: 2.4em; line-height: 2.5;
+    padding: 0 1.2em;
+    text-decoration: none;
+    box-shadow: var(--tinge) 0 0 0 1px;
+    background-color: var(--bgc);
+    color: var(--frc);
+    transition: .2s;
+    &:hover, &:focus{
+      --bgc: #{$white};
+      --frc: #000;
+    }
+    &:focus{
+      --tinge: #{$primaryColor};
+      box-shadow: var(--tinge) 0 0 0 1px, var(--bgc) 0 0 0 4px;
+    }
+  }
+}
+// --------------------------------------------------------------- //

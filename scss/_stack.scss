@@ -1,3 +1,6 @@
+@use "variables" as *;
+
+// 圖文條列
 .stack {
   @extend %primSecWidth;
 
