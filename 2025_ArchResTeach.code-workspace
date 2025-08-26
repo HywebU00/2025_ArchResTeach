@@ -13,7 +13,8 @@
 			}
 		],
 		"liveSassCompile.settings.includeItems": [
-			"/scss/style.scss"
+			"/scss/style.scss",
+			"/scss/pageNotFound.scss"
 		],
 		"liveSassCompile.settings.showOutputWindowOn": "Warning",
 		"liveSassCompile.settings.generateMap": true,
