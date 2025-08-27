@@ -30,8 +30,8 @@
 // css 變數
 // ------------------------------------------------------ //
 :root {
-  --inputHeight : 2.6em;
-  --inputLineHeight : 2.7;
+  --inputHeight : 3em;
+  --inputLineHeight : 3;
 
   // color
   --inputColor: #{$fontColor};
@@ -73,8 +73,8 @@ label {
   -moz-appearance: none;
 
   height: var(--inputHeight); line-height: var(--inputLineHeight);
-  padding: 0 10px; margin: 5px;
-  vertical-align: middle; border-radius: $radius;
+  padding: 0 10px; margin: 0;
+  vertical-align: middle; border-radius: 5px;
 
   border: 1px solid var(--inputBdr);
   background-color: var(--inputBg);
@@ -144,9 +144,10 @@ input[type="week"] {
 textarea {
   @extend %textInput;
   display: block;
+  resize: vertical;
   padding:9px 10px 7px;line-height: 1.8;
   height: 10em;width: calc(100% - 10px);
-  resize: vertical;
+  border-radius: 5px;
 // ------------------------------------------------------ //
 }
 
@@ -157,8 +158,8 @@ textarea {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  margin: 5px;padding: 0 32px 0 10px;
-  vertical-align: middle;border-radius: $radius;
+  margin: 0;padding: 0 32px 0 10px;
+  vertical-align: middle;border-radius: 5px;
   height: var(--inputHeight); line-height: var(--inputLineHeight);
 
   border: 1px solid var(--inputBdr);
