@@ -30,7 +30,7 @@
         }
         &:focus {
           background-color: $white;
-          box-shadow:$borderColorDark 0 0 0 2px, $shadow1 0 4px 12px;
+          box-shadow:$primaryColor 0 0 0 2px, $shadow1 0 4px 12px;
         }
       }
       img{
