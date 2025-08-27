@@ -385,6 +385,8 @@ $(function(){
   // lp 頁上方可收合查詢區 
   // --------------------------------------------------------------- //
   const _showHideSearch = $('.searchOnLp');
+  const _toc = $('.toc');
+
   var _drawer = $('.drawer');
   _drawer.each(function () {
     let _this = $(this);
@@ -394,29 +396,71 @@ $(function(){
     const text1 = "顯示查詢條件";
     const text2 = "隱藏查詢條件";
 
-    _handle.attr('aria-label', "查詢開關");
-
     if ( _tray.is(':hidden')) {
-      _handle.addClass('openIt').attr('aria-expanded', false);
+      _handle.removeClass('closeIt').attr('aria-expanded', false);
       if (_this.is(_showHideSearch) ) {_handle.text(text1)}
     } else {
-      _handle.removeClass('openIt').attr('aria-expanded', true);
+      _handle.addClass('closeIt').attr('aria-expanded', true);
       if (_this.is(_showHideSearch) ) {_handle.text(text2)}
+      if ( _this.is(_toc) && ww >= wwNormal) {
+        _handle.removeClass('closeIt');
+      }
     }
 
     _handle.on('click', function () {
       if (_tray.is(':hidden')) {
-        _tray.stop(true, false).slideDown(speed);
-        _handle.removeClass('openIt').attr('aria-expanded', true);
-        if (_this.is(_showHideSearch) ) {_handle.text(text2)}
+        _tray.stop(true, false).slideDown(speed, function(){
+          _handle.addClass('closeIt').attr('aria-expanded', true);
+          if ( _this.is(_showHideSearch) ) {_handle.text(text2)}
+        });
       } else {
         _tray.stop(true, false).slideUp(speed, function(){
-          _handle.addClass('openIt').attr('aria-expanded', false);
+          _handle.removeClass('closeIt').attr('aria-expanded', false);
+          _tray.removeAttr('style');
           if (_this.is(_showHideSearch) ) {_handle.text(text1)}
         })
       }
     })
   })
+  // --------------------------------------------------------------- //
+
+
+
+
+
+  // 歷史清單樹狀選單開合 
+  // --------------------------------------------------------------- //
+  const _tocList = _toc.find('.toc_list');
+  let  _toc_hasSibA = _tocList.find('li').has('ul').children('a');
+
+  _toc_hasSibA.each(function(){
+    let _thisA  = $(this);
+    let _thisUl = _thisA.next('ul');
+    const speed = 400;
+
+    _thisA.on('click', function(e){
+      e.preventDefault();
+      if ( _thisUl.is(':hidden')) {
+        _thisUl.stop().slideDown(speed);
+        _thisA.addClass('closeIt');
+        _thisA.parent('li').siblings().find('ul').slideUp(speed).prev('a').removeClass('closeIt');
+      } else {
+        _thisUl.stop().slideUp(speed);
+        _thisA.removeClass('closeIt');
+      }
+    })
+
+  })
+
+  // --------------------------------------------------------------- //
+
+
+
+
+
+
+
+
 
 
   // --------------------------------------------------------------- //
@@ -746,8 +790,46 @@ $(function(){
 
 
 
+  // 改變瀏覽器寬度 window resize 
+  // --------------------------------------------------------------- //
+  var winResizeTimer;
+  _window.resize(function () {
+    clearTimeout(winResizeTimer);
+    winResizeTimer = setTimeout( function () {
+  
+      wwNew = _window.width();
+      
+      // 由小螢幕到寬螢幕
+      if( ww < wwNormal && wwNew >= wwNormal ) {
+        if (_sidebar.hasClass('reveal')) {
+          _sidebar.removeClass('reveal');
+          _sidebarCtrl.removeClass('closeIt');
+          _sidebarMask.hide();
+          
+          _body.removeClass('noScroll');
+        }
+        
+        _body.removeAttr('style');
+        _siteHeader.removeClass('fixed');
+        // _search.removeClass('reveal').removeAttr('style')
+
+        _toc.find('.handle').removeClass('closeIt').siblings('.tray').removeAttr('style');
+
+        hh = _siteHeader.outerHeight();
+        fixHeadThreshold =  hh - _menu.innerHeight();
+        _window.trigger('scroll');
+      }
+  
+      // 由寬螢幕到小螢幕
+      if( ww >= wwNormal && wwNew < wwNormal ){
+        hh = _siteHeader.outerHeight();
+        fixHeadThreshold = 0;
+        _body.removeAttr('style');
+        _toc.find('.handle').removeClass('closeIt').attr('aria-expanded', false);
+      }
+      ww = wwNew;
+    }, 200);
+  });
+  // window resize  end -------------------------------------------- //
 
 })
-
-
-

@@ -32,16 +32,15 @@
         transition: .2s;
       }
       &::after{
-        right: 20px; top: calc(50% - 5px);
+        right: 20px; top: calc(50% - 12px);
         width: 18px; height: 18px;
         border: 2px solid $black; border-bottom: none; border-right: none;
-        transform: rotate(45deg); transition: .3s;
+        rotate: 225deg;
+        transition: .3s;
       }
   
-      &.openIt{
-        &::after{
-          transform: rotate(225deg); top: calc(50% - 12px);
-        }
+      &.closeIt{
+        &::after{rotate: 45deg;top: calc(50% - 5px);}
       }
     }
   
