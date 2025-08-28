@@ -1,0 +1,74 @@
+@use "variables" as *;
+
+// 燈箱（.lightbox）
+// 燈箱模組：需要燈箱效果的區塊可在原 class name 之後加 lightbox 即可有燈箱效果
+// 原來的 class name 只用來控制樣式
+// ---------------------------------------------------------------- //
+.lightbox{ 
+  display: none;
+  position:fixed; top:3vw; left:3vw;z-index:199;
+  width:94vw; height: calc(100vh - 6vw); 
+  padding:50px 0 0; margin:0 auto; overflow: auto; overflow-y: auto;
+  background-color: $white;
+  box-shadow:rgb(0 0 0 / .5) 0 0 28px;
+
+  button.closeThis{
+    position: absolute; right:3px; top: 3px; z-index:99;
+  }
+ 
+  @media screen and (min-width:$wwNormal){
+    // top: $wwNormal*.03; height: auto; max-height: calc(100vh - #{$wwNormal}*.06);
+  }
+  
+  @media screen and (min-width: $wwMaximum){
+    width: $maximumWidth; left:calc(50vw - #{$wwMaximum}*.47);
+  }
+
+}
+// ---------------------------------------------------------------- //
+
+
+.lightbox.bigPhotos {
+  display: none;
+  background-color: #222;
+  .photoStage{
+    position: relative;
+    width: 100%; height: calc(100vh - 6vw - 50px); 
+    .navArrow {
+      position: absolute; z-index: 99;top: 50%;
+      translate: 0 -50%;
+      &.prev { left: 8px;}
+      &.next { left: auto; right: 8px;}
+    }
+  }
+
+  .photoShow {
+    position: relative;
+    .flowItem{
+      display: none;
+      position: absolute; left: 0; top: 0;
+      width: 100%;
+      img{
+        display: block; margin: 0;
+        width: 100%; height: calc(100vh - 6vw - 50px);
+        object-fit: contain;
+      }
+    }
+  }
+
+
+}
+
+
+// 燈箱遮罩
+// ---------------------------------------------------------------- //
+.coverAll{ 
+  display: none; 
+  z-index: 188;
+  position: fixed; left: 0;right: 0;top: 0;bottom: 0;
+  background: rgb(80 80 80 / .8);
+}
+// ---------------------------------------------------------------- //
+
+
+

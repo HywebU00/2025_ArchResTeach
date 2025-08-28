@@ -42,6 +42,13 @@
     width: 100%;aspect-ratio: 4/3;overflow: hidden;
     .flowItem{
       background-color: $grayLight;
+      img{
+        display: block; margin: 0 auto;
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: scale-down;
+        transition: .2s;
+      }
       a{
         position: relative;
         display: block;height: 100%;
@@ -56,20 +63,12 @@
         }
         &:hover{
           img{ scale: 108%;}
+          cursor: zoom-in;
         }
         &:focus{
-          &::before {
-            opacity: 1; z-index: 9;
-          }
+          &::before {opacity: 1; z-index: 9;}
           img{ scale: 100%;}
         }
-      }
-      img{
-        display: block; margin: 0 auto;
-        width: 100%;
-        aspect-ratio: 4/3;
-        object-fit: contain;
-        transition: .2s;
       }
     }
 
@@ -126,7 +125,7 @@
   }
 
   .pausePlay {
-    position: absolute; right: calc($marginDocMob + 16px); top: 96px;
+    translate: 0 -120%;
   }
 
 

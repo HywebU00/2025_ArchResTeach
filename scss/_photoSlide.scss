@@ -13,7 +13,7 @@
       img{
         display: block; 
         width: 100%; height: $mobileWidthVW;
-        object-fit: contain;
+        object-fit: scale-down;
       }
       a{ color: $white;}
       p{ 

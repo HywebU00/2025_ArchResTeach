@@ -193,6 +193,44 @@ button.sidebarCtrl{
 }
 // --------------------------------------------------------------- //
 
+
+
+// 關閉按鈕，呈現「Ｘ」<button>
+// --------------------------------------------------------------- //
+.closeThis{
+  --width:44px;
+  --bar-length:26px;
+  --bar-thick:2px;
+  --tinge: #fff;
+  --bgc: rgb(0 0 0/ .6);
+
+  position: relative;
+  height: var(--width); width:  var(--width); 
+  padding: 0; margin: 0;
+  text-indent: -20em; overflow: hidden;
+  border: none; outline: none; border-radius: 0;
+  background-color: var(--bgc);
+
+  &::before, &::after{
+    content: ''; position: absolute; 
+    background-color: var(--tinge);
+    left: calc( (var(--width) - var(--bar-length))/2 );
+    top:  calc( (var(--width) - var(--bar-thick))/2 );
+    width: var(--bar-length); height: var(--bar-thick);
+  }
+  &::before{transform: rotate(45deg);}
+  &::after{transform: rotate(-45deg);}
+
+  &:hover, &:focus { 
+    --bgc: #{$warning};
+    background-color: var(--bgc);
+    box-shadow: var(--bgc) 0 0 0 3px;
+  }
+}
+// --------------------------------------------------------------- //
+
+
+
 // 鍵盤樣式
 // --------------------------------------------------------------- //
 kbd {
@@ -216,139 +254,142 @@ kbd {
     border: none;outline: none;box-shadow: none;
     padding: 0; margin: 0;width: auto;
   }
+}
 
-  // 點點或數字
-  .slick-dots { 
-    --tinge: #{$gray};
-    --dotSize: 8px;
-    list-style: none; margin:0 auto;padding: 0;
-    font-size: 0; text-align: center;
+// 點點或數字
+.slick-dots { 
+  --tinge: #{$gray};
+  --dotSize: 8px;
+  list-style: none; margin:0 auto;padding: 0;
+  font-size: 0; text-align: center;
 
-    li { 
-      display: inline-block; 
-      margin: 0 3px; padding: 2px;
-      button, span { 
-        width: var(--dotSize); height: var(--dotSize); border-radius: 50%;
-        overflow: hidden; box-shadow: none;
-        background: var(--tinge);
-        &:hover{
-          --tinge: #{$grayDark};
-        } 
-        &:focus{--tinge: #{$primaryColor};}
+  li { 
+    display: inline-block; 
+    margin: 0 3px; padding: 2px;
+    button, span { 
+      width: var(--dotSize); height: var(--dotSize); border-radius: 50%;
+      overflow: hidden; box-shadow: none;
+      background: var(--tinge);
+      &:hover{
+        --tinge: #{$grayDark};
+      } 
+      &:focus{--tinge: #{$primaryColor};}
+    }
+
+    &.slick-active{
+      --tinge: #{$primaryColor};
+
+      button, span{ 
+        box-shadow:var(--tinge) 0 0 0 2px;
+        &:focus{ box-shadow:$white 0 0 0 1px, $primaryColor 0 0 0 3px;}
       }
+    }
 
-      &.slick-active{
-        --tinge: #{$primaryColor};
+  }
+}
+// 左右箭頭
+button.slick-arrow {
+  --buttonSize: 44px;
+  --bgc:  #{$white};
+  --tinge: #{$black};
 
-        button, span{ 
-          box-shadow:var(--tinge) 0 0 0 2px;
-          &:focus{ box-shadow:$white 0 0 0 1px, $primaryColor 0 0 0 3px;}
-        }
-      }
+  position: absolute; z-index: 9; 
+  text-indent: -20em; overflow: hidden;font-size: 0;
+  height: var(--buttonSize);width: var(--buttonSize); 
+  border-radius: 50%;
+  background-color: var(--bgc);
+  box-shadow: var(--tinge) 0 0 0 1px;
+  transition: .2s;
 
+  &::before {
+    content: ''; position: absolute;
+  }
+  &::before {
+    top: calc(50% - 6px);
+    width: 12px; height: 12px;
+    border: 1px solid var(--tinge);
+    rotate: 45deg;
+  }
+  &.slick-prev {
+    &::before{
+      border-right: none; border-top: none;
+      left: calc(50% - 3px);
+    }
+  }
+  &.slick-next {
+    &::before{
+      border-left: none; border-bottom: none;
+      right: calc(50% - 3px);
     }
   }
 
-  // 左右箭頭
-  button.slick-arrow {
-    --buttonSize: 44px;
-    --bgc:  #{$white};
-    --tinge: #{$black};
- 
-    position: absolute; z-index: 9; 
-    text-indent: -20em; overflow: hidden;font-size: 0;
-    height: var(--buttonSize);width: var(--buttonSize); 
-    border-radius: 50%;
-    background-color: var(--bgc);
-    box-shadow: var(--tinge) 0 0 0 1px;
-    transition: .2s;
+  &:hover, &:focus{
+    --bgc: #{$primaryColor};
+    --tinge: #{$white};
 
-    &::before {
-      content: ''; position: absolute;
-    }
-    &::before {
-      top: calc(50% - 6px);
-      width: 12px; height: 12px;
-      border: 1px solid var(--tinge);
-      rotate: 45deg;
-    }
-    &.slick-prev {
-      &::before{
-        border-right: none; border-top: none;
-        left: calc(50% - 3px);
-      }
-    }
-    &.slick-next {
-      &::before{
-        border-left: none; border-bottom: none;
-        right: calc(50% - 3px);
-      }
-    }
-
-    &:hover, &:focus{
-      --bgc: #{$primaryColor};
-      --tinge: #{$white};
-
-      box-shadow: var(--bgc) 0 0 0 2px;
-    }
-    &:focus{
-      box-shadow: var(--tinge) 0 0 0 1px, var(--bgc) 0 0 0 4px;
-    }
+    box-shadow: var(--bgc) 0 0 0 2px;
+  }
+  &:focus{
+    box-shadow: var(--tinge) 0 0 0 1px, var(--bgc) 0 0 0 4px;
   }
 }
 // --------------------------------------------------------------- //
 
 
-// 自訂的 slick arrows
-.slickArrows {
-  button {
-    --buttonSize: 44px;
-    --bgc:  #{$white};
-    --tinge: #{$black};
- 
-    position: absolute; z-index: 9; 
-    text-indent: -20em; overflow: hidden;font-size: 0;
-    height: var(--buttonSize);width: var(--buttonSize); 
-    border-radius: 50%;
-    background-color: var(--bgc);
-    box-shadow: var(--tinge) 0 0 0 1px;
-    border: none;
-    transition: .2s;
+// 自訂的左右導覽 arrows
+.navArrow {
+  --buttonSize: 44px;
+  --bgc:  #{$white};
+  --tinge: #{$black};
 
-    &::before {
-      content: ''; position: absolute;
-    }
-    &::before {
-      top: calc(50% - 6px);
-      width: 12px; height: 12px;
-      border: 1px solid var(--tinge);
-      rotate: 45deg;
-    }
-    &.slick-prev {
-      &::before{
-        border-right: none; border-top: none;
-        left: calc(50% - 3px);
-      }
-    }
-    &.slick-next {
-      &::before{
-        border-left: none; border-bottom: none;
-        right: calc(50% - 3px);
-      }
-    }
+  position: absolute; z-index: 9; 
+  text-indent: -20em; overflow: hidden;font-size: 0;
+  height: var(--buttonSize);width: var(--buttonSize); 
+  border-radius: 50%;
+  background-color: var(--bgc);
+  box-shadow: var(--tinge) 0 0 0 1px;
+  border: none;
+  transition: .2s;
 
-    &:hover, &:focus{
-      --bgc: #{$primaryColor};
-      --tinge: #{$white};
-
-      box-shadow: var(--bgc) 0 0 0 2px;
+  &::before {
+    content: ''; position: absolute;
+  }
+  &::before {
+    top: calc(50% - 6px);
+    width: 12px; height: 12px;
+    border: 1px solid var(--tinge);
+    rotate: 45deg;
+  }
+  &.prev {
+    &::before{
+      border-right: none; border-top: none;
+      left: calc(50% - 3px);
     }
-    &:focus{
-      box-shadow: var(--tinge) 0 0 0 1px, var(--bgc) 0 0 0 4px;
+  }
+  &.next {
+    &::before{
+      border-left: none; border-bottom: none;
+      right: calc(50% - 3px);
     }
   }
 
+  &:hover, &:focus{
+    --bgc: #{$primaryColor};
+    --tinge: #{$white};
+
+    box-shadow: var(--bgc) 0 0 0 2px;
+  }
+  &:focus{
+    box-shadow: var(--tinge) 0 0 0 1px, var(--bgc) 0 0 0 4px;
+  }
+
 }
+
+
+// // 自訂的左右導覽 arrows
+// .navArrow {
+//   @extend .slick-arrow;
+// }
 
 
 

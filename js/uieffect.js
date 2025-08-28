@@ -31,6 +31,10 @@ $(function(){
   _body.append('<div class="sidebarMask"></div>');
   const _sidebarMask = $('.sidebarMask');
   // --------------------------------------------------------------- //
+  
+  // 製作【暫停／輪播】按鈕元件
+  const ppButton = '<button class="pausePlay" aria-label="暫停輪播" data-altLabel="繼續輪播"></button>';
+  // --------------------------------------------------------------- //
 
 
   // 找出_menu中有次選單的li 
@@ -374,7 +378,7 @@ $(function(){
     _this.siblings().on( 'click', glideUp);
     _this.siblings().children('a, button').focus(glideUp);
     _optItem.last().children('button').on('keydown', function(e){
-      if( e.which === 9 && !e.shiftKey ) {
+      if( e.keyCode === 9 && !e.shiftKey ) {
         glideUp();
       }
     });
@@ -456,9 +460,173 @@ $(function(){
 
 
 
+  // 燈箱 
+  // --------------------------------------------------------------- //
+  const _lightbox = $('.lightbox');
+  const _hideLightbox = _lightbox.find('.closeThis');
+  _lightbox.before('<div class="coverAll"></div>'); // 燈箱遮罩
+  const _coverAll = _lightbox.prev('.coverAll');
+  const speedLbx = 400;
+
+  // 點擊 closeThis 關燈箱
+  _hideLightbox.on('click', function(){
+    _lightbox.stop(true, false).fadeOut( speedLbx );
+    _coverAll.fadeOut(speedLbx);
+    _body.removeClass('noScroll');
+  })
+
+  // 點擊遮罩關燈箱
+  _coverAll.on('click', function(){
+    _hideLightbox.trigger('click')
+  })
+
+  // 按 [esc 鍵] 關燈箱
+  _lightbox.on('keydown', function(e){
+    if ( e.keyCode == 27) {
+      _hideLightbox.trigger('click');
+    }
+  })
+  // --------------------------------------------------------------- //
 
 
 
+  // 大圖燈箱 
+  // --------------------------------------------------------------- //
+  const _photoShow = $('.photoSlide').find('.photoShow'); // 檔案詳細內容頁   
+  const _bigPhotoLbx = $('.lightbox.bigPhotos');
+  let photoIndex;
+  let _keptFlowItem;
+
+  _photoShow.before(ppButton); // 加入【暫停／輪播】按鈕
+
+  // 點擊.photoShow 的圖片，開燈箱顯示大圖
+  // --------------------------------------------------------------- //
+  let _showBigPhoto = _photoShow.find('.flowItem');
+  let photoCount = _showBigPhoto.length;
+
+  // 為每個要開燈箱的圖加上 data-index
+  for (let n = 1; n <= photoCount; n++) {
+    _showBigPhoto.eq(n-1).attr('data-index', n-1);
+  }
+
+  // 開燈箱
+  _showBigPhoto.children('a').on('click', function(){
+    _keptFlowItem = $(this);
+    photoIndex = _keptFlowItem.parent().attr('data-index');
+
+    // 開燈箱輪播要暫停
+    _photoShow.prev('.pausePlay').trigger('click');
+
+    _bigPhotoLbx.stop(true, false).fadeIn().find('.flowItem').filter( function(){
+      return $(this).attr('data-index') == photoIndex;
+    }).show();
+
+    _hideLightbox.focus();
+    _coverAll.stop(true, false).fadeIn();
+    _body.addClass('noScroll');
+
+  })
+  // --------------------------------------------------------------- //
+
+
+  // 複製「相關圖片」到大圖燈箱中 *** //
+  _photoShow.clone().appendTo(_bigPhotoLbx);
+
+  // cp 頁大圖燈箱
+  // ---------------------------------------------- *** //
+  _bigPhotoLbx.each(function(){
+    const _this = $(this);
+    const _photoList = _this.find('.photoShow');
+    const _photoItem = _this.find('.flowItem');
+    const _hideThis = _this.find('.closeThis');
+
+    _photoItem.find('img').unwrap('a');
+    _photoList.wrap('<div class="photoStage"></div>');
+    _photoList.before(
+      '<button type="button" class="navArrow prev" aria-label="上一張"></button>').after(
+      '<button type="button" class="navArrow next" aria-label="下一張"></button>');
+
+    const _arrow_prev = _this.find('.navArrow.prev');
+    const _arrow_next = _this.find('.navArrow.next');
+
+    
+    let i, j;
+
+    if(photoCount>1) {
+      _arrow_prev.add(_arrow_next).show();
+    }
+
+
+    // 點擊向右箭頭
+    _arrow_next.on('click', function(){
+      i = Number( _photoItem.filter(':visible').attr('data-index') );
+      j = (i+1) % photoCount;
+
+      _photoItem.filter(function () {
+        return $(this).attr('data-index') == i;
+        }).stop(true, false).fadeOut(speedLbx, function () {
+          $(this).removeAttr('style');
+      })
+
+      let _photoNow = _photoItem.filter( function(){
+        return $(this).attr('data-index') == j;
+      })
+      _photoNow.stop(true, false).fadeIn(speedLbx);
+
+    })
+    
+    // 點擊向左箭頭
+    _arrow_prev.on('click' , function(){
+      i = Number(_photoItem.filter(':visible').attr('data-index'));
+      j = (i-1+photoCount) % photoCount;
+
+      _photoItem.filter(function(){
+        return $(this).attr('data-index') == i;
+      }).stop(true, false).fadeOut(speedLbx, function(){
+        $(this).removeAttr('style');
+      });
+
+      let photoNow = _photoItem.filter( function(){
+        return $(this).attr('data-index') == j;
+      });
+      photoNow.stop(true, false).fadeIn(speedLbx);
+    })
+
+    _hideThis.on('click', function(){
+      _photoItem.removeAttr('style');
+      _photoShow.prev('.pausePlay').trigger('click');
+    })
+
+    _hideThis.on('keydown', function(e){
+      if ( e.keyCode == 9 && e.shiftKey ) {
+        e.preventDefault();
+        _arrow_next.trigger('focus');
+      }
+    })
+    _arrow_next.on('keydown', function(e){
+      if ( e.keyCode == 9 && !e.shiftKey ) {
+        e.preventDefault();
+        _hideThis.trigger('focus');
+      }
+    })
+    _arrow_prev.on('keydown', function(e){
+      if ( e.keyCode == 9 && e.shiftKey ) {
+        e.preventDefault();
+        _hideThis.trigger('focus');
+      }
+    })
+
+    // 鍵盤操作左右方向鍵
+    _this.on('keydown', function(e){
+      if ( e.keyCode == 39) {
+        _arrow_next.trigger('click');
+      }
+      if ( e.keyCode == 37) {
+        _arrow_prev.trigger('click');
+      }
+    })
+  })
+  // ---------------------------------------------- *** //
 
 
 
@@ -467,8 +635,6 @@ $(function(){
   // ------------------- 外掛套件 slick 參數設定 ----------------------- //
   // --------------------------------------------------------------- //
   
-  // 【暫停／輪播】按鈕元件
-  const ppButton = '<button class="pausePlay" aria-label="暫停輪播" data-altLabel="繼續輪播"></button>';
 
   // 首頁：檔案 時光流轉的故事
   // --------------------------------------------------------------- //
@@ -496,12 +662,6 @@ $(function(){
           slidesToShow: 2
         }
       },
-      // {
-      //   breakpoint: 1720,
-      //   settings: {
-      //     slidesToShow: 3
-      //   }
-      // }
     ]
   });
   // --------------------------------------------------------------- //
@@ -652,17 +812,18 @@ $(function(){
   });
   // --------------------------------------------------------------- //
 
-    // 檔案詳細內容頁：圖檔輪播
+
+  // 檔案詳細內容頁：圖檔輪播
   // --------------------------------------------------------------- //
-  const _photoShow = $('.photoSlide').find('.photoShow');
+  // const _photoShow = $('.photoSlide').find('.photoShow');
   const _photoNav =  _photoShow.siblings('.photoNav');
   const phsLength = _photoShow.find('.flowItem').length;
-
+  
   _photoShow.slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     asNavFor: _photoNav,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 6000,
     speed: 800,
     autoplay: true,
     dots: true,
@@ -707,8 +868,8 @@ $(function(){
   _relatedFiles.slick({
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplaySpeed: 4000,
-    speed: 800,
+    // autoplaySpeed: 4000,
+    // speed: 800,
     autoplay: false,
     arrows: true,
     dots: true,
@@ -785,8 +946,6 @@ $(function(){
   // --------------------------------------------------------------- //
   // --------------- 外掛套件 slick 參數設定 END ------------------- //
   // --------------------------------------------------------------- //
-
-
 
 
 
