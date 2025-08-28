@@ -4,7 +4,7 @@
 // ------------------------------------------------------ //
 .pagination {
   @extend %primSecWidth; 
-  padding-bottom: 40px;
+  
   text-align: center;font-size: 1.1em; line-height: 1.5;
   letter-spacing: 0;
   form{ display: inline-block;}
@@ -113,5 +113,10 @@
     }
   }
 
+}
+
+
+.cover .pagination {
+  width: 100%;
 }
 // ------------------------------------------------------ //

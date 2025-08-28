@@ -71,23 +71,13 @@
 // ---------------------------------------------------------------- //
 
 
-// 主題內頁
+// LP01_導覽列表頁
 // ---------------------------------------------------------------- //
 .oneTopic {
-  // outline: 1px solid #ff0;
   width: $mobileWidth;
   margin: 0 auto; 
   padding: 0 0 80px;
 
-
-  // @media screen and (min-width: $wwMedium){
-  //   .relatedFiles{
-  //     padding-top: 32px;
-  //     .thumbList {
-  //       max-width: none;
-  //     }
-  //   }
-  // }
 
   @media screen and (min-width: $wwNormal){
     width: $normalWidth;
@@ -108,14 +98,13 @@
       width: auto;
       flex: 0 0 72%;
       margin-left: 3%;
+
+      .thumbList{
+        margin: 0;
+        width: 100%;
+      }
     }
     
-    // .relatedFiles {
-    //   h3{
-    //     text-align: left;
-    //     margin-bottom: 24px;
-    //   }
-    // }
   }
 
 }
