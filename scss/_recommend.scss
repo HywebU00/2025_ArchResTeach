@@ -3,9 +3,9 @@
 // 首頁：推薦檔案
 .recommend{
   position: relative;
-  padding: 50px 0 100px; margin: 0 auto;
+  padding: 50px 0 0; margin: 0 auto 100px;
 
-  h2{ @extend %mp-h2}
+  h2{ @extend %mp-h2 }
 
   h3 {
     margin: 12px auto 8px;
@@ -18,11 +18,14 @@
 
   .flow{
     position: relative;
-    padding: 0 0 56px $marginDocMob;
+    padding-bottom: 56px;
+    margin-left: $marginDocMob;
+    margin-right: auto;
+    
+    .slick-list{ padding-right: 10vw; }
 
     .flowItem{
-      margin-left: 16px;
-      padding-left: 8vw;
+      margin: 0 12px;
       a{
         display: block;
         margin: 24px 0; padding: 16px;
@@ -36,10 +39,10 @@
           translate: 0 -5px;
         }
         &:hover{
-          box-shadow:$primaryColor 0 0 0 0, $shadow1 0 4px 16px;
+          box-shadow:$primaryColor 0 0 0 0, $shadow1 0 5px 12px;
         }
         &:focus{
-          box-shadow:$primaryColor 0 0 0 2px, $shadow1 0 4px 16px;
+          box-shadow:$primaryColor 0 0 0 2px, $shadow1 0 5px 12px;
         }
       }
       img{
@@ -61,19 +64,19 @@
   }
 
   .slick-arrow {
-    position: absolute; bottom: 12px;
-    left: calc($marginDocMob + 16px);
+    position: absolute; bottom: 12px; left: 12px;
     &.slick-next {
       translate: 130% 0;
     }
   }
 
   .pausePlay {
-    position: absolute; right: calc($marginDocMob + 16px); top: 96px;
+    position: absolute; 
+    bottom: calc(2.7em + 17px );
+    right: 10vw;
   }
 
   .more {
-    margin-top: 10px;
     a {
       margin-left: auto;
       margin-right: auto;
@@ -92,47 +95,37 @@
     }
   }
 
-  @media screen and (min-width: 600px){
 
-    .flow{
-      width: $mobileWidth;
-      padding-left: 0;
-      margin: 0 auto;
-      .flowItem{
-        margin-left: 0;
-        padding-left: 0;
-        a{
-          margin-left: 16px;
-          margin-right: 16px;
-        }
-      }
+  @media screen and (min-width: 850px){
+  
+    .flow {
+      .slick-list { padding-right: 6vw;}
     }
-    .slick-arrow {
-      left: auto;
-      &.slick-prev { left: 20px;}
-      &.slick-next { right: 20px;left: auto; translate: 0 0;}
-    }
-
+    .pausePlay{ right: 6vw;}
   }
 
   @media screen and (min-width: $wwNormal){
 
     max-width: $maximumWidth;
-
     .flow{
       width: $normalWidth;
       padding-bottom: 0;
+      margin-left: auto;
+      .slick-list{
+        padding-right: 8px;
+        padding-left: 8px;
+      }
     }
 
     .slick-arrow {
       bottom: 50%; 
-      // left: calc($marginDoc + 16px);
       &.slick-prev { left: 4px; translate: -100% 50%;}
-      &.slick-next { right: 4px;  translate: 100% 50%;}
+      &.slick-next { left: auto; right: 4px;  translate: 100% 50%;}
     }
 
     .pausePlay {
-      right: calc($marginDoc + 16px);
+      right: calc($marginDoc + 12px);
+      bottom: 0;
     }
   }
 

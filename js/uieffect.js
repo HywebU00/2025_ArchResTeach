@@ -494,32 +494,41 @@ $(function(){
   // --------------------------------------------------------------- //
   const _photoShow = $('.photoSlide').find('.photoShow'); // 檔案詳細內容頁   
   const _bigPhotoLbx = $('.lightbox.bigPhotos');
-  let photoIndex;
-  let _keptFlowItem;
-
+  
   _photoShow.before(ppButton); // 加入【暫停／輪播】按鈕
-
-  // 點擊.photoShow 的圖片，開燈箱顯示大圖
-  // --------------------------------------------------------------- //
+  const _photoShow_ppButton = _photoShow.prev('.pausePlay'); // 此區的暫停按鈕
   let _showBigPhoto = _photoShow.find('.flowItem');
   let photoCount = _showBigPhoto.length;
-
+  
+  let photoIndex; // 燈箱內切換上、下一張用
+  let _keptFlowItem; // 紀錄被點擊開燈箱的元件
+  let isPaused; // 紀錄開燈時，暫停播放按鈕的狀態
+  
   // 為每個要開燈箱的圖加上 data-index
-  for (let n = 1; n <= photoCount; n++) {
-    _showBigPhoto.eq(n-1).attr('data-index', n-1);
+  for (let n = 0; n < photoCount; n++) {
+    _showBigPhoto.eq(n).attr('data-index', n);
   }
-
-  // 開燈箱
+  _photoShow.clone().appendTo(_bigPhotoLbx); // 複製照片到大圖燈箱中 ***
+  
+  // 點擊.photoShow 的圖片，開燈箱顯示大圖
   _showBigPhoto.children('a').on('click', function(){
     _keptFlowItem = $(this);
     photoIndex = _keptFlowItem.parent().attr('data-index');
 
-    // 開燈箱輪播要暫停
-    _photoShow.prev('.pausePlay').trigger('click');
+    console.log(photoIndex, _showBigPhoto);
+
+    // 開燈箱，輪播要暫停
+    if ( _photoShow_ppButton.hasClass('paused') ) {
+      isPaused = true;
+    } else {
+      isPaused = false;
+      _photoShow_ppButton.trigger('click');
+    }
 
     _bigPhotoLbx.stop(true, false).fadeIn().find('.flowItem').filter( function(){
       return $(this).attr('data-index') == photoIndex;
     }).show();
+
 
     _hideLightbox.focus();
     _coverAll.stop(true, false).fadeIn();
@@ -529,8 +538,6 @@ $(function(){
   // --------------------------------------------------------------- //
 
 
-  // 複製「相關圖片」到大圖燈箱中 *** //
-  _photoShow.clone().appendTo(_bigPhotoLbx);
 
   // cp 頁大圖燈箱
   // ---------------------------------------------- *** //
@@ -592,9 +599,12 @@ $(function(){
       photoNow.stop(true, false).fadeIn(speedLbx);
     })
 
+    // 關閉燈箱時
     _hideThis.on('click', function(){
-      _photoItem.removeAttr('style');
-      _photoShow.prev('.pausePlay').trigger('click');
+      _photoItem.removeAttr('style'); // 移除燈箱大圖的 style display 屬性
+      if (isPaused === false) {
+        _photoShow_ppButton.trigger('click'); // 重新啟動被燈箱暫停的輪播
+      }
     })
 
     _hideThis.on('keydown', function(e){
@@ -673,7 +683,7 @@ $(function(){
   _recommend.before(ppButton); // 加入【暫停／輪播】按鈕
 
   _recommend.slick({
-    slidesToShow: 1.1,
+    slidesToShow: 1,
     slidesToScroll: 1,
     autoplaySpeed: 6000,
     speed: 800,
@@ -691,7 +701,7 @@ $(function(){
         }
       },
       {
-        breakpoint: 900,
+        breakpoint: 850,
         settings: {
           slidesToShow: 3
         }
@@ -846,14 +856,14 @@ $(function(){
     focusOnSelect: true,
     variableWidth: true,
     mobileFirst: true,
-    responsive: [
-      {
-        breakpoint: wwMedium,
-        settings: {
-          slidesToShow: 5,
-        }
-      }
-    ]
+    // responsive: [
+    //   {
+    //     breakpoint: wwMedium,
+    //     settings: {
+    //       slidesToShow: 4,
+    //     }
+    //   }
+    // ]
   })
 
   _photoShow.append('<div class="total">' + phsLength +'</div>');

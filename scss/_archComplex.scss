@@ -38,6 +38,7 @@
 .photoSlide{
   position: relative;
 
+  // 大圖區
   .photoShow{
     width: 100%;aspect-ratio: 4/3;overflow: hidden;
     .flowItem{
@@ -90,7 +91,6 @@
         }
       }
     }
-
   }
 
   // 小圖區
@@ -103,15 +103,15 @@
       a{
         display: block;
         &:focus {
-          box-shadow:$white 0 0 0 1px, $borderColorDark 0 0 0 3px;
+          box-shadow:$white 0 0 0 1px, $primaryColor 0 0 0 4px;
         }
       }
 
       &.slick-current {
         a{
-          box-shadow:$white 0 0 0 1px, $primaryColor 0 0 0 4px;
+          box-shadow:$white 0 0 0 1px, $black 0 0 0 3px;
           &:focus {
-            box-shadow:$white 0 0 0 2px, $black 0 0 0 6px;
+            box-shadow:$white 0 0 0 1px, $primaryColor 0 0 0 5px;
           }
         }
       }
@@ -124,11 +124,29 @@
     }
   }
 
+  // 暫停按鈕
   .pausePlay {
-    translate: 0 -120%;
+    translate: 0 0;
+    opacity: .5;
+    transition: .3s;
+    &:focus {
+      translate: 0 -70%;
+      opacity: 1;
+    }
+
+    &.paused {
+      translate: 0 -70%;opacity: 1;
+    }
   }
 
+  &:hover {
+    .pausePlay {
+      translate: 0 -70%;
+      opacity: 1;
+    }
+  }
 
+  // 圖片總張數
   .total{
     z-index: 9; 
     position: absolute;right: 8px; bottom: 9px;
@@ -138,7 +156,6 @@
     &::before{
       content: '/ ';
     }
-
   }
 
   @media screen and (min-width: $wwNormal){
