@@ -73,10 +73,17 @@
 
 // LP01_導覽列表頁
 // ---------------------------------------------------------------- //
-.oneTopic {
+.topicComplex {
   width: $mobileWidth;
   margin: 0 auto; 
   padding: 0 0 80px;
+
+  .searchOnLp {
+    width: 100%; margin-top: 0;
+  }
+  .category{
+    width: 100%;
+  }
 
 
   @media screen and (min-width: $wwNormal){

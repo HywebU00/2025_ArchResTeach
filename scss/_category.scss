@@ -15,11 +15,13 @@
     a {
       display: block;
       height: 2.8em; line-height: 2.9;
-      text-decoration: none; padding: 0 1.5em;
+      padding: 0 1.5em;
+      text-decoration: none; 
+      border-radius: 2em;
 
       color: $fontColor;
+      background-color: $white;
       box-shadow: $borderColor 0 0 0 1px;
-      border-radius: 2em;
       transition: .15s;
 
       &:hover, &:focus{

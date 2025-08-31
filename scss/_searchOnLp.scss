@@ -6,8 +6,9 @@
   @extend %primSecWidth;
   position: relative; 
   padding: 16px;
-  box-shadow: 0 0 0 1px $shadow2;
+  font-size: 1.11em;
   border-radius: $radius2;
+  box-shadow: 0 0 0 1px $shadow2;
   background-color: $white;
 
   &.drawer{
