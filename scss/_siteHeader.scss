@@ -1,7 +1,8 @@
 @use "variables" as *;
 
 .siteHeader{
-  --bgc: #{$primaryColor};
+  --bgc: #{$white};
+
 
   position: relative; z-index: 99;
   height: 60px; padding: 0 64px 0 $marginDoc;
@@ -13,7 +14,7 @@
     height: 60px; min-width: 160px;
     text-indent: -20em; overflow: hidden;
     font-size: 1em;
-    background: url(../images/logo_white.svg) no-repeat 0 center;
+    background: url(../images/logo_black.svg) no-repeat 0 center;
     background-size: auto 34px;
     &>a{
       display: block; height: 100%;
@@ -26,12 +27,9 @@
   }
 
   &.fixed{
-    --bgc: #{$white};
-
     position: fixed; left: 0; right: 0; top: 0;
     box-shadow: $shadow2 0 2px 8px;
     h1{
-      background-image: url(../images/logo_black.svg);
       &>a{
         &:focus-visible{
           outline-color: $primaryColor;
@@ -77,3 +75,33 @@
     .search{ flex:0 0 384px;}
   }
 }
+
+
+// 首頁紅色版頭
+.siteHeader:has(~.main>.archiveAndStories){
+
+  --bgc: #{$primaryColor};
+
+  h1{background-image: url(../images/logo_white.svg);}
+
+  .menu{--tinge: #{$white};}
+
+  .search {
+    --linkText: #{$white};
+    --formBorder: transparent;
+  }
+  
+  &.fixed {
+    --bgc: #{$white};
+
+    h1{background-image: url(../images/logo_black.svg);}
+
+    .menu{--tinge: #{$black};}
+
+    .search {
+      --linkText: #{$black};
+      --formBorder: #{$grayDark};
+    }
+  }
+}
+

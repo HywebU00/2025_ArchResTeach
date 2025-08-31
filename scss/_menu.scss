@@ -14,7 +14,8 @@
 // 寬版主選單
 // ------------------------------------------------------ //
 .siteHeader .menu{
-  --tinge: #fff;
+  --tinge: #{$black};
+  --aBgc: transparent;
 
   display: none;
 
@@ -25,15 +26,10 @@
     &>ul{
       display: flex; flex-flow: row nowrap;
       line-height: 1.2;
-      // height: 100%;
-
-      a{color: var(--tinge);}
-
       // 第一層 li
       &>li{
         position: relative;
         flex: 0 1 auto; 
-        // margin-left: 0; margin-right: 0;
         transition: .2s;
         &>a{
           position: relative;
@@ -41,27 +37,14 @@
           padding:14px 20px; 
           line-height: 1;
           white-space: nowrap;
+          color: var(--tinge);
+          background-color: var(--aBgc);
           transition: .2s;
-          // outline: 1px solid #09f8;
-          // outline-offset: -1px;
-          // &::before {
-          //   content: ''; position: absolute;
-          //   left: 50%; right: 50%; bottom: 0;
-          //   height: 2px;
-          //   transition:all .18s, background-color 0s;
-          // }
           &:focus, &:hover {
-            background-color: #000;
-            // &::before {
-            //   left: 0; right: 0;
-            //   background-color: var(--tinge);
-            // }
-          }
-          &:focus-visible {
-            box-shadow: $white 0 0 0 1px;
+            --tinge: #{$white};
+            --aBgc: #{$black};
           }
         }
-
         &.hasChild {
           &>a{
             padding-right: 36px;
@@ -77,8 +60,8 @@
         }
 
         &:has(li>a:hover), &:has(li>a:focus){
-          background-color: #000;
-
+          --tinge: #{$white};
+          background-color: #{$black};
         }
 
         // 第二層及其之後
@@ -126,23 +109,19 @@
             &.here{
               background-color: $primaryColor; 
               &>a{
-                color: #fff;
+                color: #{$white};
                 &::after{border-color: $white;}
                 &:hover, &:focus{ 
-                  background-color: $primaryColor; color: #fff;
+                  background-color: $primaryColor; color: #{$white};
                 }
               }
             }
           }
         }
 
-
         // 第二層 ul
         // ----------------------------------------
-        &>ul {
-          top: auto;left: 0;
-          // z-index: 99;
-        }
+        &>ul {top: auto;left: 0;}
       }
     }
   
@@ -184,17 +163,6 @@
         }
       }
     }
-
-
-    @media screen and (min-width: $wwMaximum){
-      &>ul{
-        &>li{ 
-          // a{padding-left: 12px; padding-right: 12px;}
-        }
-      }
-
-    }
-
   }
 
 }

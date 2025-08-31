@@ -125,7 +125,8 @@
 
     .pausePlay {
       right: calc($marginDoc + 12px);
-      bottom: 0;
+      top: auto; bottom: auto;
+      translate: 0 -90%;
     }
   }
 

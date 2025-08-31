@@ -2,7 +2,7 @@
 @use '_accessories' as *;
 
 // 首頁：檔案 時光流轉的故事
-.story-in-archive {
+.archiveAndStories {
   padding: 40px 0 80px;
   background-color: $primaryColor; color: $white;
 
@@ -214,12 +214,9 @@
 
 
 
-
-
-
 // 首頁「時光流轉的故事」輪播區查詢
 // ---------------------------------------------------------------- //
-.story-in-archive .search {
+.archiveAndStories .search {
   margin: 24px 0 0;
   text-align: center;
   

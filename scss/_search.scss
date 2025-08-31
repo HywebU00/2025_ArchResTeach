@@ -4,6 +4,9 @@
 // ---------------------------------------------------------------- //
 .siteHeader .search{
 
+  --linkText: #{$fontColorDark}; //
+  --formBorder: #{$grayDark};
+
   display: none;
 
   @media screen and (min-width: $wwNormal){
@@ -16,6 +19,7 @@
       position: relative;
       height: 44px; border-radius: 22px;
       background-color: $white;
+      box-shadow: var(--formBorder) 0 0 0 1px;
       input[type="text"] {
         height: 36px; width: calc(100% - 48px);
         border-radius: 18px;
@@ -44,47 +48,32 @@
     }
 
     a.advLink {
-      --color: #{$white};
+      // --color: #{$fontColor};
 
       flex: 0 0 content;
       display: block; white-space: nowrap;
       margin: 3px 2px 2px 12px; padding:0 0 4px;
       font-size: .875em; line-height: 1;
       text-decoration: none;
-      color: var(--color);
+      color: var(--linkText);
       position: relative;
       &::after {
         content: ''; 
         position: absolute;left: 0; right: 0; bottom: 0;
         height: 1px;
-        background-color: var(--color);
+        background-color: var(--linkText);
       }
       &:hover, &:focus{
-        &::after {
-          height: 2px;
-        }
+        &::after {height: 2px;}
       }
       &:focus-visible {
-        outline: 1px solid var(--color);
+        outline: 1px solid var(--linkText);
       }
     }
   }
 
 }
 
-
-
-// 固定版頭時
-.siteHeader.fixed .search {
-  @media screen and (min-width: $wwNormal){
-    form {
-      box-shadow: $grayDark 0 0 0 1px;
-    }
-    a.advLink {
-      --color: #{$black};
-    }
-  } 
-}
 // ---------------------------------------------------------------- //
 
 

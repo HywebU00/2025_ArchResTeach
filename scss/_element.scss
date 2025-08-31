@@ -427,10 +427,14 @@ button.pausePlay {
   }
 
   &:hover, &:focus{ 
-    --borderWidth: 3px;
+    // --bgc: #{$primaryColor};
+    --tinge: #{$primaryColor};
+    --borderColor: #{$primaryColor};
+    --borderWidth: 2px;
   }
 
   &.paused{
+
     --bgc: #{$primaryColor};
     --tinge: #{$white};
     --borderColor: #{$primaryColor};

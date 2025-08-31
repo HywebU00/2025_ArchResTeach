@@ -13,8 +13,6 @@
   border-radius: $radius $radius 0 0;
   box-shadow: $shadow2 0 0 16px 2px;
 
-
-
   .tray{
     display: none;
   }
@@ -70,8 +68,9 @@
     li{
       a { 
         position: relative;
-        display: block; text-decoration: none;
         padding: 13px 16px 11px;
+        display: block; text-decoration: none;
+        color: $black;
         transition: .2s;
         &:hover{
           background-color: $primaryColor;
@@ -114,7 +113,7 @@
         &::before {
           content: ''; position: absolute;
           top: 21px;
-          width: 5px; height: 5px;
+          width: 4px; height: 4px;
           background: $primaryColor;
         }
       }
@@ -140,7 +139,7 @@
     border-radius: $radius;
     max-height:none;
     box-shadow: none;
-    background-color: $grayPale;
+    background-color: $grayLight;
 
     .toc_head {
       display: block;

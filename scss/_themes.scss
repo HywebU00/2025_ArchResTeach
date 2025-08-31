@@ -217,14 +217,3 @@
     
   }
 }
-.breadcrumb ~ .funcBar{
-  z-index: 19;
-  position: absolute; top: 4px; right: $marginDocMob;
-  
-  @media screen and (min-width: $wwNormal){
-    top: 12px;
-    right: max($marginDoc, calc(50vw - $maximumWidth*.5));
-  }
-
-}
-

@@ -8,12 +8,12 @@
 .brieft {
   padding: 50px 0;
   text-align: center;
-  &::before {
-    content: ''; z-index: -1;
-    position: absolute; left: 0;right: 0; top: 0;
-    height: min(50vh, 600px);
-    background-image: linear-gradient(to bottom, rgb(211 83 68 / 1), rgb(211 83 68 / 0));
-  }
+  // &::before {
+  //   content: ''; z-index: -1;
+  //   position: absolute; left: 0;right: 0; top: 0;
+  //   height: min(50vh, 600px);
+  //   background-image: linear-gradient(to bottom, rgb(211 83 68 / 1), rgb(211 83 68 / 0));
+  // }
   h2, p, time{
     margin: 0 auto;
   }

@@ -12,7 +12,7 @@
 
     &>li{
       // 瀏覽更多主題
-      &:last-child {
+      &.moreTopics {
         p{ 
           font-family: Georgia, 'Times New Roman', Times, serif;
           font-size: 1.5em; line-height: 1.2;
@@ -54,6 +54,7 @@
   }
 
   @media screen and (min-width: $wwMedium){
+
     .topicList {
       display: flex; flex-flow: row wrap;
       gap: 20px;
@@ -72,7 +73,7 @@
         }
       }
     }
-
+    
   }
 
   @media screen and (min-width: $wwNormal){
