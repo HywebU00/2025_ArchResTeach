@@ -648,7 +648,7 @@ $(function(){
 
   // 首頁：檔案 時光流轉的故事
   // --------------------------------------------------------------- //
-  const _stories = $('.story-in-archive').find('.flow');
+  const _stories = $('.archiveAndStories').find('.flow');
   _stories.before(ppButton); // 加入【暫停／輪播】按鈕
 
   _stories.slick({
@@ -662,9 +662,9 @@ $(function(){
     infinite: true,
     mobileFirst: true,
     centerMode: false,
-    prevArrow: $('.story-in-archive .slick-prev'),
-    nextArrow: $('.story-in-archive .slick-next'),
-    appendArrows: $('.story-in-archive .slickArrows'),
+    prevArrow: $('.archiveAndStories .slick-prev'),
+    nextArrow: $('.archiveAndStories .slick-next'),
+    appendArrows: $('.archiveAndStories .slickArrows'),
     responsive: [
       {
         breakpoint: 700,
