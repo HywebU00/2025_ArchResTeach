@@ -3,28 +3,19 @@
 // 無障礙定位點
 // --------------------------------------------------------------- //
 .accesskey{
-  --tinge: #{$fontColorLight};
+  --tinge: #{$grayDark};
 
   position: absolute; display: none;
   @media screen and (min-width: $wwNormal){
-    display: block; left: 0; top: 0; z-index: 199;
+    display: block; left: 0; top: 0; z-index: 29;
     line-height: 1; padding: 2px; margin: 2px;
     text-decoration: none; color: var(--tinge);
+    &:hover, &:focus{--tinge: #{$black};}
     &:hover{outline: 1px solid var(--tinge);}
     &:focus{outline: 2px solid var(--tinge);}
   }
 }
-.siteHeader {
-  .accesskey {
-    --tinge: #{$white};
-  }
-  &.fixed{
-    .accesskey {
-      --tinge: #{$fontColorLight};
-    }
-  }
-}
-.main .accesskey {
+.main:has(>.archiveAndStories) .accesskey {
   --tinge: #{$white};
 }
 .siteFooter .accesskey {

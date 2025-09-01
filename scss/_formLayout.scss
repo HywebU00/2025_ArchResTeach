@@ -119,21 +119,28 @@ table.formLayout {
   input[type="submit"],
   input[type="reset"], 
   button{
+    --tinge: #{$white};
+    --bgc: #{$primaryColor};
+
     height: 2.8em; line-height: 2.8;
     min-width: 4em;border-radius: 2em;
     padding-left: 2em; padding-right: 2em; 
-    color: #{$white};
-    background-color: $black;
-    box-shadow: $black 0 0 0 1px, $shadow1 0 2px 7px 1px;
+    color: var(--tinge);
+    background-color: var(--bgc);
+    box-shadow: var(--bgc) 0 0 0 1px, $shadow1 0 2px 7px 1px;
     &:hover, &:focus {
-      box-shadow: $black 0 0 0 3px, $shadow1 0 2px 7px 1px;
+      box-shadow: var(--bgc) 0 0 0 3px, $shadow1 0 2px 7px 1px;
     }
     &:focus {
-      box-shadow:$white 0 0 0 1px inset, $black 0 0 0 3px, $shadow1 0 2px 7px 1px;
+      box-shadow:$white 0 0 0 1px inset, var(--bgc) 0 0 0 3px, $shadow1 0 2px 7px 1px;
     }
     &:is([type="reset"]) {
-      color: #{$fontColor};
-      background-color: #{$white};
+      // color: #{$fontColor};
+      // background-color: #{$white};
+
+      --tinge: #{$fontColor};
+      --bgc: #{$white};
+
       box-shadow: $borderColor 0 0 0 1px, $shadow1 0 2px 7px 1px;
       &:hover, &:focus {
         box-shadow: $borderColorDark 0 0 0 1px, $shadow1 0 2px 7px 1px;

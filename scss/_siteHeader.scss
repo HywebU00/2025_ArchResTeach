@@ -90,6 +90,10 @@
     --linkText: #{$white};
     --formBorder: transparent;
   }
+
+  .accesskey {
+    --tinge: #{$white};
+  }
   
   &.fixed {
     --bgc: #{$white};
@@ -102,6 +106,11 @@
       --linkText: #{$black};
       --formBorder: #{$grayDark};
     }
+
+    .accesskey {
+      --tinge: #{$grayDark};
+    }
+
   }
 }
 

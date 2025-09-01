@@ -110,16 +110,6 @@
 
   .btnDv {
     padding:12px 0 0;
-    input[type="button"], input[type="submit"], 
-    button[type="button"], button[type="submit"] {
-      background-color: $primaryColor; color: $white;
-      &:hover {
-        box-shadow: $white 0 0 0 0, $primaryColor 0 0 0 2px;
-      }
-      &:focus {
-        box-shadow: $white 0 0 0 1px, $primaryColor 0 0 0 4px;
-      }
-    }
   }
 
   @media screen and (min-width: $wwNormal){
