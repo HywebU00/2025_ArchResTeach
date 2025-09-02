@@ -15,10 +15,9 @@
       &:last-child {margin-right: 0;}
       &>a, &>button{
         display: block;
-        margin:0; padding:0; width: var(--size);height: var(--size);
-
+        width: var(--size);height: var(--size); line-height: var(--size);
+        margin:0; padding:0; 
         border-radius: 50%;
-        
         text-decoration: none; white-space: nowrap;
         color: transparent;
         background-color: $white; background-repeat: no-repeat; 
@@ -30,8 +29,11 @@
         &::before {
           content: attr(aria-label); 
           position: absolute; left: 0; top: 0;
-          width: 100%; height: 1.2em;line-height: 1;
-          font-size: .9rem; color: $fontColor;
+          width: 100%; height: calc(1em + 4px);
+          font-size: .9rem; line-height: 1;
+          padding: 2px 0;
+          color: $fontColor;
+          text-shadow: #fff 0 0 2px,#fff 0 0 2px,#fff 0 0 2px,#fff 0 0 2px,#fff 0 0 2px,#fff 0 0 2px;
           opacity: 0; transform: translateY(0);
           transition: .3s;
         }
@@ -41,7 +43,7 @@
           background-color: var(--tinge);
           color: $white;
           &::before{
-            opacity: 1;transform: translateY(-120%);
+            opacity: 1;transform: translateY(-130%);
           }
         }
       }
@@ -88,7 +90,7 @@
             margin: 4px 0; padding: 0;
             &>a, &>button {
               display: block; padding: 0; margin: 0;
-              width: var(--size); height: var(--size);
+              width: var(--size); height: var(--size); line-height: var(--size);
               border-radius: 50%;
               transition: .2s;
             }
@@ -137,26 +139,44 @@
           position: relative; padding-left: .6em;
           &::after{
             position: absolute; left: 10px; bottom: 20px; line-height: 1;
-            content: '中'; font-size: .6rem;
+            font-size: .6rem;
           }
         }        
         &>.smallFont::after{content: '小'; }
         &>.mediumFont::after{content: '中';}
         &>.largeFont::after{content: '大';}
       }
-      
     }
   }
+
+  &:has( ~ .themeBanner) {
+    z-index: 9;
+    position: absolute; right: $marginDocMob; 
+    left: auto;width: auto;
+
+    @media screen and (min-width: $wwNormal){
+      right: $marginDoc; 
+      top: calc(1em + 32px);
+    }
+    @media screen and (min-width: $wwMaximum){
+      right: $marginDocMax;
+    }
+  }
+
 }
+
+body.largeFont .fontSize>button::after{content: '大';}
+body.mediumFont .fontSize>button::after{content: '中';}
+body.smallFont .fontSize>button::after{content: '小';}
 // ------------------------------------------------------ //
 
 .breadcrumb ~ .funcBar{
-  z-index: 19;
-  position: absolute; top: 4px; right: $marginDocMob;
+  @extend %primSecWidth;
+  margin: 0 auto;
+  padding-top: 8px;
   
   @media screen and (min-width: $wwNormal){
-    top: 24px;
-    right: max($marginDoc, calc(50vw - $maximumWidth*.5));
+    padding-top: 0;
   }
 
 }

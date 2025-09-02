@@ -36,14 +36,6 @@
         }
       }
     }
-
-    // 漢堡選單
-    button.sidebarCtrl{
-      --tinge : #{$black};
-      &:focus, &:hover, &.closeIt{
-        --tinge : #{$white};
-      }
-    }
   }
 
   @media screen and (min-width: $wwNormal){

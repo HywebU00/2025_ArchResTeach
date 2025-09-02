@@ -76,18 +76,21 @@
     .slick-dots{
       z-index: 9; 
       position: absolute;  bottom: 8px; right: 8px;
-      margin: 0; padding: 0 2em 0 06px;
+      margin: 0; padding: 0 2em 0 12px;
       font-size: 1.2em; height: 1.6em; line-height: 1.6;
       background-color: rgb(0 0 0 / .7);
       border-radius: 1em;
       li{
         display: none; margin: 0;padding: 0;
         &.slick-active{ display: block;}
-        button{
+        button, span{
           padding: 0;margin: 0;text-align: right;
           width: auto;min-width: 1.2em; height: 1em; line-height: 1; 
           background-color: transparent; border-radius: 0;box-shadow: none;
           color: $white;
+        }
+        span {
+          display: inline; vertical-align: middle;
         }
       }
     }

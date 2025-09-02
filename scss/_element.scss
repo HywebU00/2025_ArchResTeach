@@ -3,21 +3,28 @@
 // 無障礙定位點
 // --------------------------------------------------------------- //
 .accesskey{
-  --tinge: #{$grayDark};
+  --tinge: #666;
 
   position: absolute; display: none;
   @media screen and (min-width: $wwNormal){
     display: block; left: 0; top: 0; z-index: 29;
     line-height: 1; padding: 2px; margin: 2px;
     text-decoration: none; color: var(--tinge);
-    &:hover, &:focus{--tinge: #{$black};}
+    &:hover, &:focus{--tinge: #000;}
     &:hover{outline: 1px solid var(--tinge);}
     &:focus{outline: 2px solid var(--tinge);}
   }
 }
 .main:has(>.archiveAndStories) .accesskey {
-  --tinge: #{$white};
+  --tinge: #fff;
 }
+.main:has(>.themeBanner) .accesskey {
+  --tinge: #fff;
+}
+.main:has(>.topicComplex) .accesskey {
+  --tinge: #fff;
+}
+
 .siteFooter .accesskey {
   --tinge: #{$fontColorLight};
 }
@@ -102,7 +109,7 @@ button.goTop{
 // --------------------------------------------------------------- //
 button.sidebarCtrl{
   
-  --tinge : #{$white};
+  --tinge : #{$black};
   --bg: transparent;
 
   position: absolute;right: 0;top: 0;
@@ -124,6 +131,7 @@ button.sidebarCtrl{
   &::after {opacity: 0;}
 
   &:hover, &:focus {
+    --tinge : #{$white};
     --bg: #{$black};
   }
   &:focus{ box-shadow: var(--bg) 0 0 0 3px inset, #fff 0 0 0 4px inset}
@@ -145,6 +153,13 @@ button.sidebarCtrl{
       opacity: 1;
       transform: rotate(-45deg);
     }
+  }
+}
+
+// 首頁特調 [漢堡選單]
+.siteHeader:not(.fixed):has(~.main>.archiveAndStories) {
+  button.sidebarCtrl{
+    --tinge : #{$white};
   }
 }
 // --------------------------------------------------------------- //
@@ -257,6 +272,7 @@ kbd {
   li { 
     display: inline-block; 
     margin: 0 3px; padding: 2px;
+    span {display: block;}
     button, span { 
       width: var(--dotSize); height: var(--dotSize); border-radius: 50%;
       overflow: hidden; box-shadow: none;

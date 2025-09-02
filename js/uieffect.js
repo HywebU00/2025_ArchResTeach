@@ -37,11 +37,6 @@ $(function(){
   // --------------------------------------------------------------- //
 
 
-  // 找出_menu中有次選單的li 
-  // --------------------------------------------------------------- //
-  _menu.find('li').has('ul').addClass('hasChild');
-  var _hasChildA = _menu.find('.hasChild').children('a');
-  _hasChildA.attr('role', 'button').attr('aria-expanded', false);
 
   // 行動版側欄
   // --------------------------------------------------------------- //
@@ -303,15 +298,7 @@ $(function(){
 
   // 固定版頭 
   // --------------------------------------------------------------- //
-  // var fixHeadThreshold;
   let hh = _siteHeader.innerHeight();
-
-  // if ( ww >= wwNormal) {
-  //   fixHeadThreshold = hh;
-  // } else {
-  //   fixHeadThreshold = 0;
-  // }
-
   // 瀏覽器卷動 scroll 事件
   _window.on('scroll', function(){
     if (_window.scrollTop() > 0 ) {
@@ -329,10 +316,12 @@ $(function(){
   _window.trigger('scroll');
   // --------------------------------------------------------------- //
 
+
+
   // 點擊展開的複合功能圖示
   // --------------------------------------------------------------- //
   // 文字大小、分享
-  var _compIcon = $('.compound'); //li
+  var _compIcon = $('.compound'); // li class="compound"
   _compIcon.each(function(){
     let _this = $(this);
     let _controler = _this.children('button');
@@ -386,12 +375,61 @@ $(function(){
   // 複合功能圖示 end ---------------------------------------------- //
 
 
+
+  // 文字大小 和 cookie 
+  // --------------------------------------------------------------- //
+  // font size：顯示所選項目
+  const _fontSize = $('.fontSize');
+  const _fontSizeBtn = _fontSize.children('button');
+  let _fsOption = _fontSize.find('ul>li>button');
+
+  _fsOption.on('click', function(){
+    let fontClass = $(this).attr('class');
+    // _fontSizeBtn.removeClass().addClass(fontClass).text($(this).text());
+    _fontSizeBtn.removeClass().addClass(fontClass);
+    _body.removeClass('largeFont mediumFont smallFont').addClass(fontClass);
+    createCookie('FontSize', fontClass , 365);
+  })
+
+  function createCookie(name, value, days) {
+    if (days) {
+      let date = new Date();
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+      let expires = '; expires=' + date.toGMTString();
+    } else {
+      expires = '';
+    }
+    document.cookie = name + '=' + value + expires + '; path=/';
+  }
+
+  function readCookie(name) {
+    let nameEQ = name + '=';
+    let ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  }
+
+  window.onload = function () {
+    let cookie = readCookie('FontSize');
+
+    _body.removeClass('largeFont mediumFont smallFont').addClass(cookie);
+    // _fontSizeBtn.removeClass().addClass(cookie).text(_fsOption.filter('.'+cookie).text());
+    _fontSizeBtn.removeClass().addClass(cookie);
+  }
+  // font size 和 cookie end -------------------------------------- //
+
+
+
   // lp 頁上方可收合查詢區 
   // --------------------------------------------------------------- //
   const _showHideSearch = $('.searchOnLp');
   const _toc = $('.toc');
 
-  var _drawer = $('.drawer');
+  let _drawer = $('.drawer');
   _drawer.each(function () {
     let _this = $(this);
     let _handle = _this.find('button.handle');
@@ -468,32 +506,11 @@ $(function(){
   const _coverAll = _lightbox.prev('.coverAll');
   const speedLbx = 400;
 
-  // 點擊 closeThis 關燈箱
-  _hideLightbox.on('click', function(){
-    _lightbox.stop(true, false).fadeOut( speedLbx );
-    _coverAll.fadeOut(speedLbx);
-    _body.removeClass('noScroll');
-  })
-
-  // 點擊遮罩關燈箱
-  _coverAll.on('click', function(){
-    _hideLightbox.trigger('click')
-  })
-
-  // 按 [esc 鍵] 關燈箱
-  _lightbox.on('keydown', function(e){
-    if ( e.keyCode == 27) {
-      _hideLightbox.trigger('click');
-    }
-  })
-  // --------------------------------------------------------------- //
-
-
-
   // 大圖燈箱 
   // --------------------------------------------------------------- //
   const _photoShow = $('.photoSlide').find('.photoShow'); // 檔案詳細內容頁   
   const _bigPhotoLbx = $('.lightbox.bigPhotos');
+  // const _closeBigPhotoLbx = _bigPhotoLbx.find('.closeThis');
   
   _photoShow.before(ppButton); // 加入【暫停／輪播】按鈕
   const _photoShow_ppButton = _photoShow.prev('.pausePlay'); // 此區的暫停按鈕
@@ -535,6 +552,31 @@ $(function(){
     _body.addClass('noScroll');
 
   })
+
+
+  // 點擊 closeThis 關燈箱
+  _hideLightbox.on('click', function(){
+    _lightbox.stop(true, false).fadeOut( speedLbx );
+    if ( $(this).parent().is(_bigPhotoLbx) ) {
+      _keptFlowItem.trigger('focus');
+    }
+    _coverAll.fadeOut(speedLbx);
+    _body.removeClass('noScroll');
+  })
+
+  // 點擊遮罩關燈箱
+  _coverAll.on('click', function(){
+    _hideLightbox.trigger('click');
+  })
+
+  // 按 [esc 鍵] 關燈箱
+  _lightbox.on('keydown', function(e){
+    if ( e.keyCode == 27) {
+      _hideLightbox.trigger('click');
+    }
+  })
+  // --------------------------------------------------------------- //
+
   // --------------------------------------------------------------- //
 
 
@@ -856,14 +898,6 @@ $(function(){
     focusOnSelect: true,
     variableWidth: true,
     mobileFirst: true,
-    // responsive: [
-    //   {
-    //     breakpoint: wwMedium,
-    //     settings: {
-    //       slidesToShow: 4,
-    //     }
-    //   }
-    // ]
   })
 
   _photoShow.append('<div class="total">' + phsLength +'</div>');
@@ -951,7 +985,16 @@ $(function(){
   
   });
   // --------------------------------------------------------------- //
-  
+
+  // 移除 slick-dots 的 button 元件
+  function removeDotsButton() {
+    const slickDots = $('.slick-dots').find('li>button');
+    if (slickDots.length >= 1){
+      slickDots.wrapInner("<span></span>");
+      slickDots.find('span').unwrap();
+    }
+  }
+  removeDotsButton();
   
   // --------------------------------------------------------------- //
   // --------------- 外掛套件 slick 參數設定 END ------------------- //
@@ -968,6 +1011,8 @@ $(function(){
   
       wwNew = _window.width();
       
+      removeDotsButton();
+
       // 由小螢幕到寬螢幕
       if( ww < wwNormal && wwNew >= wwNormal ) {
         if (_sidebar.hasClass('reveal')) {
@@ -996,6 +1041,7 @@ $(function(){
         _body.removeAttr('style');
         _toc.find('.handle').removeClass('closeIt').attr('aria-expanded', false);
       }
+
       ww = wwNew;
     }, 200);
   });

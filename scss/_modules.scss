@@ -15,7 +15,7 @@
 
     display: block;
     margin: 0 auto;
-    padding: 24px 0 12px;
+    padding: 30px 0 12px;
     color: $fontColorLight;
 
     ul, li{ list-style: none; margin: 0;padding: 0;}
@@ -60,12 +60,29 @@
 .breadcrumb:has(~.topicComplex) {
 
   @media screen and (min-width: $wwNormal){
-    --color: #eee7d9;
-    --color-a: #fff;
-    --color-arrow: #602f2a;
+    --color: #000;
+    --color-a: #000;
+    --color-arrow: #444;
   }
 
 }
+
+// 主題頁（轉型正義教育專區） 之《瀏覽路徑》和《返回前頁》
+@media screen and (min-width: $wwNormal){
+  .breadcrumb:has( ~ .themeBanner){
+
+    --color: #fff;
+    --color-a: #fff;
+    --color-arrow: #{$gray};
+
+    position: absolute; z-index: 19; 
+    width: auto;
+    left: max($marginDoc, calc(50vw - $maximumWidth*.5));
+    text-shadow:  rgb(0 0 0 / 1) 0 1px 3px, rgb(0 0 0 / 1) 0 0 8px, rgb(0 0 0 / 1) 0 0 8px;
+    
+  }
+}
+
 // ------------------------------------------------------ //
 
 
