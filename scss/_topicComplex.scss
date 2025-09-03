@@ -1,0 +1,265 @@
+@use "variables" as *;
+
+// @forward "toc"; // 歷史清單, table of contents
+
+// 主題內容頁：主要區塊樣式
+.topicComplex {
+
+  // 年、標題與簡述
+  // ---------------------------------------------------------------- //
+  .brief {
+    padding: 50px 0;
+    text-align: center;
+    h2, p, time{
+      margin: 0 auto;
+    }
+    h2{
+      font-size: 2em;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      padding: 30px 0 24px;
+      line-height: 1.2;
+    }
+    p{
+      border-top: 1px solid $borderColorDark;
+      line-height: 2;
+      padding: 24px 0;
+      
+    }
+  
+    @media screen and (min-width: $wwNormal){
+      h2, p, time{
+        max-width: 90%;
+        width: fit-content;
+      }
+      h2{
+        font-size: 3.2em;
+      }
+      p{
+       padding-left: 22%; padding-right: 22%;
+      }
+    }
+  }
+  // ---------------------------------------------------------------- //
+  
+  
+  // 標頭：「歷史清單」
+  .toc_head {
+    position: relative;
+    padding: 0 40px 0 16px;
+    font-weight: bold; font-size: 1.125em;
+    border-radius: $radius*.5;
+    transition: .2s;
+    height: 3em; line-height: 3;
+    .text{
+      display: block;
+    }
+
+    // 控制開合的按鈕
+    button.handle{
+      --tinge : #{$fontColor};
+
+      position: absolute;
+      left: 0; right: 0; top: 0; height: 100%;
+      line-height: 100%;
+      border: none; margin: 0;
+      // color: var(--tinge);
+      background-color: transparent;
+      &::after {
+        content: '';
+        position: absolute; right: 20px; top: calc(1.5em - 2px);
+        width: 4px; height: 4px; border-radius: 2px;
+        background-color: var(--tinge);
+        box-shadow: var(--tinge) -7px 0 0, var(--tinge) 7px 0 0;
+        transition: .2s;
+      }
+      &:hover, &:focus {
+        --tinge : #{$white};
+      }
+  
+      &.closeIt {
+        &::after {
+          box-shadow: none;
+          width: 14px; right: 13px;
+        }
+      }
+    }
+
+    &:has(.handle.closeIt) {
+      background-color: $grayLight;
+    }
+    &:has( .handle:hover, .handle:focus) {
+      background-color: $grayDim;
+      color: $white;
+    }
+  }
+
+  // 左側：歷史清單 <nav class="toc">
+  .toc{
+    margin-top: 8px;
+    ul{list-style: none; margin: 0;padding: 0;}
+    &>ul{
+      line-height: 1.5;
+      li{
+        a { 
+          position: relative;
+          padding: 13px 16px 11px;
+          display: block; text-decoration: none;
+          color: $black;
+          transition: .2s;
+          &:hover{
+            background-color: $primaryColor;
+            color: $white;
+            &::after{border-color: $white;}
+            &::before {background-color: $white;}
+          }
+          &:has(+ul) {
+            padding-right: 40px;
+            &::after {
+              content: ''; position: absolute;
+              right: 15px; top: 16px;
+              width: 10px; height: 10px;
+              border: 2px solid $borderColorDark;
+              border-left: none; border-top: none;
+              rotate: 45deg;
+              transition: .2s;
+            }
+          }
+  
+          &.closeIt{
+            &::after {
+              rotate: 225deg; top: 22px;
+            }
+          }
+        }
+      }
+  
+      &>li{ 
+        &:has(>a.closeIt) {
+          transition: .2s;
+          background-color: rgb(255 255 255 / 1);
+          // box-shadow: $shadow1 0 0 8px 2px inset;
+        }
+        ul {display: none;}
+      }
+  
+      &>li>ul>li{
+        a{
+          &::before {
+            content: ''; position: absolute;
+            top: 21px;
+            width: 4px; height: 4px;
+            background: $primaryColor;
+          }
+        }
+        &>a{ 
+          padding-left: 36px;
+          &::before {left: 22px; }
+        }
+        &>ul>li{
+          &>a{ padding-left: 56px;
+            &::before {left: 42px; }
+          }
+          &>ul>li{
+            &>a{ padding-left: 76px;
+            &::before {left: 62px; }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 此章節內容
+  // ---------------------------------------------------------------- //
+  .prologue{
+    margin: 0 auto 40px; padding: 8px 0;
+    line-height: 2;
+    border-bottom: 1px solid $grayDark;
+    .chapterTitle{ 
+      font-size: 1.6em; font-weight: 500;
+      line-height: 1.3; text-align: center;
+      margin: 0 0 32px;
+    }  
+  }
+  // ---------------------------------------------------------------- //
+
+  @media screen and (min-width: $wwNormal){
+
+    .toc_head{ 
+      border-radius: 0;
+      border-bottom: 1px solid $borderColor;
+      button.handle{display: none;}
+    }
+
+    .prologue{
+      .chapterTitle {font-size: 2.5em; text-align: left;}
+    }
+  }
+}  
+
+
+
+// ---------------------------------------------------------------- //
+// ---------------------------------------------------------------- //
+// ---------------------------------------------------------------- //
+
+
+// LP01_導覽列表頁
+// 主題列表頁：排版。排版。排版。排版。排版。排版
+// ---------------------------------------------------------------- //
+.topicComplex {
+  width: $mobileWidth;
+  margin: 0 auto; 
+  padding: 0 0 80px;
+
+  .searchOnLp {width: 100%; margin-top: 0;}
+
+  .category{width: 100%;}
+
+  .leftSidebar {
+    position: fixed; z-index: 199;
+    left: 10px;right: 10px;bottom: 0;
+    padding:8px;
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+
+    background-color: $white;
+    border-radius: $radius $radius 0 0;
+    box-shadow: $shadow2 0 0 16px 2px;
+
+    .tray{display: none;} //清單預設隱藏
+  }
+
+  @media screen and (min-width: $wwNormal){
+    width: $normalWidth;
+    max-width: $maximumWidth;
+    display: flex; flex-flow: row wrap;
+
+    .leftSidebar {
+      max-height:none;
+      box-shadow: none;
+      border-radius: $radius2;
+      background-color: $grayLight;
+
+      .toc_head {display: block;}
+      button.handle{display: none;}
+      .tray {display: block;}
+
+    }
+
+    .brief {flex: 0 0 100%;}
+
+    .leftSidebar {
+      flex: 0 0 25%;
+      position: static;z-index: 0;width: auto;
+    }
+
+    .rightContent{
+      flex: 0 0 72%;
+      margin-left: 3%;
+      width: auto;
+    }    
+  }
+
+}
+// ---------------------------------------------------------------- //

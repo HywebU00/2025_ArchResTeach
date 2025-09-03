@@ -427,7 +427,7 @@ $(function(){
   // lp 頁上方可收合查詢區 
   // --------------------------------------------------------------- //
   const _showHideSearch = $('.searchOnLp');
-  const _toc = $('.toc');
+  const _toc = $('.topicComplex').find('.leftSidebar');
 
   let _drawer = $('.drawer');
   _drawer.each(function () {
@@ -472,10 +472,10 @@ $(function(){
 
   // 歷史清單樹狀選單開合 
   // --------------------------------------------------------------- //
-  const _tocList = _toc.find('.toc_list');
-  let  _toc_hasSibA = _tocList.find('li').has('ul').children('a');
+  const _tocList = $('.toc').children('ul');
+  let  _toc_a_hasSibling = _tocList.find('li').has('ul').children('a');
 
-  _toc_hasSibA.each(function(){
+  _toc_a_hasSibling.each(function(){
     let _thisA  = $(this);
     let _thisUl = _thisA.next('ul');
     const speed = 400;
@@ -491,7 +491,6 @@ $(function(){
         _thisA.removeClass('closeIt');
       }
     })
-
   })
 
   // --------------------------------------------------------------- //

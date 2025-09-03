@@ -5,7 +5,9 @@
 // ---------------------------------------------------------------- //
 .thumbList {
   @extend %primSecWidth;
-  margin-bottom: 64px;
+  &:has(+.pagination) {
+    margin-bottom: 64px;
+  }
 
   ul{
     list-style: none; margin: 0 auto; padding: 0;
@@ -17,7 +19,7 @@
       &>a{
         display: block;
         height: 100%;
-        padding: 20px;
+        padding: 16px;
         text-decoration: none;
         background-color: $grayLight;
         border-radius: $radius;
@@ -43,11 +45,11 @@
       dl{
         line-height: 1.4;
         margin: 16px auto 0;
-        padding: 16px 0 0;
+        padding: 20px 0 4px;
         border-top: 1px solid $borderColor;
         &>div{
-          margin: 12px 0;
           display: flex; flex-flow: row nowrap;
+          &+div{ margin-top: 12px;}
         }
         dd, dt {
           margin: 0; padding: 0;
@@ -94,3 +96,18 @@
 }
 // ---------------------------------------------------------------- //
 
+@media screen and (min-width: $wwNormal){
+
+  .topicComplex, .searchComplex {
+    .thumbList {
+      width: 100%; margin: 0;
+      &>ul{ 
+        gap: 15px;
+        &>li{
+          flex-basis: calc(33.3333% - 10px);
+        }
+      }
+    }
+
+  }
+}

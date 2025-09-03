@@ -1,6 +1,6 @@
 @use "variables" as *;
 
-
+// 檔案詳細內容頁
 .archComplex{
   @extend %primSecWidth;
 
@@ -173,7 +173,7 @@
 // ------------------------------------------------------ //
 
 
-// meta table
+// 文字資料 meta table
 // ------------------------------------------------------ //
 .meta {
   margin: 0 auto;
@@ -328,9 +328,7 @@
 
 
 
-
-
-// 相關檔案(輪播)
+// 相關檔案(slick)
 // ------------------------------------------------------ //
 .relatedFiles{
   @extend %primSecWidth;
@@ -361,11 +359,11 @@
   }
 
   .flowItem{
-    margin: 16px 12px; padding: 0;
+    margin: 16px 8px; padding: 0;
     &>a{
       display: block;
       height: 100%;
-      padding: 20px;
+      padding: 16px;
       text-decoration: none;
       background-color: $grayLight;
       border-radius: $radius;
@@ -418,7 +416,7 @@
 
   @media screen and (min-width: 600px){
     .flowItem{
-      margin-left: 10px; margin-right: 10px;
+      margin-left: 8px; margin-right: 8px;
     }
   }
 
@@ -432,10 +430,10 @@
       padding-left: 0;padding-right: 0;
       .slick-arrow{
         &.slick-prev {
-          translate: -90% -50%;
+          translate: -96% -50%;
         }
         &.slick-next {
-          translate: 90% -50%;
+          translate: 96% -50%;
         }
       }
     }
