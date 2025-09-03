@@ -14,13 +14,14 @@
 @forward "topicList"; // 主題瀏覽(卡片式)
 @forward "lp"; // ul, table條列頁
 @forward "stack"; // 圖文條列頁
-@forward "topicComplex"; // 主題內頁
+@forward "thumbList"; // 縮圖瀏覽，卡片式
+@forward "topicComplex"; // 主題條列、瀏覽
 @forward "searchOnLp"; // 條列頁上方的查詢區
 @forward "themes"; // 主題：轉型正義教育專區
-@forward "archComplex"; // 檔案詳細內容頁 20250819
-@forward "searchComplex"; // 進階搜尋 20250819
+@forward "archComplex"; // 檔案詳細內容頁
+@forward "searchAdv"; // 進階搜尋
+@forward "searchComplex"; // 查詢結果
 @forward "category"; // 資料大類
 @forward "pagination"; // 分頁
-@forward "thumbList"; // 縮圖瀏覽，卡片式
 @forward "sitemap"; // 網站地圖
 @forward "lightbox"; // 燈箱

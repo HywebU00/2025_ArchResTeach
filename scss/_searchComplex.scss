@@ -2,227 +2,6 @@
 @use 'accessories' as *;
 
 
-// 進階搜尋：關鍵字輸入
-// --------------------------------------------------------------- //
-.archSearch {
-  margin: 0;
-  padding: 40px 4% 40px;
-  text-align: center;
-  
-  form{
-    position: relative;
-    margin: 0 auto 16px;padding: 4px;
-    height: 3.25em; width: 100%;
-    text-align: left;
-    border-radius: $radius;
-    background-color: #fff;
-    box-shadow: $borderColor 0 0 0 1px;
-    transition: .2s;
-    &:hover, &:has(input:focus, button:focus){
-      box-shadow: $borderColor 0 0 12px 1px;
-    }
-  }
-  input, button {
-    margin: 0;
-    font-size: inherit;
-    border-radius: $radius*.5;
-    transition: .2s;
-  }
-  input[type="text"]{
-    height: calc(3.25em - 8px);
-    width: calc(100% - 3.5em);
-    padding: 0 .5em;
-    border: none; outline: none;
-    &:focus{
-      box-shadow: $primaryColor 0 0 0 2px;
-    }
-  }
-
-  button{
-    --tinge : #{$black};
-    --bgc: #{$white};
-
-    @extend %searchIcon;
-    
-    background-color: var(--bgc);
-    position: absolute; right: 4px; top: 4px;
-    width: calc(3.25em - 8px);
-    height: calc(3.25em - 8px);
-    border: none;
-    
-    &:hover{
-      --bgc: #{$grayLight};
-    }
-    &:focus {
-      --tinge : #{$white};
-      --bgc: #{$primaryColor};
-    }
-  }
-
-  .hotKeywords{
-    --a-bgc: #{$grayLight};
-    --a-color: #{$fontColor};
-
-    list-style: none; line-height: 1;
-    margin: 16px auto; padding: 0;
-    display: flex; flex-flow: row wrap;
-    justify-content: center;
-    li{
-      margin: 4px; padding: 0;
-      a{
-        display: block;
-        height: 2.3em; line-height: 2.35; 
-        padding:0 16px;
-        border-radius: 2em;
-        white-space: nowrap;
-        background-color: var(--a-bgc);
-        color: var(--a-color);
-        text-decoration: none;
-        transition: .2s;
-        &:hover, &:focus{
-          --a-bgc: #{$black};
-          --a-color: #{$white};
-        }
-      }
-    }
-  }
-
-  .tip{margin: 1.5em 0 0;}
-}
-// --------------------------------------------------------------- //
-
-
-// 事件主題、年代 篩選
-// --------------------------------------------------------------- //
-.browsing {
-  label{
-    display: block;
-    margin: 0 0 24px;
-    .label{
-      margin:8px 4px;
-      font-weight: bold;
-    }
-    select, input {
-      border: none;
-    }
-    select{ width: 100%;}
-  }
-
-  .btnDv {
-    padding:12px 0 0;
-  }
-
-  @media screen and (min-width: $wwNormal){
-    form{
-      display: flex; flex-flow: row wrap;
-      justify-content: space-between;
-    }
-
-    label {
-      margin: 0;
-      flex: 0 0 47%;
-    }
-    .btnDv{
-      flex: 0 0 100%;
-      margin-top: 24px;
-    }
-
-  }
-
-}
-// --------------------------------------------------------------- //
-
-
-// 試試看外部轉查
-// --------------------------------------------------------------- //
-.tryOthers {
-  margin: 0 auto;
-  text-align: center;
-  ul{list-style: none; margin:1.8em 0 1em;padding: 0;}
-  li{
-    margin:8px;
-    line-height: 1; font-size: 1.125em;
-    text-align: center;display: inline-block;
-    &>a{
-      display: block; position: relative;
-      margin: 0 auto; padding: 5px 0;
-      width: fit-content;
-      text-decoration: none;
-      &::after {
-        content: ''; position: absolute;
-        left: 0; right: 0; bottom: 0;
-        height: 2px;
-        background-color: $borderColor;
-      }
-      &:hover, &:focus {
-        &::after {height: 3px;background-color: $primaryColor;}
-      }
-      &:focus-visible {
-        outline: 2px solid $primaryColor;
-        &:after { background-color: transparent;}
-      }
-    }
-  }
-
-  @media screen and (min-width: $wwMedium){
-    li{
-      margin: 0;
-      &+li{ margin-left: 28px;}
-    }
-  }
-}
-// --------------------------------------------------------------- //
-
-
-// 小提示
-.tip{ font-size: .92em; line-height: 1.6; }
-
-
-// --------------------------------------------------------------- //
-// --------------------------------------------------------------- //
-// --------------------------------------------------------------- //
-
-
-// sp02_search.html 進階搜尋
-// --------------------------------------------------------------- //
-.searchAdv {
-  @extend %primSecWidth;
-  padding:32px 3%;
-  margin-bottom: 80px;
-  box-shadow: $shadow1 0 0 16px 2px;
-  border-radius: $radius2;
-
-  .archSearch {
-    padding:0; margin: 0 auto;
-  }
-  .browsing {
-    --inputBdr: transparent;
-    padding:32px 4%; margin: 48px auto;
-    background-color: $grayLight;
-    border-radius: $radius2;
-  }
-
-  @media screen and (min-width: $wwNormal){
-    
-    padding:48px 32px;
-    margin-bottom: 100px;
-
-    .browsing, .archSearch, .tryOthers {
-      max-width: 960px;
-    }
-    .archSearch {
-      form, .hotKeywords {
-        max-width: none;
-      }
-    }
-
-  }
-
-}
-// --------------------------------------------------------------- //
-
-
-
 // sp03.html 進階搜尋_查詢結果頁
 // --------------------------------------------------------------- //
 .searchComplex{
@@ -237,7 +16,7 @@
     }
   }
 
-  // 搜尋條件 + 篩選主題或事件
+  // 左側欄：搜尋條件 + 篩選主題或事件
   .leftSidebar {
     .head {
       margin:8px 8px 16px;padding: 0 0 8px;
@@ -289,7 +68,7 @@
       }
     }
 
-    // 搜尋條件, 篩選主題或事件
+    // 左側欄：搜尋條件, 篩選主題或事件
     .conditions, .filters {
       margin: 0 0 16px; padding: 8px;
       border-radius: $radius2;
@@ -297,7 +76,7 @@
       border-radius: $grayLight;
     }
 
-    // 搜尋條件
+    // 左側欄：搜尋條件
     .conditions {
       li{
         button {
@@ -314,7 +93,7 @@
       }
     }
 
-    // 篩選主題或事件
+    // 左側欄：篩選主題或事件
     .filters{
       li{
         button {
@@ -345,7 +124,7 @@
       }
     }
     .thumbList{
-      margin-top: 8px;
+      margin-top: 24px;
     }
   }
 
