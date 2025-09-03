@@ -231,42 +231,40 @@
   .archSearch{ 
     background-color: $grayLight;
     border-radius: $radius2;
+    margin-bottom: 16px;
     .hotKeywords{
       --a-bgc: #{$white};
     }
   }
 
   // 搜尋條件 + 篩選主題或事件
-  .filter {
-    // padding: 16px 0; margin: 0 auto;
-    // width: $mobileWidth;
-    h4 {
-      margin:16px 0;padding: 0 0 8px;
-      font-size: 1.15em; font-weight: normal;
-      letter-spacing: 1px;
+  .leftSidebar {
+    .head {
+      margin:8px 8px 16px;padding: 0 0 8px;
+      font-size: 1.125em; letter-spacing: 1px;
       border-bottom: 1px solid $borderColor;
     }
     .keyword {
       display: block;
-      margin: 0 0 16px;
-      font-weight: bold;
+      margin: 0 8px 16px;
+      font-weight: bold;font-style: normal;
       color: $fontColorDark; 
     }
-    ul {list-style: none;margin:0;padding: 0;}
+    ul {list-style: none;margin:0;padding: 0; }
 
     li {
-      margin: 4px 0;
+      margin: 0 0 6px;
       &>button {
         position: relative;
         width: 100%; height: auto;
-        margin: 0; padding: .8em 16px .7em 40px;
+        margin: 0; padding: 10px 12px 8px 36px;
         text-align: left;line-height: 1.5;
         border-radius: 1.5em;
         background-color: transparent;
         color: $fontColor;
         &::before {
-          position: absolute;left: 11px;top: .7em;
-          width: 1.4em;height: 1.4em;line-height: 1.45;
+          position: absolute;left: 10px;top: .7em;
+          width: 20px;height: 20px;line-height: 21px;
           text-align: center;
           border-radius: 50%;
           color: $white;
@@ -291,16 +289,16 @@
       }
     }
 
-    .yourInput, .refine {
-      margin: 0 0 16px;
-      padding: 16px;
+    // 搜尋條件, 篩選主題或事件
+    .conditions, .filters {
+      margin: 0 0 16px; padding: 8px;
       border-radius: $radius2;
       background-color: $grayLight;
       border-radius: $grayLight;
     }
 
-
-    .yourInput {
+    // 搜尋條件
+    .conditions {
       li{
         button {
           &::before {
@@ -316,16 +314,17 @@
       }
     }
 
-    .refine{
+    // 篩選主題或事件
+    .filters{
       li{
         button {
           &::before{
             content: '+';
-            background-color: $grayDim;
+            background-color: $primaryColor;
           }
           &:hover, &:focus {
             &::before {
-              box-shadow: $grayDim 0 0 0 2px;
+              box-shadow: $primaryColor 0 0 0 2px;
             }
           }
         }
@@ -335,12 +334,15 @@
   }
 
   // 搜尋結果
-  .result {
+  .result, .rightContent {
     padding: 16px 0; margin: 24px auto 0; width: $mobileWidth;
-    &>p:first-child { display: inline-block;}
-    .keyword {
-      display: inline-block; margin-left: 8px;
-      font-size: 1.5em; font-weight: bold;
+    .searchInput { 
+      margin: 0 0 16px;
+      em.keyword {
+        display: inline-block; margin-left: 8px;
+        font-size: 1.5em; font-weight: bold;
+        font-style: normal;
+      }
     }
     .thumbList{
       margin-top: 8px;
@@ -355,29 +357,24 @@
 
     .archSearch {
       flex: 0 0 100%;
-      margin: 0 0 24px;
+      margin-bottom: 36px;
       form, .hotKeywords {
         max-width: 920px;
       }
     }
 
-    .filter{
+    .leftSidebar{
       flex: 0 0 28%;
-      width: auto;
-      margin: 0;
-      outline: 1px solid #09f8;
-      outline-offset: -1px;
+      width: auto;margin: 0;
     }
 
-    .result{
+    .rightContent{
       flex: 0 0 69%;
-      width: auto;
-      margin: 0;
-      outline: 1px solid #09f8;
-      outline-offset: -1px;
+      width: auto; margin: 0;
 
       .thumbList{
-        width: 100%; margin-top: 16px;
+        width: 100%; 
+        margin-bottom: 56px;
       }
     }
   }
