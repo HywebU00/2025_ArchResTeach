@@ -1,0 +1,56 @@
+@use "variables" as *;
+
+// 檔案列表
+// 有照片、檔號、案名
+ul.fileList {
+  &>li{
+    &>a{
+      padding: 16px;
+      text-decoration: none;
+      background-color: $grayLight;
+      border-radius: $radius;
+      transition: .2s;
+
+      &:hover{
+        background-color: $white;
+        box-shadow:transparent 0 0 0 0, $shadow1 0 4px 16px;
+        translate: 0 -5px;
+      }
+      &:focus {
+        background-color: $white;
+        box-shadow:$primaryColor 0 0 0 2px, $shadow1 0 4px 12px;
+      }
+    }
+
+    img{
+      display: block;
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: contain;
+    }
+
+    dl{
+      line-height: 1.4;
+      margin: 16px auto 0;
+      padding: 20px 0 4px;
+      border-top: 1px solid $borderColor;
+      &>div{
+        display: flex; flex-flow: row nowrap;
+        &+div{ margin-top: 12px;}
+      }
+      dd, dt {
+        margin: 0; padding: 0;
+      }
+      dt{ 
+        margin-right: 12px;
+        color: $fontColorLight;
+        white-space: nowrap;
+      }
+      dd{
+        white-space: normal;
+        word-break: break-all;
+      }
+    }
+  }
+
+}
