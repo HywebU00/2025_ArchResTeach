@@ -13,12 +13,11 @@ ul.fileList {
 
       &:hover{
         background-color: $white;
-        box-shadow:transparent 0 0 0 0, $shadow1 0 4px 16px;
-        translate: 0 -5px;
+        box-shadow:transparent 0 0 0 0, $shadow1 0 2px 24px;
       }
       &:focus {
         background-color: $white;
-        box-shadow:$primaryColor 0 0 0 2px, $shadow1 0 4px 12px;
+        box-shadow:$primaryColor 0 0 0 2px, $shadow1 0 2px 12px;
       }
     }
 

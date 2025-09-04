@@ -4,8 +4,9 @@
 // ---------------------------------------------------------------- //
 .cards {
   @extend %primSecWidth;
-  &:has(+.pagination) {
-    margin-bottom: 64px;
+
+  &+.pagination {
+    margin-top: 56px;
   }
 
   ul{list-style: none; margin: 0 auto; padding: 0;}

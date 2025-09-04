@@ -104,15 +104,12 @@
       margin:8px 4px;
       font-weight: bold;
     }
-    select, input {
-      border: none;
-    }
+    select, input {border: none;}
     select{ width: 100%;}
+    input[list] {line-height: 1.2;}
   }
 
-  .btnDv {
-    padding:12px 0 0;
-  }
+  .btnDv {padding:12px 0 0;}
 
   @media screen and (min-width: $wwNormal){
     form{
@@ -201,7 +198,7 @@
 
   @media screen and (min-width: $wwNormal){
     
-    padding:48px 32px;
+    padding:56px 32px;
     margin-bottom: 100px;
 
     .browsing, .archSearch, .tryOthers {

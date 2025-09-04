@@ -155,10 +155,33 @@
           <label>
             <div class="label">事件年代</div> 
             <div class="duration">
-              <input type="month" aria-label="年代範圍：開始年">
-              <input type="month" aria-label="年代範圍：結束年">
+              <input type="text" maxlength="4" list="year-begin" aria-label="開始年">
+              <input type="text" maxlength="4" list="year-end" aria-label="結束年">
             </div>
           </label>
+          <datalist id="year-begin">
+            <option value="1960">1960</option>
+            <option value="1970">1970</option>
+            <option value="1971">1971</option>
+            <option value="1972">1972</option>
+            <option value="1973">1973</option>
+            <option value="1974">1974</option>
+            <option value="1975">1975</option>
+            <option value="1976">1976</option>
+            <option value="1977">1977</option>
+            <option value="1978">1978</option>
+            <option value="1979">1979</option>
+            <option value="1980">1980</option>
+            <option value="1990">1990</option>
+            <option value="2000">2000</option>
+          </datalist>
+          <datalist id="year-end">
+            <option value="2010">2010</option>
+            <option value="2020">2020</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+          </datalist>
     
           <div class="btnDv">
             <button type="submit">開始搜尋</button>

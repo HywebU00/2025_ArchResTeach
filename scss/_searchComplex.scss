@@ -18,11 +18,6 @@
 
   // 左側欄：搜尋條件 + 篩選主題或事件
   .leftSidebar {
-    .head {
-      margin:8px 8px 16px;padding: 0 0 8px;
-      font-size: 1.125em; letter-spacing: 1px;
-      border-bottom: 1px solid $borderColor;
-    }
     .keyword {
       display: block;
       margin: 0 8px 16px;
@@ -74,10 +69,17 @@
       border-radius: $radius2;
       background-color: $grayLight;
       border-radius: $grayLight;
+      .head {
+        font-size: 1.15em; letter-spacing: 1px;
+      }
     }
 
     // 左側欄：搜尋條件
     .conditions {
+      .head{
+        margin:0 0 16px; padding: 8px 8px 16px;
+        border-bottom: 1px solid $borderColor;
+      }
       li{
         button {
           &::before {
@@ -95,6 +97,54 @@
 
     // 左側欄：篩選主題或事件
     .filters{
+      .head {
+        position: relative;
+        border-radius: $radius;
+        .text{
+          display: block;
+          margin-right: 36px; padding: 8px;
+        }
+        button.handle{
+          margin: 0;
+          height: 2.4em; width: 100%;
+          position: absolute; top: 0;
+          background-color: transparent;
+          transition: .2s;
+          &::before, &::after {
+            content: ''; position: absolute;
+            transition: .2s;
+          }
+          &::before {
+            right: 3px;top: 3px;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+          }
+          &::after {
+            right: 16px; top: 14px;
+            width: 10px; height: 10px;
+            border: 2px solid $borderColorDark;
+            border-left: none; border-top: none;
+            rotate: 45deg;
+          }
+          &.closeIt {
+            &::after{top: 18px; rotate: 225deg;}
+          }
+          &:hover{
+            &::before {background-color: $white;}
+          }
+          &:focus {
+            &::before {background-color: $black;}
+            &::after { border-color: $white;}
+          }
+        }
+      }
+
+      &>ul {
+        border-top: 1px solid $borderColor;
+        margin-top: 8px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+      }
       li{
         button {
           &::before{

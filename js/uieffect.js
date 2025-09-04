@@ -440,26 +440,32 @@ $(function(){
 
     if ( _tray.is(':hidden')) {
       _handle.removeClass('closeIt').attr('aria-expanded', false);
-      if (_this.is(_showHideSearch) ) {_handle.text(text1)}
+      // if (_this.is(_showHideSearch) ) {_handle.text(text1)}
+      _this.is(_showHideSearch) && _handle.text(text1)
     } else {
       _handle.addClass('closeIt').attr('aria-expanded', true);
-      if (_this.is(_showHideSearch) ) {_handle.text(text2)}
-      if ( _this.is(_toc) && ww >= wwNormal) {
-        _handle.removeClass('closeIt');
-      }
+      // if (_this.is(_showHideSearch) ) {_handle.text(text2)}
+      // if ( _this.is(_toc) && ww >= wwNormal) {
+      //   _handle.removeClass('closeIt');
+      // }
+      _this.is(_showHideSearch) && _handle.text(text2);
+      ( _this.is(_toc) && ww >= wwNormal ) && _handle.removeClass('closeIt');
     }
 
     _handle.on('click', function () {
       if (_tray.is(':hidden')) {
         _tray.stop(true, false).slideDown(speed, function(){
           _handle.addClass('closeIt').attr('aria-expanded', true);
-          if ( _this.is(_showHideSearch) ) {_handle.text(text2)}
+          // if ( _this.is(_showHideSearch) ) {_handle.text(text2)}
+          _this.is(_showHideSearch) && _handle.text(text2)
         });
       } else {
         _tray.stop(true, false).slideUp(speed, function(){
           _handle.removeClass('closeIt').attr('aria-expanded', false);
-          _tray.removeAttr('style');
-          if (_this.is(_showHideSearch) ) {_handle.text(text1)}
+          // if ( _this.is(_showHideSearch) ) {_handle.text(text1) }
+          // if ( _this.is(_toc) ) { _tray.removeAttr('style') }
+          _this.is(_showHideSearch) && _handle.text(text1);
+          _this.is(_toc) && _tray.removeAttr('style');
         })
       }
     })
