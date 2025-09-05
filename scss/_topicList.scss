@@ -13,8 +13,8 @@ ul.topicList {
     border-radius: $radius2;
 
     .background {
-      position: absolute; left: 0; top: 0;
       z-index: 1;
+      position: absolute; left: 0; top: 0;
       width: 100%; height: 100%;
       object-fit: cover;
       border-radius: $radius2;
@@ -51,6 +51,22 @@ ul.topicList {
         a{margin-left: auto;}
       }
     }
+
+    &:hover,
+    &:has(.more>a:focus) {
+      .background {
+        filter: brightness(.65);
+      }
+      time{
+        background-color: $white;
+        &::after {
+          filter: brightness(2);
+        }
+      }
+      article {background-color: $white;}
+
+    }
+
   }
 
   @media screen and (min-width: $wwMedium){
@@ -58,13 +74,6 @@ ul.topicList {
       display: flex;
       flex-flow: column wrap;
       justify-content: flex-end;
-
-      &:hover,
-      &:has(.more>a:focus) {
-        .background {
-          filter: brightness(.65);
-        }
-      }
   
       article {
         .title, p {
@@ -79,14 +88,11 @@ ul.topicList {
       &>a {
         flex: 0 1 auto;
         padding: 24px;
-        display: flex;
-        flex-wrap: nowrap;
+        display: flex; flex-wrap: nowrap;
         flex-direction: column;
   
         article {
-          p {
-            margin-bottom: auto;
-          }
+          p {margin-bottom: auto;}
         }
   
       }
