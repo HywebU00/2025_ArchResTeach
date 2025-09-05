@@ -61,8 +61,8 @@
       margin: 0 auto;
     }
     h2{
-      font-size: 2em;
-      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-family: "Noto Serif TC", serif;
+      font-size: 2em; font-weight: 600;
       padding: 30px 0 24px;
       line-height: 1.2;
     }
@@ -70,7 +70,6 @@
       border-top: 1px solid $borderColorDark;
       line-height: 2;
       padding: 24px 0;
-      
     }
   
     @media screen and (min-width: $wwNormal){
@@ -78,12 +77,8 @@
         max-width: 90%;
         width: fit-content;
       }
-      h2{
-        font-size: 3.2em;
-      }
-      p{
-       padding-left: 22%; padding-right: 22%;
-      }
+      h2{font-size: 3.2em;}
+      p{padding-left: 22%; padding-right: 22%;}
     }
   }
   // ------------------------------------- //
@@ -139,7 +134,7 @@
       color: $white;
     }
   }
-  
+
   // ------------------------------------- //
 
   // 左側：歷史清單 <nav class="toc">

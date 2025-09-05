@@ -1,6 +1,7 @@
 @use "variables" as *;
 @use '_accessories' as *;
 
+
 // 首頁：檔案 時光流轉的故事
 .archiveAndStories {
   padding: 40px 0 80px;
@@ -16,12 +17,13 @@
 
     &>hgroup{
       h2{
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 2.375em;font-weight: normal;
+        font-family: "Noto Serif TC", serif;
+        font-size: 2.375em;font-weight: 500;
         line-height: 1.2;
         em{
           display: block; margin: 0 0 12px;
           font-size: 1.8em; font-style: normal;
+          font-weight: 600;
         }
       }
       p{ line-height: 1.6; margin: 20px 0;}
