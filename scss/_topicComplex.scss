@@ -110,14 +110,13 @@
       left: 0; right: 0; top: 0; height: 100%;
       line-height: 100%;
       border: none; margin: 0;
-      // color: var(--tinge);
       background-color: transparent;
       &::after {
         content: '';
         position: absolute; right: 20px; top: calc(1.5em - 2px);
         width: 4px; height: 4px; border-radius: 2px;
         background-color: var(--tinge);
-        box-shadow: var(--tinge) -7px 0 0, var(--tinge) 7px 0 0;
+        box-shadow: var(--tinge) -8px 0 0, var(--tinge) 8px 0 0;
         transition: .2s;
       }
       &:hover, &:focus {
@@ -127,7 +126,7 @@
       &.closeIt {
         &::after {
           box-shadow: none;
-          width: 14px; right: 13px;
+          width: 16px; right: 12px;
         }
       }
     }

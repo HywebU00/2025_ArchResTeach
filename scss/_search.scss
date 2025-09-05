@@ -2,11 +2,7 @@
 
 // 版頭查詢區
 // ---------------------------------------------------------------- //
-.siteHeader .search{
-
-  --linkText: #{$fontColorDark}; //
-  --formBorder: #{$grayDark};
-
+.siteHeader .search{ 
   display: none;
 
   @media screen and (min-width: $wwNormal){
@@ -14,68 +10,104 @@
     display: flex; align-items: center;
     margin-left: 20px;
 
-    form{
-      flex: 1 1 90%;
-      position: relative;
-      height: 44px; border-radius: 22px;
-      background-color: $white;
-      box-shadow: var(--formBorder) 0 0 0 1px;
-      input[type="text"] {
-        height: 36px; width: calc(100% - 48px);
-        border-radius: 18px;
-        margin: 4px auto auto 4px; padding: 0 12px;
-        border: none;
-        &:focus-visible {
-          box-shadow: $primaryColor 0 0 0 2px;
-        }
-      }
-      input[type="button"], input[type="submit"], button{
-        position: absolute; right: 4px; top: 4px;
-        width: 36px; height: 36px; border-radius: 50%;
-        margin: 0; padding: 0;
-        outline: 0; border: none; font-size: 0;
-        background: url(../images/icon_search_black.svg) no-repeat center center;
-        background-size: 16px auto;
-        transition: .2s;
-        &:hover {
-          background-color: $grayLight;
-        }
-        &:focus {
-          background-color: $primaryColor;
-          background-image: url(../images/icon_search_white.svg);
-        }
+  }
+
+}
+
+.siteHeader .search {
+
+  --linkText: #{$fontColorDark}; 
+  --formBorder: #{$grayDark};
+
+ 
+  form{
+    flex: 1 1 90%;
+    position: relative;
+    height: 44px; border-radius: 22px;
+    background-color: $white;
+    box-shadow: var(--formBorder) 0 0 0 1px;
+    input[type="text"] {
+      height: 36px; width: calc(100% - 48px);
+      border-radius: 18px;
+      margin: 4px auto auto 4px; padding: 0 12px;
+      border: none;
+      &:focus-visible {
+        box-shadow: $primaryColor 0 0 0 2px;
       }
     }
-
-    a.advLink {
-      // --color: #{$fontColor};
-
-      flex: 0 0 content;
-      display: block; white-space: nowrap;
-      margin: 3px 2px 2px 12px; padding:0 0 4px;
-      font-size: .875em; line-height: 1;
-      text-decoration: none;
-      color: var(--linkText);
-      position: relative;
-      &::after {
-        content: ''; 
-        position: absolute;left: 0; right: 0; bottom: 0;
-        height: 1px;
-        background-color: var(--linkText);
+    input[type="button"], input[type="submit"], button{
+      position: absolute; right: 4px; top: 4px;
+      width: 36px; height: 36px; border-radius: 50%;
+      margin: 0; padding: 0;
+      outline: 0; border: none; font-size: 0;
+      background: url(../images/icon_search_black.svg) no-repeat center center;
+      background-size: 16px auto;
+      transition: .2s;
+      &:hover {
+        background-color: $grayLight;
       }
-      &:hover, &:focus{
-        &::after {height: 2px;}
-      }
-      &:focus-visible {
-        outline: 1px solid var(--linkText);
+      &:focus {
+        background-color: $primaryColor;
+        background-image: url(../images/icon_search_white.svg);
       }
     }
   }
+
+  a.advLink {
+
+    flex: 0 0 content;
+    display: block; white-space: nowrap;
+    margin: 3px 2px 2px 12px; padding:0 0 4px;
+    font-size: .875em; line-height: 1;
+    text-decoration: none;
+    color: var(--linkText);
+    position: relative;
+    &::after {
+      content: ''; 
+      position: absolute;left: 0; right: 0; bottom: 0;
+      height: 1px;
+      background-color: var(--linkText);
+    }
+    &:hover, &:focus{
+      &::after {height: 2px;}
+    }
+    &:focus-visible {
+      outline: 1px solid var(--linkText);
+    }
+  }
+
 
 }
 
 // ---------------------------------------------------------------- //
 
+
+.sidebar .search{
+  position: relative;
+
+  display: block;
+  margin:32px 16px ;
+
+
+  form{
+    input[type="text"] {
+      width: 100%;
+      margin: 0 0 8px;
+      
+    }
+    input[type="button"], input[type="submit"], button{
+      width: 6em;
+      border-radius: 2em;
+    }
+
+  }
+  .advLink{
+    position: absolute; right: 4px;
+    bottom: 16px;
+    color: $white;
+  }
+
+}
 
 
 

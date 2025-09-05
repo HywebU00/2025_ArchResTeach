@@ -9,13 +9,13 @@
   --border: #{color.adjust($primaryColor, $lightness: 15%)}; 
 
   display: none;
+  left: $sideBarWidth * (-1);
   overflow: hidden; overflow-y: scroll;
   background-color: $primaryColor;
 
   position: fixed; z-index: 991;
   width: $sideBarWidth; height: 100vh;
   top: 0; 
-  left: $sideBarWidth * (-1);
   transition: .5s;
 
   &.reveal{ left:0;}

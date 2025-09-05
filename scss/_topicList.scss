@@ -1,7 +1,6 @@
 @use "variables" as *;
 
-// 主題瀏覽
-// <ul class="topicList">
+// 主題瀏覽 <ul class="topicList">
 ul.topicList {
   list-style: none; margin: 0 auto;padding: 0;
   width: $mobileWidth;
@@ -23,36 +22,35 @@ ul.topicList {
     }
 
     .years {
+      display: block;
       position: relative; z-index: 9;
-      display: block; 
-      padding: 0 20px;
-      height: 2.6em; line-height: 3;
+      padding: 0 8px 0 16px;
+      height: calc(2em + 8px);
+      line-height:3.6;
       width: fit-content;
       white-space: nowrap;
       background-color: $grayLight;
-      border-radius:$radius $radius 0 0;
-      translate: -20px -95%;
+      border-radius:12px 0 0 0;
+      &::after {
+        content: ''; position: absolute; top: 0; right: -80px;        
+        width: 80px;height: 100%;
+        background: url(../images/tab-bg.svg) no-repeat right top;
+        background-size: auto 100%;
+      }
     }
 
     article{
       position: relative;
-      padding:0 20px 20px;z-index: 9;
+      padding:16px;z-index: 9;
       background-color: $grayLight;
-      border-radius:0 $radius $radius $radius;
-      .title {
-        font-size: 1.6em; line-height: 1.4;
-        margin-top: -.5em;
-      }
+      border-radius:0 12px 12px 12px;
+      .title {font-size: 1.6em; line-height: 1.4;}
       p{ margin:8px 0; line-height: 1.8;}
 
       .more{
-        a{
-          margin-left: auto;
-        }
+        a{margin-left: auto;}
       }
     }
-
-
   }
 
   @media screen and (min-width: $wwMedium){

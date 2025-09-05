@@ -46,6 +46,7 @@ $(function(){
   var _hasChildA = _menu.find('.hasChild').children('a');
   _hasChildA.attr('role', 'button').attr('aria-expanded', false);
   _menu.clone().prependTo(_sidebar);  // 複製「主選單」到側欄給行動版用
+  _siteHeader.find('.search').clone().appendTo(_sidebar);
   
   // 行動版「主選單」 
   // --------------------------------------------------------------- //
@@ -444,10 +445,6 @@ $(function(){
       _this.is(_showHideSearch) && _handle.text(text1)
     } else {
       _handle.addClass('closeIt').attr('aria-expanded', true);
-      // if (_this.is(_showHideSearch) ) {_handle.text(text2)}
-      // if ( _this.is(_toc) && ww >= wwNormal) {
-      //   _handle.removeClass('closeIt');
-      // }
       _this.is(_showHideSearch) && _handle.text(text2);
       ( _this.is(_toc) && ww >= wwNormal ) && _handle.removeClass('closeIt');
     }
@@ -456,14 +453,11 @@ $(function(){
       if (_tray.is(':hidden')) {
         _tray.stop(true, false).slideDown(speed, function(){
           _handle.addClass('closeIt').attr('aria-expanded', true);
-          // if ( _this.is(_showHideSearch) ) {_handle.text(text2)}
           _this.is(_showHideSearch) && _handle.text(text2)
         });
       } else {
         _tray.stop(true, false).slideUp(speed, function(){
           _handle.removeClass('closeIt').attr('aria-expanded', false);
-          // if ( _this.is(_showHideSearch) ) {_handle.text(text1) }
-          // if ( _this.is(_toc) ) { _tray.removeAttr('style') }
           _this.is(_showHideSearch) && _handle.text(text1);
           _this.is(_toc) && _tray.removeAttr('style');
         })
@@ -493,8 +487,8 @@ $(function(){
         _thisA.addClass('closeIt');
         _thisA.parent('li').siblings().find('ul').slideUp(speed).prev('a').removeClass('closeIt');
       } else {
-        _thisUl.stop().slideUp(speed);
-        _thisA.removeClass('closeIt');
+        _thisUl.add(_thisUl.find('ul')).stop().slideUp(speed);
+        _thisA.add(_thisUl.find('.closeIt')).removeClass('closeIt');
       }
     })
   })
