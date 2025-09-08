@@ -43,12 +43,10 @@
       li.hasChild{
         &>a{
           &::after{
-            content: ''; 
-            position: absolute; right: 15px; top: calc(.9em + 3px);
-            width: 9px;height: 9px;
-            rotate:45deg; transition: .3s;
-            border: $white solid 1px; 
-            border-top: none; border-left: none;
+            
+            @include arrow-rightAngle(9px, 1px, #{$white} );
+
+            right: 15px; top: calc(.9em + 3px);
           }
         }
         &.closeIt{
@@ -135,16 +133,6 @@
       }
     }
 
-    &>ul>li.searchLink>a{
-      width: 50%;height: 100%; margin: 0 auto;
-      border-radius: 2em;
-      background-color: $assistant;
-
-      --color : #{$white};
-      --diam: 12px;
-      --width: 8px;
-      @extend %searchIcon;
-    }
   }
 
   @media screen and (min-width: $wwNormal){

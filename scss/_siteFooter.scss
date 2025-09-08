@@ -1,5 +1,6 @@
 @use 'sass:color';
 @use "variables" as *;
+@use 'accessories' as *;
 
 // fatFooter 開關
 // --------------------------------------------------------------- //
@@ -20,27 +21,24 @@
 
   &::before {content: ''; position: absolute;}
   &::before {
-    width: var(--arrowSize);height: var(--arrowSize);
+    @include arrow-rightAngle(  var(--arrowSize) , 2px ,  var(--ting), $rotate:225deg );
+    
     left: calc( 50% - var(--arrowSize)/2); 
     top: calc( 50% - var(--arrowSize)/2 + 5px );
-    rotate: 45deg;
-    border-width: 2px;
-    border-style: solid;
-    border-right: none; border-bottom: none;
-    border-left-color: var(--ting); border-top-color: var(--ting);
-    transition: .25s;
   }
 
   &:hover{
-    box-shadow: #fff 0 0 0 0, var(--bg) 0 0 0 2px;
+    box-shadow: var(--ting) 0 0 0 0, var(--bg) 0 0 0 2px;
   }
   &:focus {
-    box-shadow: #fff 0 0 0 1px, var(--bg) 0 0 0 4px;
+    box-shadow: var(--ting) 0 0 0 1px, var(--bg) 0 0 0 4px;
   }
 
   &.closed{
     &::before{
-      rotate: 225deg;margin-top: -8px;
+      // rotate: 225deg;
+      margin-top: -8px;
+      rotate: 45deg;
     }
   }
 

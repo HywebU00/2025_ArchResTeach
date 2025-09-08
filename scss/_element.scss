@@ -1,4 +1,5 @@
 @use "variables" as *;
+@use "accessories" as *;
 
 // 無障礙定位點
 // --------------------------------------------------------------- //
@@ -271,6 +272,7 @@ kbd {
   li { 
     display: inline-block; 
     margin: 0 3px; padding: 2px;
+    pointer-events: none;
     span {display: block;}
     button, span { 
       width: var(--dotSize); height: var(--dotSize); border-radius: 50%;
@@ -390,13 +392,6 @@ button.slick-arrow {
   }
 
 }
-
-
-// // 自訂的左右導覽 arrows
-// .navArrow {
-//   @extend .slick-arrow;
-// }
-
 
 
 // 控制輪播暫停、繼續 button
