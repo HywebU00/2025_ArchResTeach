@@ -9,7 +9,7 @@
     margin: 0 auto 12px;
   }
 
-  .photoSlide, .meta,
+  .photoSlide, .metaFile,
   .description, .keywords {
     margin: 0 auto 32px;
   }
@@ -23,7 +23,7 @@
       flex: 0 0 calc(55% - 12px);  
       width: calc(55% - 12px);
     }
-    .meta, .keywords {
+    .metaFile, .keywords {
       margin: 0;
       flex: 0 0 calc(45% - 12px);
       width: calc(45% - 12px);
@@ -175,7 +175,7 @@
 
 // 文字資料 meta table
 // ------------------------------------------------------ //
-.meta {
+.metaFile {
   margin: 0 auto;
   padding: 24px 0;
   box-shadow: $borderColor 0 0 0 1px, $shadow1 0 2px 10px;

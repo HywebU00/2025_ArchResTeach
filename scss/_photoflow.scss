@@ -1,0 +1,213 @@
+@use "variables" as *;
+// 自製左右 flow ( .flowBox ) 的箭頭和點點
+// --------------------------------------------------------------- //
+
+// 左右箭頭 button
+button.arrowBtn {
+  --diameter: 56px; // 直徑、長寬等值
+  --color: #{$white};
+  --btnBg: #{$shadow1};
+
+  position: absolute;top: 50%; z-index: 9;
+  transform: translateY(-50%);
+  width: var(--diameter); height: var(--diameter); 
+  margin: 0; padding: 0; border: none;
+  border-radius: 50%;
+  text-indent: -10em; overflow: hidden;
+  background-color: var(--btnBg);
+  transition: .2s;
+
+  &::before {
+    content: ''; position: absolute;
+    top: calc(50% - 6px);
+    width: 12px; height: 12px;
+    border: 3px solid var(--color); 
+    transform: rotate(45deg);
+  }
+  &.prev {
+    left: 4px; 
+    &::before{
+      left: calc(50% - 5px);
+      border-top: none; border-right: none;
+    }
+  }
+  &.next {
+    right: 4px;
+    &::before{
+      right: calc(50% - 5px);
+      border-bottom: none; border-left: none;
+    }
+  }
+
+  &:hover, &:focus{
+    --btnBg: #{$primaryColor};
+
+    box-shadow: var(--btnBg) 0 0 0 4px;
+  }
+
+}
+
+
+// 點點、數字
+.flowNav{
+  font-family: Arial, Helvetica, sans-serif;
+
+  margin: 20px auto 5px; z-index: 19;
+  ul{
+    display: flex; flex-flow: row nowrap; justify-content: center;
+    list-style: none; margin: 0 auto; padding: 0;
+    text-align: center; font-weight: normal;font-size: 0;
+    line-height: 1.1;
+  }
+  li{ 
+    position: relative; flex: 0 0 auto; 
+    margin: 0 6px; padding: 3px 0;
+    transition: .2s;
+
+    &::after {
+      content: ''; display: block; margin: 0;
+      height: 8px; width: 8px; border-radius: 5px;
+      background-color: $borderColor;
+      transition: .2s;
+    }
+
+    &.active{
+      &::after { background-color: $primaryColor;
+        box-shadow: $primaryColor 0 0 0 2px;
+      }
+    }
+  }
+}
+// --------------------------------------------------------------- //
+
+
+
+
+
+
+// --------------------------------------------------------------- //
+// --------------------------------------------------------------- //
+// --------------------------------------------------------------- //
+
+
+
+
+// 相關圖檔（cp 頁）
+//（點擊左右箭頭滑動）photoflow
+// ------------------------------------------------------ //
+.photoflow{
+  margin: 64px auto;
+  .flow{
+    padding-left: 44px; padding-right: 44px;
+
+    .slick-arrow{
+      position: absolute; top: 50%;
+      translate: 0 calc(-50% - 10px);
+      &.slick-prev {
+        left: 0;
+      }
+      &.slick-next {
+        right: 0;
+      }
+    }
+  }
+
+  .flowItem{
+    margin: 16px 8px; padding: 0;
+    aspect-ratio: 1;
+    &>a{
+      position: relative; display: block; 
+      width: 100%; height: 100%;
+      cursor: zoom-in;
+      overflow: hidden;transition: .5s; 
+      &::before{
+        content: ''; z-index: 9;
+        position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+        box-shadow: $borderColor 0 0 0 1px inset; 
+      }
+      &:hover, &:focus {
+        p{ transform:  translateY(0); }
+        img{ transform: scale(1.1);}
+      }
+      &:focus {
+        p{ transition: none;}
+        &::before{ box-shadow: $borderColorDark 0 0 0 2px inset;}
+      }
+    }
+    img{
+      display: block;
+      width: 100%; height: 100%; object-fit: contain;
+      transition: .3s;
+    }
+    p{
+      position: absolute; left: 0; right: 0; bottom: 0;
+      padding:90px 10px 8px; margin: 0;
+      color: $white; 
+      background-image: linear-gradient(0deg, rgb(0 0 0 / .9) .6em, rgb(0 0 0 / .7) 40%, rgb(0 0 0 / 0) 100%);
+      transform: translateY(110%); transition: .5s;
+    }
+
+    // &>a{
+    //   display: block;
+    //   height: 100%;
+    //   padding: 16px;
+    //   text-decoration: none;
+    //   background-color: $grayLight;
+    //   border-radius: $radius;
+    //   transition: .2s;
+
+    //   &:hover{
+    //     background-color: $white;
+    //     box-shadow:$borderColor 0 0 0 1px, $shadow1 0 4px 8px;
+    //   }
+    //   &:focus {
+    //     background-color: $white;
+    //     box-shadow:$borderColorDark 0 0 0 2px, $shadow1 0 4px 8px;
+    //   }
+    // }
+    // img{
+    //   display: block;
+    //   width: 100%;
+    //   aspect-ratio: 4/3;
+    //   object-fit: contain;
+    // }
+
+  }
+
+  .slick-dots{
+    padding: 4px;
+  }
+
+  @media screen and (min-width: $wwNormal){
+
+    .flow{
+      padding-left: 22px; padding-right: 22px;
+      .slick-arrow{
+        &.slick-prev {
+          translate: -60% calc(-50% - 10px);
+        }
+        &.slick-next {
+          translate: 60% calc(-50% - 10px);
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: $wwMaximum){
+    .flow {
+      padding-left: 0;
+      padding-right: 0;
+      .slick-arrow{
+        &.slick-prev {
+          translate: -105% calc(-50% - 10px);
+        }
+        &.slick-next {
+          translate: 105% calc(-50% - 10px);
+        }
+      }
+    }
+  }
+
+}
+// ------------------------------------------------------ //
+

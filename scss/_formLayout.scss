@@ -299,37 +299,6 @@ abbr.required{
 
 
 
-// 電話號碼組
-// ------------------------------------------------------ //
-.mobilePhoneSet, .phoneSet{
-  display: flex;align-items: center; flex-wrap: wrap;
-  margin-bottom: .7em;
-  label{white-space: nowrap; flex: 0 0 auto;}
-
-  @media screen and (min-width: $wwMedium){
-    flex-wrap: nowrap;
-  }
-  @media screen and (min-width: $wwNormal){
-    margin-left: .6em; margin-bottom:0;
-  }
-}
-// 行動電話
-.mobilePhoneSet{
-  input{flex: 1 1 auto;}
-}
-//市內電話
-.phoneSet{
-  label{ flex: 1 1 100%;}
-  input.areaCode{ flex: 0 1 4em; width: 4em; }
-  input:last-child{ flex: 1 1 auto;}
-
-  @media screen and (min-width: $wwMedium){
-    label{ flex: 0 0 auto;}
-  }
-}
-// ------------------------------------------------------ //
-
-
 // 附件上傳
 // ------------------------------------------------------ //
 .uploadFile{
@@ -391,39 +360,3 @@ abbr.required{
 // ------------------------------------------------------ //
 
 
-// 意見信箱: 預覽確認 + 查詢結果
-// ------------------------------------------------------ //
-.fieldConfirm{
-  @extend %primSecWidth;
-  padding: 40px 3vw;
-  box-shadow: $shadow1 0 0 15px;
-  background-color: $white;
-
-  .legent {
-    position: relative;
-    margin: 0; padding: 0 0 5px 18px;
-    font-size: 1.125em; font-weight: bold; line-height: 1.1;
-    border-bottom: 3px solid $borderColor;
-    &::before {
-      content: '';
-      position: absolute; left: 0; top: 0;
-      width: 12px; height: 1.1em;
-      background-color: $primaryColor;
-    }
-    &+.fieldset{ border-top: none;}
-  }
-
-  .fieldset{
-    margin: 0 0 3.5em;
-    .metaTable{
-      border-top: 1px solid $borderColor;
-      border-bottom: 1px solid $borderColor;
-    }
-  }
-
-  @media screen and (min-width: $wwNormal){
-    padding: 50px 40px;
-  }
-
-}
-// ------------------------------------------------------ //

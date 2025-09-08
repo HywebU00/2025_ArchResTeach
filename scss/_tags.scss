@@ -1,0 +1,42 @@
+@use "variables" as *;
+// 文章標籤
+// ------------------------------------------------------ //
+.tags{
+  margin: 50px 0;
+  &>ul{ 
+    list-style: none; margin: 0; padding: 0; 
+    line-height: 1.3;
+    display: flex; flex-flow: row wrap;
+    &>li{
+      flex: 0 0 auto;
+    }
+  }
+  li{
+    margin: 8px; padding: 0;
+    a {
+      display: block; position: relative; text-decoration: none;
+      padding: .6em 1em .5em 24px;
+      color: $fontColor; background-color: $grayPale;
+      border-radius: 1.5em $radius $radius 1.5em;
+      box-shadow:$borderColorLight 0 0 0 1px, $shadow1 0 0 0;
+      transition: .2s;
+      &::before {
+        content: ''; position: absolute; left: 10px;top: calc(50% - 3px);
+        width: 6px; height: 6px;
+        border-radius: 50%;
+        background-color: $grayDark;
+        transition: .2s;
+      }
+      &:hover, &:focus {
+        color: $white;
+        background-color: $grayDim;
+        box-shadow:$grayDim 0 0 0 1px;
+        &::before {
+          background-color: $white;
+          box-shadow: $white 0 0 0 2px;
+        }
+      }
+    }
+  }
+}
+// ------------------------------------------------------ //

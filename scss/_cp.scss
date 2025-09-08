@@ -1,0 +1,7 @@
+@forward "cpArticle"; // cp: 一般內容頁
+// @forward "bigPhotos"; // cp: 燈箱中的大圖 
+@forward "cpAttachments"; // cp: 相關連結、相關檔案
+@forward "photoflow"; // cp: 相關圖片（點擊左右箭頭滑動）
+@forward "metaTable"; // cp: 資料表格，一個 th 對應一個 td
+@forward "tags"; // cp: 文章標籤
+@forward "poInfo"; // cp: cp頁張貼日期、瀏覽人次

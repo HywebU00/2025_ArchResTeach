@@ -27,7 +27,8 @@ body{
 .main{
   position: relative; margin: 0 auto; padding: 0;  clear: both;
 
-  &:has(.topicComplex){
+  &:has(.topicComplex),
+  &:has(.cp){
     background-image: linear-gradient(to bottom, rgb(211 83 68 / 1), rgb(211 83 68 / 0) 500px);
   }
 }

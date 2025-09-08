@@ -507,13 +507,14 @@ $(function(){
 
   // 大圖燈箱 
   // --------------------------------------------------------------- //
-  const _photoShow = $('.photoSlide').find('.photoShow'); // 檔案詳細內容頁   
+  const _photoShow = $('.photoSlide').find('.photoShow'); // 檔案詳細內容頁 
+  const _photoflow = $('.photoflow').find('.flow');  // 一般內容頁的「相關圖檔」
   const _bigPhotoLbx = $('.lightbox.bigPhotos');
   // const _closeBigPhotoLbx = _bigPhotoLbx.find('.closeThis');
   
   _photoShow.before(ppButton); // 加入【暫停／輪播】按鈕
   const _photoShow_ppButton = _photoShow.prev('.pausePlay'); // 此區的暫停按鈕
-  let _showBigPhoto = _photoShow.find('.flowItem');
+  let _showBigPhoto = _photoShow.add(_photoflow).find('.flowItem'); // click 要開啟燈箱的元件
   let photoCount = _showBigPhoto.length;
   
   let photoIndex; // 燈箱內切換上、下一張用
@@ -525,13 +526,14 @@ $(function(){
     _showBigPhoto.eq(n).attr('data-index', n);
   }
   _photoShow.clone().appendTo(_bigPhotoLbx); // 複製照片到大圖燈箱中 ***
-  
+  _photoflow.clone().appendTo(_bigPhotoLbx); // 複製照片到大圖燈箱中 ***
+
   // 點擊.photoShow 的圖片，開燈箱顯示大圖
   _showBigPhoto.children('a').on('click', function(){
     _keptFlowItem = $(this);
     photoIndex = _keptFlowItem.parent().attr('data-index');
 
-    console.log(photoIndex, _showBigPhoto);
+    // console.log(photoIndex, _showBigPhoto);
 
     // 開燈箱，輪播要暫停
     if ( _photoShow_ppButton.hasClass('paused') ) {
@@ -544,7 +546,6 @@ $(function(){
     _bigPhotoLbx.stop(true, false).fadeIn().find('.flowItem').filter( function(){
       return $(this).attr('data-index') == photoIndex;
     }).show();
-
 
     _hideLightbox.focus();
     _coverAll.stop(true, false).fadeIn();
@@ -584,7 +585,7 @@ $(function(){
   // ---------------------------------------------- *** //
   _bigPhotoLbx.each(function(){
     const _this = $(this);
-    const _photoList = _this.find('.photoShow');
+    const _photoList = _this.find('.photoShow, .flow');
     const _photoItem = _this.find('.flowItem');
     const _hideThis = _this.find('.closeThis');
 
@@ -941,6 +942,46 @@ $(function(){
     ]
   });
   // --------------------------------------------------------------- //
+
+
+  // 一般內容頁「相關圖檔」
+  // --------------------------------------------------------------- //
+  // const _photoflow = $('.photoflow').find('.flow');
+
+  _photoflow.slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    // autoplaySpeed: 4000,
+    // speed: 800,
+    autoplay: false,
+    arrows: true,
+    dots: true,
+    fade: false,
+    infinite: true,
+    mobileFirst: true,
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 3
+        }
+      },
+      {
+        breakpoint: wwNormal,
+        settings: {
+          slidesToShow: 4
+        }
+      }
+    ]
+  });
+  // --------------------------------------------------------------- //
+
 
 
   // --------------------------------------------------------------- //
