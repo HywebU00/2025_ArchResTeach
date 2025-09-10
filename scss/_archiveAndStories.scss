@@ -7,8 +7,6 @@
   padding: 40px 0 80px;
   background-color: $primaryColor; color: $white;
 
-  a{color: $white; }
-
   h2{ margin: 0; padding: 0;}
 
   .title-and-search{
@@ -226,7 +224,7 @@
     position: relative;
     margin: 0 0 16px;padding: 4px;
     height: 3.25em; width: 100%;
-    background-color: #fff;
+    background-color: $white;
     border-radius: $radius;
     text-align: left;
   }
@@ -288,22 +286,24 @@
     }
   }
 
-
   .button {
-    @extend %roundButton !optional;
-
+    display: inline-block;
+    a{
+      height: 2.4em; line-height: 2.5;
+      padding-left: 1.2em; padding-right: 1.2em;
+    }
     &:last-child{
-      --tinge: #{$white};
-      --bgc: #{$white};
-      --frc: #{$fontColor};
+      --btn-border: #{$white};
+      --btn-bg: #{$white};
+      --btn-color: #{$black};
       a{
-        &:hover, &:focus {
-          --tinge: #{$black};
-          --bgc: #{$black};
-          --frc: #{$white};
+        &:hover, &:focus{
+          --btn-border: #{$black};
+          --btn-bg: #{$black};
+          --btn-color: #{$white};
         }
         &:focus {
-          --tinge: #{$white};
+          --btn-border: #{$white};
         }
       }
     }

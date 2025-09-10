@@ -1,6 +1,5 @@
 @use 'sass:color';
 @use "variables" as *;
-@use 'accessories' as *;
 
 // fatFooter 開關
 // --------------------------------------------------------------- //
@@ -36,7 +35,6 @@
 
   &.closed{
     &::before{
-      // rotate: 225deg;
       margin-top: -8px;
       rotate: 45deg;
     }

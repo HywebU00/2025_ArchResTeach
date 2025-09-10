@@ -12,7 +12,7 @@ body{
   background-color: var(--bodyBg);
   
   *, *::before, *::after{box-sizing: border-box;}
-  a{ outline: none; color: #000;}
+  a{ outline: none; color: $fontColorDark; }
   figure{ display: block; margin: 0;}
 
   &.noScroll{ overflow: hidden; overflow-y:hidden; }

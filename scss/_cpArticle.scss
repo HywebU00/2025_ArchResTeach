@@ -49,14 +49,32 @@
     margin:50px 0 50px 6%; padding: 30px 24px 30px 80px;
     background: $grayLight;
     border-radius: $radius2;
-    // border-left: 10px solid $primaryLight;
+    border-left: 8px solid $primaryLight;
     border-right: 8px solid $primaryLight;
     &::before{
       content: '‟'; 
       position: absolute; left: 20px; top: 4px;
       font-size: 8em; line-height: 0;
       scale: 1 -100%;
-      color: $grayDark;
+      color: $grayDim;
+    }
+  }
+
+  .button{
+    a{
+      color: $white ;
+      &:hover, &:focus {
+        --btn-border: #{$primaryColor};
+        --btn-bg: #{$primaryColor};
+        --btn-color: #{$white};
+      }
+      &:focus{
+        --btn-border: #{$white};
+      }
+    }
+
+    &.center{
+      margin: 32px auto;
     }
   }
 
@@ -73,75 +91,6 @@
   }
 
 }
-
-
-
-// 圖區：一排個、一排兩個
-// ------------------------------------------------------ //
-.imageRow {
-  margin: 50px auto;
-  figure{
-    margin: 0;padding: 0; display: block;
-    background-color: #767676;
-    img{display: block; width: 100%;}
-  }
-  figcaption{
-    color: $white; padding: 20px;
-    line-height: 1.5;
-    p{
-      margin: 1em 0;
-      &:first-child{ font-size: 1.35em; margin-top: 0;}
-    }
-    dl{
-      margin: 24px 0 0;
-      div{ margin: 5px 0;}
-      dt, dd{ display: inline-block; margin: 0;}
-      dt{
-        &::after{content: '：';}
-      }
-    }
-  }
-
-  &.wbgc {
-    figure{ 
-      background-color: #fff;
-      box-shadow: $borderColor 0 0 0 1px;
-    }
-    figcaption {color: $fontColor;}
-  }
-
-
-  &.col2, &.col2a, &.col2b {
-    figure:last-child{ margin-top: 20px;}
-  }
-
-
-  @media screen and (min-width: $wwMedium){
-    margin: 70px auto; max-width: 1000px;
-    &.half { width: 50%;}
-    &.col2, &.col2a, &.col2b {
-      display: flex; justify-content: space-between;
-      max-width: 1250px;
-      figure:last-child{ margin-top: 0;}
-    }
-    &.col2{
-      figure{flex: 0 0 49%;}
-    }
-    &.col2a{
-      figure{
-        &:first-child{flex: 0 0 56%;}
-        &:last-child{ flex: 0 0 42%;}
-      }
-    }
-    &.col2b{
-      figure{
-        &:first-child{flex: 0 0 42%;}
-        &:last-child{ flex: 0 0 56%;}
-      }
-    }
-  }
-}
-
 
 
 

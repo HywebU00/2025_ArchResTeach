@@ -34,33 +34,38 @@
 
 // 圓角連結
 // --------------------------------------------------------------- //
-%roundButton{
-  --tinge: #{$white};
-  --bgc: #{$primaryColor};
-  --frc: #{$white};
+// %roundButton{
+//   --tinge: #{$white};
+//   --bgc: #{$primaryColor};
+//   --frc: #{$white};
 
-  display: inline-block; margin: 4px;
-  a{
-    text-align: center; width: fit-content;
-    border-radius: 2em;
-    white-space: nowrap;
-    display: block; height: 2.4em; line-height: 2.5;
-    padding: 0 1.2em;
-    text-decoration: none;
-    box-shadow: var(--tinge) 0 0 0 1px;
-    background-color: var(--bgc);
-    color: var(--frc);
-    transition: .2s;
-    &:hover, &:focus{
-      --bgc: #{$white};
-      --frc: #000;
-    }
-    &:focus{
-      --tinge: #{$primaryColor};
-      box-shadow: var(--tinge) 0 0 0 1px, var(--bgc) 0 0 0 4px;
-    }
-  }
-}
+//   --tinge-hover: #{$white};
+//   --bgc-hover: #{$white};
+//   --frc-hover: #{$black};
+
+//   display: inline-block; margin: 4px;
+//   a{
+//     text-align: center; width: fit-content;
+//     border-radius: 2em;
+//     white-space: nowrap;
+//     display: block; height: 2.4em; line-height: 2.5;
+//     padding: 0 1.2em;
+//     text-decoration: none;
+//     box-shadow: var(--tinge) 0 0 0 1px;
+//     background-color: var(--bgc);
+//     color: var(--frc);
+//     transition: .2s;
+//     &:hover, &:focus{
+//       box-shadow: var(--tinge-hover) 0 0 0 1px;
+//       background-color: var(--bgc-hover);
+//       color: var(--frc-hover) !important;
+//     }
+//     &:focus{
+//       --tinge: #{$primaryColor};
+//       box-shadow: var(--tinge) 0 0 0 1px, var(--bgc) 0 0 0 4px;
+//     }
+//   }
+// }
 // --------------------------------------------------------------- //
 
 
