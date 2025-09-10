@@ -81,7 +81,10 @@
         color: var(--a-color);
         text-decoration: none;
         transition: .2s;
-        &:hover, &:focus{
+        &:hover{
+          box-shadow: $borderColorDark 0 0 0 1px;
+        }
+        &:focus{
           --a-bgc: #{$black};
           --a-color: #{$white};
         }

@@ -310,8 +310,7 @@
       padding: 0 1.2em; border-radius: 2em;
       transition: .2s;
       &:hover {
-        background-color: $grayLight;
-        box-shadow: $grayLight 0 0 0 2px;
+        box-shadow: $grayDark 0 0 0 1px;
       }
       &:focus {
         background-color: $black;

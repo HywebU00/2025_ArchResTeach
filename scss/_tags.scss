@@ -18,7 +18,7 @@
       padding: .6em 1em .5em 24px;
       color: $fontColor; background-color: $grayPale;
       border-radius: 1.5em $radius $radius 1.5em;
-      box-shadow:$borderColorLight 0 0 0 1px, $shadow1 0 0 0;
+      box-shadow:$borderColorLight 0 0 0 1px;
       transition: .2s;
       &::before {
         content: ''; position: absolute; left: 10px;top: calc(50% - 3px);
@@ -27,7 +27,10 @@
         background-color: $grayDark;
         transition: .2s;
       }
-      &:hover, &:focus {
+      &:hover{
+        box-shadow:$borderColorDark 0 0 0 1px;
+      }
+      &:focus {
         color: $white;
         background-color: $grayDim;
         box-shadow:$grayDim 0 0 0 1px;
