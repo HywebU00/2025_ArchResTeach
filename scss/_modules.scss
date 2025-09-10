@@ -1,4 +1,5 @@
 @use "variables" as *;
+@use 'accessories' as *;
 
 // 現在位置（麵包屑） //
 // ------------------------------------------------------ //
@@ -31,11 +32,8 @@
       &:nth-child(n+2){
         padding-left: 20px;
         &::before{ 
-          content: '';position: absolute; left: 0; top: calc(50% - 4px); 
-          width: 8px; height: 8px;
-          border: 2px solid var(--color-arrow);
-          border-left: none; border-bottom: none;
-          transform: rotate(45deg);
+          @include arrow-rightAngle(8px, 2px, var(--color-arrow), -45deg);
+          left: 0; top: calc(50% - 4px); 
         }
       }
       a{

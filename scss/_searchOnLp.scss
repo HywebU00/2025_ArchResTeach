@@ -28,21 +28,14 @@
       &:focus-visible {
         box-shadow:$grayLight 0 0 0 5px, $primaryColor 0 0 0 8px;
       }
-  
-      &::before, &::after{
-        content: ''; position: absolute;
-        transition: .2s;
-      }
       &::after{
+        @include arrow-rightAngle( 16px, 2px, $black );
+
         right: 20px; top: calc(50% - 12px);
-        width: 18px; height: 18px;
-        border: 2px solid $black; border-bottom: none; border-right: none;
-        rotate: 225deg;
-        transition: .3s;
       }
   
       &.closeIt{
-        &::after{rotate: 45deg;top: calc(50% - 5px);}
+        &::after{rotate: 225deg;top: calc(50% - 4px);}
       }
     }
   

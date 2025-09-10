@@ -1,4 +1,5 @@
 @use "variables" as *;
+// @use 'accessories' as *;
 
 // 主選單
 // ------------------------------------------------------ //
@@ -49,12 +50,8 @@
           &>a{
             padding-right: 36px;
             &::after {
-              content: '';
-              position: absolute; right: 16px; top: 16px;
-              width: 8px;height: 8px;
-              rotate: 45deg;
-              border: 1px solid var(--tinge);
-              border-left: none; border-top: none;
+              @include arrow-rightAngle( 8px, 1px, var(--tinge));
+              right: 16px; top: 16px;
             }
           }
         }
@@ -87,20 +84,18 @@
               &>a{
                 position: relative; padding-right: 36px;
                 &::after{
-                  position: absolute; left: auto; right: 13px; top: 1.15em;
-                  content: ''; width: 8px; height: 8px; 
-                  border: 2px solid $primaryColor; border-left: none; border-bottom: none;
-                  transform: rotate(45deg);
-                  transition: .3s;
+                  @include arrow-rightAngle( 8px, 2px, $primaryColor, -45deg );
+
+                  left: auto; right: 13px; top: 1.25em;
                 }
                 &:hover, &:focus{
-                  &::after{border-color: $white; }
+                  &::after{ border-color: $white; }
                 }
               }
   
               // 調轉箭頭方向
               &.turn{
-                &>a::after{ transform: rotate(225deg); right: 9px; }
+                &>a::after{ rotate: 135deg; right: 9px; }
               }
     
               // 第三層及其之後

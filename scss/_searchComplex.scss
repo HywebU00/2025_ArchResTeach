@@ -110,30 +110,25 @@
           position: absolute; top: 0;
           background-color: transparent;
           transition: .2s;
-          &::before, &::after {
+          &::before {
             content: ''; position: absolute;
             transition: .2s;
-          }
-          &::before {
             right: 3px;top: 3px;
             width: 36px; height: 36px;
             border-radius: 50%;
           }
           &::after {
+            @include arrow-rightAngle(10px, 2px, $borderColorDark);
             right: 16px; top: 14px;
-            width: 10px; height: 10px;
-            border: 2px solid $borderColorDark;
-            border-left: none; border-top: none;
-            rotate: 45deg;
           }
           &.closeIt {
-            &::after{top: 18px; rotate: 225deg;}
+            &::after{ top: 18px; rotate: 225deg;}
           }
           &:hover{
-            &::before {background-color: $white;}
+            &::before { background-color: $white;}
           }
           &:focus {
-            &::before {background-color: $black;}
+            &::before { background-color: $black;}
             &::after { border-color: $white;}
           }
         }

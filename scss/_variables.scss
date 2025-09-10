@@ -95,3 +95,19 @@ $grayDim: #5a5a5a;
   font-size: 1.25em; text-align: center; margin: 0 auto 16px;
 }
 // ---------------------------------------------------------------- //
+
+
+
+// 直角線條箭頭
+// --------------------------------------------------------------- //
+// 用於 ::before 或 ::after
+// 預設箭頭向下
+@mixin arrow-rightAngle($size:12px, $borderWidth:1px, $borderColor:#888, $rotate:45deg , $aniDuration: .3s) {
+  content: '';  position: absolute; 
+  rotate:$rotate;
+  width: $size; height: $size;
+  border: $borderColor solid $borderWidth; 
+  border-top: none; border-left: none;
+  transition: $aniDuration;
+}
+// --------------------------------------------------------------- //

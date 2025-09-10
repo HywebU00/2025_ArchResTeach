@@ -135,18 +135,18 @@ table.formLayout {
       box-shadow:$white 0 0 0 1px inset, var(--bgc) 0 0 0 3px, $shadow1 0 2px 7px 1px;
     }
     &:is([type="reset"]) {
-      // color: #{$fontColor};
-      // background-color: #{$white};
 
       --tinge: #{$fontColor};
       --bgc: #{$white};
 
       box-shadow: $borderColor 0 0 0 1px, $shadow1 0 2px 7px 1px;
-      &:hover, &:focus {
-        box-shadow: $borderColorDark 0 0 0 1px, $shadow1 0 2px 7px 1px;
+      &:hover {
+        box-shadow: $grayDark 0 0 0 1px, $shadow1 0 2px 7px 1px;
+        color: $fontColorDark;
       }
       &:focus {
-        box-shadow:$borderColorDark 0 0 0 3px, $shadow1 0 2px 7px 1px;
+        box-shadow:$grayDim 0 0 0 2px, $shadow1 0 2px 7px 1px;
+        color: $fontColorDark;
       }
     }
   }

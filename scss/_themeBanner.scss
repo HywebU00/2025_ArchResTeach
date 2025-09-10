@@ -4,8 +4,9 @@
 .themeBanner {
   position: relative;
   padding: 40px $marginDocMob;
-  min-height: 50vw; overflow: hidden;
-  background-color: #555; color: $white;
+  min-height: 50vw; 
+  overflow: hidden;
+  color: $white;
   display: flex; flex-flow: column nowrap; 
   justify-content: center;
   align-items: flex-start;

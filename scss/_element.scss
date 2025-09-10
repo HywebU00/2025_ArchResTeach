@@ -76,15 +76,12 @@ button.goTop{
   background-color: var(--bg);
   box-shadow: rgb(0 0 0 / .4) 0 0 12px;
   transition: all .2s, bottom .6s;
-  &::before{
-    content: ''; position: absolute;
-    box-sizing: border-box;
-    width: var(--arrowSize); height: var(--arrowSize);
-    left: calc( ( var(--gotop-size) - var(--arrowSize) )/2 + 1px ); top: calc( var(--gotop-size)/2 - var(--arrowSize)/4 );
-    border: 2px solid var(--tinge); 
-    border-bottom: none; border-right: none;
-    transform: rotate(45deg);
+  &::before, &::after{
+    @include arrow-rightAngle( var(--arrowSize), 2px, var(--tinge), 225deg);
+    left: calc( ( var(--gotop-size) - var(--arrowSize) )/2 + 1px ); 
   }
+  &::before { top: calc( var(--gotop-size)/2 - var(--arrowSize)/4 - 4px );}
+  &::after { top: calc( var(--gotop-size)/2 - var(--arrowSize)/4 + 4px );}
 
   &:hover, &:focus {
     --tinge: #{$white};
@@ -97,7 +94,6 @@ button.goTop{
   &.show{ bottom: var(--gotop-margin);}
 
   @media screen and (min-width: calc($maximumWidth + 128px + 64px)){
-    // 128px = var(--gotop-size)*2 , 64px = var(--gotop-margin)*4
     right: calc(50% - $maximumWidth*.5 - var(--gotop-size) - var(--gotop-margin) );
   }
 
