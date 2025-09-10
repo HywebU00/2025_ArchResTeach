@@ -87,6 +87,7 @@
     }
     a{
       padding: 5px;display: block;
+      border-radius: 7px;
       &:hover, &:focus {
         outline: none;
         .fileSize{text-decoration: underline;}
