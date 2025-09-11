@@ -1,6 +1,7 @@
 @use 'sass:color';
 @use "variables" as *;
-// @use 'accessories' as *;
+@use 'accessories' as *;
+
 
 // 行動版側欄
 // --------------------------------------------------------------- //
@@ -43,9 +44,7 @@
       li.hasChild{
         &>a{
           &::after{
-            
             @include arrow-rightAngle(9px, 1px, #{$white} );
-
             right: 15px; top: calc(.9em + 3px);
           }
         }

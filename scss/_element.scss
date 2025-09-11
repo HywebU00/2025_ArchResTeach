@@ -63,7 +63,7 @@
 button.goTop{
   --tinge: #{$primaryColor};
   --bg: #{$white};
-  --arrowSize : 16px;
+  --arrowSize : 18px;
   --gotop-size: 64px;
   --gotop-margin: 16px;
 
@@ -77,19 +77,18 @@ button.goTop{
   box-shadow: rgb(0 0 0 / .4) 0 0 12px;
   transition: all .2s, bottom .6s;
   &::before, &::after{
-    @include arrow-rightAngle( var(--arrowSize), 2px, var(--tinge), 225deg);
+    @include arrow-rightAngle2($size:var(--arrowSize), $borderWidth: 4px, $bgColor:var(--tinge), $rotate: -90deg);
     left: calc( ( var(--gotop-size) - var(--arrowSize) )/2 + 1px ); 
   }
-  &::before { top: calc( var(--gotop-size)/2 - var(--arrowSize)/4 - 4px );}
-  &::after { top: calc( var(--gotop-size)/2 - var(--arrowSize)/4 + 4px );}
+  &::before { top: calc( var(--gotop-size)/2 - var(--arrowSize) + 2px);}
+  &::after { top: calc( var(--gotop-size)/2 - var(--arrowSize) + 10px );}
 
   &:hover, &:focus {
     --tinge: #{$white};
-    --bg: #{$primaryColor};
-    background-color: var(--bg);
+    --bg:    #{$primaryColor};
   }
   &:focus {
-    box-shadow:#fff 0 0 0 1px, var(--bg) 0 0 0 4px;
+    box-shadow:$white 0 0 0 1px, var(--bg) 0 0 0 4px;
   }
   &.show{ bottom: var(--gotop-margin);}
 

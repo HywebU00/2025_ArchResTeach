@@ -1,1 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><svg id="_圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 30 30"><defs><style>.cls-1{fill:none;}.cls-2{fill:#444;}.cls-3{clip-path:url(#clippath);}</style><clipPath id="clippath"><rect class="cls-1" width="30" height="30"/></clipPath></defs><g class="cls-3"><path class="cls-2" d="M11,9.75v5l-7.5-6.25,7.5-6.25v5h6.25c2.65,0,5.2,1.05,7.07,2.93,1.88,1.88,2.93,4.42,2.93,7.07s-1.05,5.2-2.93,7.07c-1.88,1.88-4.42,2.93-7.07,2.93H6v-2.5h11.25c1.99,0,3.9-.79,5.3-2.2,1.41-1.41,2.2-3.31,2.2-5.3s-.79-3.9-2.2-5.3c-1.41-1.41-3.31-2.2-5.3-2.2h-6.25Z"/></g></svg>
+<svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7 1L1 7L7 13" stroke="#1E1E1E" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1.5 7H10H12.5C15.5376 7 18 9.46243 18 12.5V12.5C18 15.5376 15.5376 18 12.5 18H9" stroke="#1E1E1E" stroke-linecap="round"/>
+</svg>

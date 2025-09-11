@@ -3,7 +3,7 @@
 // 列印、分享、返回、字型大小 等功能圖示 //
 // ------------------------------------------------------ //
 .funcBar{
-  --size: 56px;
+  --size: 48px;
   --tinge: #{$borderColorDark};
 
   position: relative; margin-bottom: 10px;
@@ -55,7 +55,7 @@
             width: 100%; height: 100%;
             background-repeat: no-repeat;
             background-position: center center;
-            background-size: 30px;
+            background-size: 50%;
           }
           &:hover, &:focus{
             &::after { filter: brightness(50);}
@@ -73,7 +73,8 @@
         }
         &:is(.share){
           &>a, &>button{
-             &::after{background-image: url(../images/icon_share.svg);}
+             &::after{background-image: url(../images/icon_share.svg);
+            }
           }
         }
       }

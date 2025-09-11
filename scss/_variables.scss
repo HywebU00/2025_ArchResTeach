@@ -52,6 +52,7 @@ $mainBg: #fff;
 $borderColor: #c6c3c0;
 $borderColorLight: #e3dfdf;
 $borderColorDark:#443939;
+
 $shadow1:rgb(65 60 60 / .2);
 $shadow2:rgb(65 60 60 / .5);
 
@@ -62,15 +63,6 @@ $grayLight: #e9e9e9;
 $grayPale: #f4f4f4;
 $grayDark: #888;
 $grayDim: #5a5a5a;
-
-%gradient1 {
-  background: linear-gradient(180deg, #f5efeb 0%, #f8f5f1 9.38%, #FFFFFF 100%);
-  box-shadow: 0 0 4px $shadow1;
-}
-%gradient2 {
-  background: linear-gradient(180deg, #f6e5cf 0%, #fcf7ea 100%)  right 0 top 0;
-  box-shadow: 0 0 4px 0 rgba(15, 61, 95, 0.2);
-}
 // ---------------------------------------------------------------- //
 
 
@@ -89,25 +81,11 @@ $grayDim: #5a5a5a;
 }
 // ---------------------------------------------------------------- //
 
+
+
 // 首頁主要區塊 h2
 // ---------------------------------------------------------------- //
 %mp-h2 {
   font-size: 1.25em; text-align: center; margin: 0 auto 16px;
 }
 // ---------------------------------------------------------------- //
-
-
-
-// 直角線條箭頭
-// --------------------------------------------------------------- //
-// 用於 ::before 或 ::after
-// 預設箭頭向下
-@mixin arrow-rightAngle($size:12px, $borderWidth:1px, $borderColor:#888, $rotate:45deg , $aniDuration: .3s) {
-  content: '';  position: absolute; 
-  rotate:$rotate;
-  width: $size; height: $size;
-  border: $borderColor solid $borderWidth; 
-  border-top: none; border-left: none;
-  transition: $aniDuration;
-}
-// --------------------------------------------------------------- //

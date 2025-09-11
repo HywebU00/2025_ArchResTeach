@@ -32,8 +32,8 @@ ul.topicList {
       background-color: $grayLight;
       border-radius:12px 0 0 0;
       &::after {
-        content: ''; position: absolute; top: 0; right: -80px;        
-        width: 80px;height: 100%;
+        content: ''; position: absolute; top: 0; 
+        width: 5em;height: 100%;
         background: url(../images/tab-bg.svg) no-repeat right top;
         background-size: auto 100%;
       }
