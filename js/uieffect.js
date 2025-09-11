@@ -375,14 +375,18 @@ $(function(){
   })
   // 複合功能圖示 end ---------------------------------------------- //
 
-
-
+  
   // font size 和 cookie 
   // --------------------------------------------------------------- //
   // font size：顯示所選項目
   const _fontSize = $('.fontSize');
   const _fontSizeBtn = _fontSize.children('button');
   var _fsOption = _fontSize.find('ul>li>button');
+  
+  _body.hasClass('largeFont') && _fontSizeBtn.addClass('largeFont');
+  _body.hasClass('mediumFont') && _fontSizeBtn.addClass('mediumFont');
+  _body.hasClass('smallFont') && _fontSizeBtn.addClass('smallFont');
+
 
   _fsOption.on( 'click', function(){
     let fontClass = $(this).attr('class');

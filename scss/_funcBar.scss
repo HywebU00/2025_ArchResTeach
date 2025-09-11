@@ -136,11 +136,7 @@
         .largeFont{ font-size: 1.5rem;}
 
         &>button{ 
-          position: relative;
-          &::after{
-            position: absolute; left: 10px; bottom: 20px; line-height: 1;
-            font-size: .6rem;
-          }
+          font-size: 1rem;
         }        
       }
     }
