@@ -131,20 +131,17 @@
           }
         }
 
-        .smallFont{ font-size: .85rem;}
-        .mediumFont{ font-size: 1rem;}
-        .largeFont{ font-size: 1.33rem;}
+        .smallFont{ font-size: 1rem;}
+        .mediumFont{ font-size: 1.25rem;}
+        .largeFont{ font-size: 1.5rem;}
 
         &>button{ 
-          position: relative; padding-left: .6em;
+          position: relative;
           &::after{
             position: absolute; left: 10px; bottom: 20px; line-height: 1;
             font-size: .6rem;
           }
         }        
-        &>.smallFont::after{content: '小'; }
-        &>.mediumFont::after{content: '中';}
-        &>.largeFont::after{content: '大';}
       }
     }
   }
@@ -164,10 +161,6 @@
   }
 
 }
-
-body.largeFont .fontSize>button::after{content: '大';}
-body.mediumFont .fontSize>button::after{content: '中';}
-body.smallFont .fontSize>button::after{content: '小';}
 // ------------------------------------------------------ //
 
 .breadcrumb ~ .funcBar{

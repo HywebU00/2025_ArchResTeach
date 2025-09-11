@@ -17,8 +17,11 @@ body{
 
   &.noScroll{ overflow: hidden; overflow-y:hidden; }
 
-  &.smallFont .main{ font-size: .83rem;}
-  &.largeFont .main{ font-size: 1.33rem;}
+  &.smallFont .main{ font-size: 1rem;}
+  &.mediumFont .main{ font-size: 1.25rem;}
+  &.largeFont .main{ font-size: 1.5rem;}
+  // &.smallFont .main{ font-size: .83rem;}
+  // &.largeFont .main{ font-size: 1.5rem;}
 
 }
 

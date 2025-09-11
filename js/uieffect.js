@@ -377,16 +377,15 @@ $(function(){
 
 
 
-  // 文字大小 和 cookie 
+  // font size 和 cookie 
   // --------------------------------------------------------------- //
   // font size：顯示所選項目
   const _fontSize = $('.fontSize');
   const _fontSizeBtn = _fontSize.children('button');
-  let _fsOption = _fontSize.find('ul>li>button');
+  var _fsOption = _fontSize.find('ul>li>button');
 
-  _fsOption.on('click', function(){
+  _fsOption.on( 'click', function(){
     let fontClass = $(this).attr('class');
-    // _fontSizeBtn.removeClass().addClass(fontClass).text($(this).text());
     _fontSizeBtn.removeClass().addClass(fontClass);
     _body.removeClass('largeFont mediumFont smallFont').addClass(fontClass);
     createCookie('FontSize', fontClass , 365);
@@ -394,9 +393,9 @@ $(function(){
 
   function createCookie(name, value, days) {
     if (days) {
-      let date = new Date();
+      var date = new Date();
       date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-      let expires = '; expires=' + date.toGMTString();
+      var expires = '; expires=' + date.toGMTString();
     } else {
       expires = '';
     }
@@ -404,10 +403,10 @@ $(function(){
   }
 
   function readCookie(name) {
-    let nameEQ = name + '=';
-    let ca = document.cookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-      let c = ca[i];
+    var nameEQ = name + '=';
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+      var c = ca[i];
       while (c.charAt(0) == ' ') c = c.substring(1, c.length);
       if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
     }
@@ -415,10 +414,9 @@ $(function(){
   }
 
   window.onload = function () {
-    let cookie = readCookie('FontSize');
+    var cookie = readCookie('FontSize');
 
     _body.removeClass('largeFont mediumFont smallFont').addClass(cookie);
-    // _fontSizeBtn.removeClass().addClass(cookie).text(_fsOption.filter('.'+cookie).text());
     _fontSizeBtn.removeClass().addClass(cookie);
   }
   // font size 和 cookie end -------------------------------------- //
