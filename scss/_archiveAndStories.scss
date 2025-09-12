@@ -79,7 +79,6 @@
             transition: .3s;
           }
 
-
           img{
             display: block; 
             width: 100%; height: 100%;
@@ -128,24 +127,24 @@
     }
 
 
-      .slickArrows {        
-        &>button {
-          --bgc:  #{$primaryColor};
-          --tinge: #{$white};
+    .slickArrows {
+      &>button {
+        --bgc:  #{$primaryColor};
+        --tinge: #{$white};
 
-          position: absolute;
-          bottom: 8px;left: 8px;
-    
-          &.slick-next {
-            translate: 140% 0;
-          }
-          &:hover, &:focus{
-            --bgc: #{$white};
-            --tinge: #{$primaryColor};
-          }
+        position: absolute;
+        bottom: 8px;left: 8px;
+  
+        &.slick-next {
+          translate: 140% 0;
         }
-
+        &:hover, &:focus{
+          --bgc: #{$white};
+          --tinge: #{$primaryColor};
+        }
       }
+
+    }
     
   }
 
@@ -172,7 +171,7 @@
           font-size: 3em;
           em{font-size: 2em;}
         }
-        p{font-size: 1.125em; }
+        p{ font-size: 1.125em; }
       }
     }
 
@@ -188,12 +187,12 @@
         .slick-list {max-width: 660px;}
       }
 
+      .pausePlay {right:48px;}
     }
 
   }
 
   @media screen and (min-width: $wwMaximum){
-    // width: 1344px;
     padding-left: calc(50vw - 644px);
 
     .title-and-search{
@@ -202,7 +201,7 @@
 
     .stories{
       flex-basis: calc(50vw + 112px);
-      width: calc(50vw + 112px);
+      width: calc(50vw + 112px);      
       .pausePlay {
         right: calc(50vw - $maximumWidth/2);
       }
